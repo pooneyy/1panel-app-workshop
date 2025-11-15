@@ -6,15 +6,16 @@ import type { Tool, ToolCategory, ToolWithCategory, ToolsFilter } from './tools.
 import { tools as allTools } from './index';
 import { useITStorage } from '@/composable/queryParams';
 
-const base = import.meta.env.BASE_URL ?? '/';
-let filterConfig: ToolsFilter = {};
-try {
-  const remoteConfigResponse = await fetch(`${base}tools-filter.json`);
-  if (remoteConfigResponse.ok) {
-    filterConfig = (await remoteConfigResponse.json()) as ToolsFilter;
-  }
-}
-catch {}
+const filterConfig: ToolsFilter = {};
+// const base = import.meta.env.BASE_URL ?? '/';
+// let filterConfig: ToolsFilter = {};
+// try {
+//   const remoteConfigResponse = await fetch(`${base}tools-filter.json`);
+//   if (remoteConfigResponse.ok) {
+//     filterConfig = (await remoteConfigResponse.json()) as ToolsFilter;
+//   }
+// }
+// catch {}
 
 export const useToolStore = defineStore('tools', () => {
   const favoriteToolsName = useITStorage('favoriteToolsName', []) as Ref<string[]>;
