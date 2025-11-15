@@ -8,7 +8,8 @@ export const useStyleStore = defineStore('style', {
     const isDarkTheme = useDark();
     const toggleDark = useToggle(isDarkTheme);
     const isSmallScreen = useMediaQuery('(max-width: 700px)');
-    const isMenuCollapsed = useITStorage('isMenuCollapsed', isSmallScreen.value) as Ref<boolean>;
+    // const isMenuCollapsed = useITStorage('isMenuCollapsed', isSmallScreen.value) as Ref<boolean>;
+    const isMenuCollapsed = useITStorage('isMenuCollapsed', true) as Ref<boolean>; // 默认隐藏侧边栏
 
     watch(isSmallScreen, v => (isMenuCollapsed.value = v));
 

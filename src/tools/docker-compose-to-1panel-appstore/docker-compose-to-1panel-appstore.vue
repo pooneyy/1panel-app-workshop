@@ -261,7 +261,29 @@ const transformKeys = (obj: any): any => {
   }
   return obj;
 };
-
+// 处理数字字段
+const processNumbersForYaml = (obj) => {
+  const result = JSON.parse(JSON.stringify(obj));
+  const processValue = (value) => {
+    if (typeof value === 'string' && !isNaN(value) && value.trim() !== '') {
+      return Number(value);
+    }
+    return value;
+  };
+  const traverse = (obj) => {
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+          traverse(obj[key]);
+        } else {
+          obj[key] = processValue(obj[key]);
+        }
+      }
+    }
+  };
+  traverse(result);
+  return result;
+};
 // 生成应用声明文件 data.yml
 const appDeclarationYaml = computed(() => {
   try {
@@ -456,7 +478,7 @@ const appParamsYaml = computed(() => {
 
       field.required = param.required;
       field.type = param.type;
-      if (param.edit) field.edit = param.edit;
+      field.edit = param.edit;
       if (param.rule) field.rule = param.rule;
       if (param.random) field.random = param.random;
       if (param.type === 'service' && param.key) field.key = param.key;
@@ -471,7 +493,8 @@ const appParamsYaml = computed(() => {
       }
     };
     const transformedData = transformKeys(data);
-    return yaml.stringify(transformedData, { indent: 2, lineWidth: -1 });
+    const processedData = processNumbersForYaml(transformedData);
+    return yaml.stringify(processedData, { indent: 2, lineWidth: -1 });
   } catch (e) {
     return `# 生成失败: ${e}`;
   }
@@ -485,7 +508,7 @@ const addParam = () => {
     type: 'text',
     default: '',
     required: false,
-    edit: false,
+    edit: true,
     random: false,
     labelZh: '',
     labelEn: '',
@@ -1420,7 +1443,7 @@ onMounted(() => {
             <template #icon>
               <n-icon><IconDownload /></n-icon>
             </template>
-            下载参数配置 (params-data.yml)
+            下载参数配置 (data.yml)
           </n-button>
         </div>
         
