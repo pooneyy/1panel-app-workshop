@@ -708,8 +708,8 @@ const downloadAllAsZip = async () => {
       rootFolder.file('logo.png', logoData, { base64: true });
       const descZh = appForm.value.description.zh.trim() || PLACEHOLDERS.descZh;
       const descEn = appForm.value.description.en.trim() || PLACEHOLDERS.descEn;
-      const readmeContentZH = `## 产品介绍\n\n${descZh}\n## 主要功能\n\n`;
-      const readmeContentEN = `## Introduction\n\n${descEn}\n## Features\n\n`;
+      const readmeContentZH = `## 产品介绍\n\n${descZh}\n\n## 主要功能\n`;
+      const readmeContentEN = `## Introduction\n\n${descEn}\n\n## Features\n`;
       rootFolder.file('README.md', readmeContentZH);
       rootFolder.file('README_en.md', readmeContentEN);
       // 创建版本目录
