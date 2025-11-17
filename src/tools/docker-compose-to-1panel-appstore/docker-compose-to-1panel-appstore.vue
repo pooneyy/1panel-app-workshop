@@ -2,6 +2,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { textToBase64 } from '@/utils/base64';
+import MarkdownRender from '@/components/MarkdownRender.vue';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import yaml from 'yaml';
 import { Plus as IconPlus, Download as IconDownload } from '@vicons/tabler';
@@ -77,6 +78,36 @@ const appForm = ref({
   architectures: ['amd64', 'arm64'],
 });
 
+const PLACEHOLDERS = {
+  appKey: 'undefined-app',
+  descEn: 'This is an auto-generated application configuration for 1Panel.',
+  descZh: '这是为 1Panel 自动生成的应用程序配置。',
+  version: 'latest'
+};
+// 响应式自述文件内容
+const enbedDefaultCredentials = ref();
+const defaultUsername = ref('');
+const defaultPassword = ref('');
+const descZh = computed(() => appForm.value.description.zh.trim() || PLACEHOLDERS.descZh);
+const descEn = computed(() => appForm.value.description.en.trim() || PLACEHOLDERS.descEn);
+const credentialsSectionZH = computed(() => `## 默认账户密码\n\n用户名: \`${defaultUsername.value}\`\n\n密码: \`${defaultPassword.value}\`\n\n`);
+const credentialsSectionEN = computed(() => `## Default Credentials\n\nusername: \`${defaultUsername.value}\`\n\npassword: \`${defaultPassword.value}\`\n\n`);
+const readmeContentZH = ref('');
+const readmeContentEN = ref('');
+watch([descZh, enbedDefaultCredentials, defaultUsername, defaultPassword], ([newDescZh]) => {
+  if (enbedDefaultCredentials.value) {
+    readmeContentZH.value = credentialsSectionZH.value + `## 产品介绍\n\n${newDescZh}\n\n## 主要功能\n\n`;
+  } else {
+    readmeContentZH.value = `## 产品介绍\n\n${newDescZh}\n\n## 主要功能\n\n`;
+  }
+}, { immediate: true });
+watch([descEn, enbedDefaultCredentials, defaultUsername, defaultPassword], ([newDescEn]) => {
+  if (enbedDefaultCredentials.value) {
+    readmeContentEN.value = credentialsSectionEN.value + `## Introduction\n\n${newDescEn}\n\n## Features\n\n`;
+  } else {
+    readmeContentEN.value = `## Introduction\n\n${newDescEn}\n\n## Features\n\n`;
+  }
+}, { immediate: true });
 // Docker Compose 内容
 const dockerCompose = ref(`services:
   app:
@@ -566,10 +597,14 @@ const removeOption = (param: AppParam, index: number) => {
 };
 
 // 下载功能
+const readmeContentZHBase64 = computed(() => `data:text/markdown;base64,${textToBase64(readmeContentZH.value)}`);
+const readmeContentENBase64 = computed(() => `data:text/markdown;base64,${textToBase64(readmeContentEN.value)}`);
 const appDeclarationBase64 = computed(() => `data:text/yaml;base64,${textToBase64(appDeclarationYaml.value)}`);
 const convertedDockerComposeBase64 = computed(() => `data:text/yaml;base64,${textToBase64(convertedDockerCompose.value)}`);
 const appParamsBase64 = computed(() => `data:text/yaml;base64,${textToBase64(appParamsYaml.value)}`);
 
+const { download: downloadReadmeZH } = useDownloadFileFromBase64({ source: readmeContentZHBase64, filename: 'README.md' });
+const { download: downloadReadmeEN } = useDownloadFileFromBase64({ source: readmeContentENBase64, filename: 'README_en.md' });
 const { download: downloadAppDeclaration } = useDownloadFileFromBase64({ source: appDeclarationBase64, filename: 'data.yml' });
 const { download: downloadDockerCompose } = useDownloadFileFromBase64({ source: convertedDockerComposeBase64, filename: 'docker-compose.yml' });
 const { download: downloadAppParams } = useDownloadFileFromBase64({ source: appParamsBase64, filename: 'data.yml' });
@@ -581,17 +616,12 @@ const MONACO_EDITOR_OPTIONS = {
 };
 const expandDownloadAppPackage = ref(true); // 控制下载应用包卡片表单展开状态
 const expandAppForm = ref(true); // 控制应用基本信息表单展开状态
-const expandAppDeclaration = ref(true); // 控制应用声明卡片表单展开状态
-const expandDockerComposeEditor = ref(true); // 控制Docker Compose文件卡片表单展开状态
-const expandAppParams = ref(true); // 控制应用参数配置卡片表单展开状态
-const expandTagForm = ref(true); // 控制应用参数配置标签部分表单展开状态
+const expandReadmeEditor = ref(false); // 控制自述文件编辑卡片表单展开状态
+const expandAppDeclaration = ref(false); // 控制应用声明卡片表单展开状态
+const expandDockerComposeEditor = ref(false); // 控制Docker Compose文件编辑卡片展开状态
+const expandAppParams = ref(false); // 控制应用参数配置卡片表单展开状态
+const expandTagForm = ref(false); // 控制应用参数配置标签部分表单展开状态
 const expandDescriptionForm = ref(false); // 控制应用参数配置描述部分表单展开状态
-const PLACEHOLDERS = {
-  appKey: 'undefined-app',
-  descEn: 'This is an auto-generated application configuration for 1Panel.',
-  descZh: '这是为 1Panel 自动生成的应用程序配置。',
-  version: 'latest'
-};
 const appVersion = ref('1.0.0');
 const appLogo = ref<File | null>(null);
 const defaultLogoBase64 = 'iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAn1BMVEVHcEw9sO1JnN0jqvAYr/Nhl9g/jdsjkusEr/ICqvghpu4jeNQyrekVsPEcRNofsPARMuQjr+4zbdYnZNgEkNwpse4ed9gZbNYSaNYictcUg9odQ+AZPeQjPuAaidsRId8YSfoBsPQAi9kAhtgDJecActgDLOYAbNcBedgBgNgDHecBZdgBOuICM+QAXtkBVtoBQOABTtwAkNsBR94GOvVr8z01AAAAIXRSTlMAPR5w0Q0vA/z+j2pW6lO55qREfPqBrtHql+KzzpXJ9eddCv7DAAAReklEQVR42syciULqOhCGK9IWZBHbw1IVvWwFZAff/9luZrJN2gJJxSUHEBHox88/k6WZ43m3bmHIf/h+SH//yw0I/bvuU7XaalWrj91mRTz4h5EZ3t1Tq1YfsX/swu7UHpt/GhuQm4+10ajGWr3GG/ut2vy7JgGVGTIAY5NqM+6/is2QKk81LjIT9+n+vvvwWGXAIDkzyd3f8wjj8R8QGexwX5GPB/fVEdiFXZ8qfwubffPhfQu9zDWFh6DBvbtHbvJRrev/HWyMvypF1vbFewJ7NGrd/xVr6/grDjj6mf5IROr4Oy8kPGa4J/wD8cfzce3hvGXheV2IRvj3uxHJFRQyPwUXUfAbgUQC19+LSO5VaearXzr28NVfjkgafy2r8JIRiXL/RkSS/m/U6oaW3zY8DyNy9AsRqfs/17iCD/sw+oWINDNY4Hhg9uTgSXjkxyIyH3+h+xtgRI5+KiJDI/5KHlH1kT8TkfjdysHcF75bFZHf30diFJWKvzOx/P0RSdUZ3UAd+NYehUcuDQFuNP7M+jAsj30nO5tviEge8cXxF7pgh0Y/hEq0vqmPxG+SI9cy8QeHqdgeLf9k+AxdiX3LiOTxVyuKPzh89Jq+tq2w4bO/vGeeLHpXHpO3ikgcCovxZzY7IcUmTdPpy/WOEd5o+AHNfHIoIvJ2fSR3Xe1c/PnDDTbGPbwsErwufv/4mCL2MGex2/WRNP5qrRxyGHc2sqXp+/CCSOzx9itDngI1Y3+PCyPyBvNIHX8w/syJ02bIa2gSu9M4czS0EePFJsTu5Kx9iz6SD5lFe6hkzRy9rtf79ZpQb6bTwohEGzHWdCob536NCiPyC/0tn4rKlBFkkSsvDHm/3gtuaZJpmotINHNnOmXRKrG5S96zEannkeX6SDpl5V9WJv4YLW+Seq28PazkzJwyZGzv7N77R6o88jHMZVCyshO6YJtD5kz8sbuNzn5/2u8NbEW9STHIVKu8MNBNKhtTO0VzA/KZiCyxsiOGzLXCLhvNzJB5M8RGcIa+3qSdiuAIvXiTwgcReRGpQe2p5M5HpJwXjRwmGXTInEkZPAucTocDRz7ts9jc3y+Rfknw8vmJxJtUUXNzS4cURqRa2bFJJGTIXMuGMPxteGDI7HqS2Puc2qAcbdErYqf8kqYb1PojJWKfj0iLRGJ02fmUEcYHbCdFTbhFJukwj9IvFGPgP8BG5I30NU3Z77mI9EREjq4Oti+mDMgCg4NuHHtvyM2wCzpzzDZCbIDeTLnWKgHydi4iRyKRFFtbp4xaUcqI+rvDbseuElmJrbHPDJtCw9o6iZjOLopIc/p7eZUrM2bBgwpkQX0gDpHkmXjKvLuytuDWUk8vRGR4aYGF/fpwPmVUkt12J5umNqx9duCh7QXWRuRNJo1MlbfzEckTCZ79yPa1XqUqTvrlRxlhPNgx6K1ANqmFTw7xtV4X3wixU5KxjcEIgg/zkvERCZvZ+OZfglZhfuHxx4C3ihqYdyQeEXtoM77BlIl55DK2GZFyHQ00rRJqpjMwiyyXGcz1t7IpixjYrL0E9qumPCLTC8YujEhcbGAJgmpdhUeyq8ygTI8Qb01jS+4L8Vds7deM2mrkp1s2IiGRYMg9SujQ6+KnqGSR/ZjRrrZbA5xws+th0HCbZqjOJiVDkWle7WxESjc05aPwq6k8hk1jsIK2Xa0kszA34Y7d56Gis8ljf9CkXdBHImbL10KPakGGWSOviNqmS5JyM36cRDBsPWJVYlPsd2NEwO7dQTB2xRGZo0cPXmjG32o1X60EN/UIUsOP3UvwlVVT6GzSNDWxTWfziCQvegJH8BWtANJghSYTP5mv5uxyjhvAB+0vzZlFZ0NMMp0WROSLwXUHu0ju2J3Qa9Zro0f6t2AwnxvMeexBHH5x4Q02AcT/5agNW4NHjIEueKKL0N06vyeZo7lsinvLjY3YcJPcYvlKdDbKJYVZhAUk9YfQN/Qe6iSTAPNsTrFXVG642faCGy0Uis4mFdg6FjPUOjcz1Creo9AssQxmrElkJfZWWmTVj263JBvK4Z/IfcXGjhXcvQF9px7vAfLMNAiR27Uzse1siNQcmVJHnO4MNDPHTDTiEMKc3P40Aw7/lLMVNg3JV08rXVfQdQXdmy241DMzHBG89z0ndERnk+lkKHUkzjdQ6LqAZo4G5gWXOoPNzfxtZydFZ2MunclEMrwIHc0WC6H1zMgiNzdzYWejfS2x+W3ngj1CryGhM1rP4u8+iy2sTW0tpGaXji+h6wVKA7SgnvMLtlJmDkt1NnQyI6x9FXrBobXYrA2in9srEHWmlBo8/flhA72Q0Tjn5FG50/ZBKew27c95JFopvSC+Zm0RlFqUj1aVMpZq02Dk5J+2SmvsRSloz+uvkrLQptYf1+2xXBCH8Jug1MFZZ1QpEYxtYxCCOn/aQkutF2WV7kOnXw46s7QwtVV6pjyyKAPN3gg7/or7rLedG11bKW1oXVLpcLCCfjQpDU20/vyYXoXW1Ch4GaWF0HN3qRGaLAeL+a6N0lrrkvbwudDuUgP0hiyHpFzq60obWpdROvRiNeepuO7aa6fm0jtiW9nja9BMaDWkTUpAk9OOwP1pA73McC8D1wPHZBjuJjVXmmqNK++W9mDMAnvprLQv1k1wHJ64QhNkhX0FejlZLpemrx2VVkKL+aWT1Bx6Y4Azf9hBa2svnZWWjhZz4qQUtHk63UVpfuOmNAhN5mkM2+XlWmlxftdFaQEO2I7QKLSxAJGUgianwSyUJlKLGzep4nlmXuwiNUCvycYopP5MLZSefEVpf4CrJuwSS+rEDVpQk3xtobRhkKUbtBAaWuL1Zs5Sc6XXBBvBrys9MXztqLQ/EMzPoRfIyXziBk236Wzs7DEh2AtHaCJ05PleIqjtpebQgjrdyHGIRSBmxXZQmgnNR+E9PIsmFzJ7jtBKa+EQC6UNsdlPB51iMR/GDgl+5dTWUkt76F1zDNzeHiSL2CuthBYuBoc7SS2VJnvmrJXmJnFVmgsN84aBr5bZuNa2UlPote4Zbe2BSk/c7OEP+Mxy0VCnSfpyNdAB2txVudl8WkITsa2hhdCM+1mfKmvL1Ve7N2EvUHsqNfc16MmYMoPc9kqD0NgiJXTovaE9ZpZSc+i9aZDNxhJaY08mtiI1ZgK6T5o6WWb1Lgi91/tX17bQY5Pa3h4DPa2c0QZKW0pNlNZqf16HVlK7KY1CL/Prl5J7ZiW1UHq/NlOIhT3GhBqapT36emKpTzfN1EkFK6mlPYw9t2sLpYnUHNtOogaZDJP1QI1tI7VSmmy5tYI2bW2rNApNsGeZpXk7qSU02UwOtxZKjw2LWEGrpUsl9XPcTJZmTFpIraCNaFzbQCPy2AXa8/p8liMWMN+a8JJK/KypraQugrZVeuyoNDuWmFLirLIXYceCu7feqLOj62VHDDqzldxC6X+CeexkD6+vVkuWSSBPIuJJsainsftW0JyaSm0FTbnH16FRaN6e42wZHJt29ZRJrkkN0Cel9N4N2uhjLJTuC+SGnzuDjvV8yTPH7l/3GSk1UOU/tkorY19XWgr91vQKT/rDQ/49x25f2/vLoGEDvNz7jth7B3sA8djGHt4bQ+4F58+HY0w2ISb7FkqfjDoD+Oeg9NhO6dBr5qxcfHr/rkfmB5egT6avLZQ+muawUDqJfYvNIJi5k56V0rSEZn9V6bGh9NgKGr98qzEVmNvC01ppofZV6KMGFhebzsVhd4QVtNSa1+LZQ3NPj22gb7flQytNtLZRmmoNNz8LrUo6tK0toI8ZT/889CGj9ckK+mhE409D63K20zl7hDnoYyZ7NH/sv8RhhxmesBTF4D51wqtKAzQF/9f8oY1XsBPykGM+FUE/0X15aA9Ta3a52ebjK9mwQcrwNPapEJoofUSlj2MTezxJfmAzYfR6UCVWRsXj6fWi0tER29hwyAQGJM/fu20TCoFEYdjuYBaXsttX75LSlX9HqfRRp2rAnkzevnWDbKxqBwvKS/UG2bzS7OYN/XGk/piM5brC921FbvdJoVIO+hQVQNc1dFOY2vS1nJ7/+3LRxZmcsSNlSqRME+PxcCrY9E2UhvH8UTvEjEVcDXm+cfrDypGdLlLiFWFm6eChLSXtGtC6kCE4ymb4mjuEWXt50/SH9Y5mURgpwDvxH4mC09UXFBq+Au3qo5mt5bLCzdIflozoarZcRawod9RPf6CFDHVanPMgqHO2Vty3SX8wI0hUnVK23JG3HTIrQXVxDriblkGFD8ci7AlZ4lt+Pf2JSlhdXkULYvkVnZKQA4WyNC707hh0zdi0c3/MJ77MutOy9+X/pivoy7rBVVZr0cuwS8MjHoCCM1FHFLYYtVnaF7wdi5MIXQZulE9/6Ix8uaNZWsqQ+4GB9aiqKEURZcUsSGz809hFSgP1c0mPhLxGc0tr2WRlKaUeNMxyxCYUXHdl3w2V+1XzCZ7PnC2xM3MZveBetsABajSLqwZ3OvuZSYqXiY9aFZUvsFA4zFVrI/aYeoRKjSfPY9/RIzg0AlZdoPl/dWfbmzYQw3EKCUmhHaIDOuUF0oGmLuLdvv+HW8++J9t3SQ4SYHSq1GpV3cP++y5n/0wcxKrfgROmoLVdLdw3S/i6EDirl+Pf6FYkuP1qmyxqkvGMoLXKWH2hHbG0e8m1YH/r3SwISyVZy/BfGxGR4fUoXKFnpEj0DFOw9xX2OZJe708BcjDN7u+kRR//DuBNMLMXjVhtNLs9m3KnczswRcIzXzSZ9fCa1cYFZw1XFqGKDk1c4S3J7yv3TEjITTTaPSRFomfIVljy0t27pZAEA7Ap5hw78fKeNHu+NULiPeQU3unqT70tdOAZpDIyajft3kUejTFsW0nAR7VSKkWLWm6Y1dSxoVahU/5AM1hlpOgqvVyYZMw89TXOUnHeLiE7lRcS79fkVhcvL5KuDcepX1+sOdM49wX1zzY8ErK540hpHnAKWuMYWYxNEgqJyDGmnOWcdG3wjN+/IzbjBzZNf/7gJjvqJCel8AXxfxtFewE/BiPyJK6SfJXWUbY6g2e4+/3IWoPhUjIsdbKXxORge0pSpSGOwWy+EyHVZVy19XEqvCSndcrmJSXDgaL7EOJ2RfcJtJcTkpN0bOvXZ1Rt4hmkx/GLL7Yu65SSUYfU10FMTKeMHCRkhQTj0a11Sz/atf+J+YFXUeBiwz+suhG7DCYZw+mjDhEtmaAgJDKjY3LUyab54EaHa22MtWveJRl5MEgrJEpymZyQyI0qlj01a+qDy0Prbf4TlNrADa6UDI+wqnJ53BTtJUFUO2M2K8Jpd7ztWXv10bfekbqVJr7LqK9GDlPYXlxIeJY5nyMMDXxreEnW96fULuOmkSQhbE9JdqwWEqYhhyQQbbZufEsp1tsIyRgJFO3HKERgWBCRp52X62MnEK38uQtbBqVkjDbUowojkrkZ/CJttr7gMA/5qu69dGvNPn4kU/YYIGoB22Nmrxu92vA4tbfAQguJtrvpSNkjQfj7InLRnHaDGDawoIdvSeSbmtFA7RmpvXwb+qsgbZXiZPQeT79jPPh2rHmZ2oc7ocSTp97EsZ7KpqidVV7nHwuXesLRDKGQ1GPEyxTxl5far0sBxmQ16biR0AdvmhBHTtmb5fT3qmyDfu1b5rbML/eYM5LD0U0GRxE/0k1q9tKf2ssrhtC4LfO+utvsHDbYqcod9zNB/ssWkoyD3F3jL57aHUd3WDBdeWQdPSIdIn8z6OHEw4eFzQiQtvPJ1f3yX1ZqrzvJ1rcM6npYRBJnfkD89aT22EMskkyeZsyqHFoRHv9IMlk80WRYk9rN8XdprDW266kD6vHx1xOR9ebNjb+Y2wnCE+8/b4xI2CDXxXa136+2Ra3U0KmPjzIbc6QebPyq9JBjZURcPfF0Zru1UHaYNFqsikX11HOw9XOQQg+SxnHSr+Dh1dNPHIfoW23+oyHpaHZlNS//AcOw1z+wdV3l+lowAAAAAABJRU5ErkJggg==';
@@ -706,12 +736,8 @@ const downloadAllAsZip = async () => {
         }
       }
       rootFolder.file('logo.png', logoData, { base64: true });
-      const descZh = appForm.value.description.zh.trim() || PLACEHOLDERS.descZh;
-      const descEn = appForm.value.description.en.trim() || PLACEHOLDERS.descEn;
-      const readmeContentZH = `## 产品介绍\n\n${descZh}\n\n## 主要功能\n`;
-      const readmeContentEN = `## Introduction\n\n${descEn}\n\n## Features\n`;
-      rootFolder.file('README.md', readmeContentZH);
-      rootFolder.file('README_en.md', readmeContentEN);
+      rootFolder.file('README.md', readmeContentZH.value);
+      rootFolder.file('README_en.md', readmeContentEN.value);
       // 创建版本目录
       const versionFolder = rootFolder.folder(version);
       if (versionFolder) {
@@ -862,6 +888,7 @@ onMounted(() => {
         </n-alert>
       </div>
     </n-card>
+
     <n-card mb-4>
       <template #header>
         <div 
@@ -997,6 +1024,105 @@ onMounted(() => {
             </n-gi>
           </n-grid>
         </n-form>
+      </div>
+    </n-card>
+
+    <n-card mb-4>
+      <template #header>
+        <div 
+          class="expand-collapse-card-header"
+          @click="expandReadmeEditor = !expandReadmeEditor"
+        >
+          <span class="expand-collapse-card-title">编辑自述文件</span>
+          <n-button 
+            type="primary" 
+            size="small"
+            text
+            @click.stop="expandReadmeEditor = !expandReadmeEditor"
+          >
+            <template #icon>
+              <n-icon>
+                <svg v-if="expandReadmeEditor" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m18 15-6-6-6 6"/>
+                </svg>
+                <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </n-icon>
+            </template>
+            {{ expandReadmeEditor ? '折叠' : '展开' }}
+          </n-button>
+        </div>
+      </template>
+      <div v-show="expandReadmeEditor">
+        <n-alert type="info" mb-2>
+          编辑应用描述或模板后自述文件内容会被重置。
+        </n-alert>
+        <n-card title="模板" class="mb-4">
+          <n-grid cols="3" x-gap="12" mb-4>
+            <n-gi>
+              <n-form-item label="默认账户密码">
+                <n-switch v-model:value="enbedDefaultCredentials" />
+              </n-form-item>
+            </n-gi>
+            <n-gi>
+              <n-form-item label="用户名">
+                <n-input v-model:value="defaultUsername" placeholder="默认用户名" />
+              </n-form-item>
+            </n-gi>
+            <n-gi>
+              <n-form-item label="密码">
+                <n-input v-model:value="defaultPassword" placeholder="默认密码" />
+              </n-form-item>
+            </n-gi>
+          </n-grid>
+        </n-card>
+        <n-grid cols="2" x-gap="12" mb-4>
+          <n-gi>
+            <c-label label="编辑中文自述文件" mb-2>
+              <div relative w-full>
+                <c-monaco-editor
+                  v-model:value="readmeContentZH"
+                  theme="vs"
+                  language="markdown"
+                  height="300px"
+                  :options="MONACO_EDITOR_OPTIONS"
+                />
+              </div>
+            </c-label>
+            <div mb-4>
+              <n-button @click="downloadReadmeZH" type="primary" block>
+                <template #icon>
+                  <n-icon><IconDownload /></n-icon>
+                </template>
+                下载自述文件 (README.md)
+              </n-button>
+            </div>
+            <MarkdownRender :value="readmeContentZH" language="markdown" />
+          </n-gi>
+          <n-gi>
+            <c-label label="编辑英文自述文件" mb-2>
+              <div relative w-full>
+                <c-monaco-editor
+                  v-model:value="readmeContentEN"
+                  theme="vs"
+                  language="markdown"
+                  height="300px"
+                  :options="MONACO_EDITOR_OPTIONS"
+                />
+              </div>
+            </c-label>
+            <div mb-4>
+              <n-button @click="downloadReadmeEN" type="primary" block>
+                <template #icon>
+                  <n-icon><IconDownload /></n-icon>
+                </template>
+                下载自述文件 (README_en.md)
+              </n-button>
+            </div>
+            <MarkdownRender :value="readmeContentEN" language="markdown" />
+          </n-gi>
+        </n-grid>
       </div>
     </n-card>
 
