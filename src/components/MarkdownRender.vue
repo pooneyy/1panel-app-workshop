@@ -37,25 +37,7 @@ const renderedHtml = computed(() => {
 
 <template>
   <div class="markdown-render-container">
-    <!-- 下载按钮（如果有下载文件名） -->
-    <div v-if="downloadFileName" class="download-section">
-      <n-button 
-        @click="$emit('download')" 
-        type="primary" 
-        size="small"
-      >
-        <template #icon>
-          <n-icon><Download /></n-icon>
-        </template>
-        下载 {{ downloadFileName }}
-      </n-button>
-    </div>
-    
-    <!-- Markdown 渲染内容 -->
-    <div 
-      class="markdown-content"
-      v-html="renderedHtml"
-    />
+    <div class="markdown-content" v-html="renderedHtml" />
   </div>
 </template>
 
