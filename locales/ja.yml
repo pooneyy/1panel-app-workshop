@@ -1,0 +1,419 @@
+home:
+  subtitle: 1Panel アプリワークショップ
+  home: ホーム
+  toggleMenu: メニュー切り替え
+  menu:
+    title: アプリ作業場
+    subtitle: 1Panel アプリ作成ウィザード
+  nav:
+    about: このツールについて
+    darkMode: ダークモード
+    lightMode: ライトモード
+    mode: ダーク/ライトモード切り替え
+    aboutLabel: このツールについて
+    github: GitHub リポジトリ
+    githubRepository: IT-Tools GitHub リポジトリ
+
+homepage:
+  text-center: 1Panel アプリワークショップにリダイレクト中...
+
+tools:
+  categories:
+    favorite-tools: お気に入りツール
+  app-workshop:
+    title: 1Panel アプリワークショップ
+    description: 1Panel ローカルアプリをワンストップで構築
+    cards:
+      ProjectManagement:
+        title: プロジェクト管理
+        PackageProject:
+          title: アプリ設定をパッケージ化してダウンロード
+          note: ロゴをアップロードし、アプリバージョン番号を入力して、全ての設定ファイルをZIPファイルにパッケージ化してダウンロード。
+          uploadArea:
+            title: ロゴをアップロード
+            note1: クリックまたは画像をこのエリアにドラッグ
+            note2: 180x180ピクセルの画像を推奨。180x180を超えるサイズは自動的に圧縮されます。
+          previewArea: ロゴプレビュー
+          appVersionForm: 
+            lable: アプリバージョン
+            placeholder: '例: 1.0.0'
+          warning:
+            title: パッケージ化後のZIPファイル構造：
+            paragraph1: アプリメタデータファイル
+            paragraph2: アプリアイコン
+            paragraph3: 中国語説明文書
+            paragraph4: 英語説明文書
+            paragraph5: パラメータ設定ファイル
+            paragraph6: Docker Compose 設定
+        ImportExport:
+          title: プロジェクトのインポートとエクスポート
+          note: プロジェクトをJSONファイルとしてエクスポートするか、JSONファイルをインポートしてプロジェクトを復元できます。
+      AppForm:
+        title: アプリ基本情報
+        key:
+          label: アプリキー
+          placeholder: 小文字英数字、ハイフンを含めることができます。アプリケーションフォルダの命名に使用されます。
+        name:
+          label: アプリ名
+          placeholder: 外部に表示されるアプリケーション名
+        desc:
+          en:
+            label: 英語説明
+            placeholder: English description
+          zh:
+            label: 簡体字中国語説明
+            placeholder: 中国語の説明、30文字以内で入力してください。
+          zh-Hant:
+            label: 繁体字中国語説明
+            placeholder: ''
+          ja:
+            label: 日本語説明
+            placeholder: ''
+          ko:
+            label: 韓国語説明
+            placeholder: ''
+          ms:
+            label: マレー語説明
+            placeholder: ''
+          pt-br:
+            label: ポルトガル語説明
+            placeholder: ポルトガル語（ブラジル）説明
+          ru:
+            label: ロシア語説明
+            placeholder: ''
+        tags:
+            label: アプリタグ
+            placeholder: アプリタグを選択
+        type: アプリタイプ
+        crossVersionUpdate: バージョン間アップグレード
+        limit:
+          label: インストール数制限
+          placeholder: 0は無制限を意味します
+        website: 公式サイトURL
+        github: GitHub アドレス
+        document: ドキュメントアドレス
+        memoryRequired:
+          label: メモリ要件
+          placeholder: 空白の場合はメモリ要件なし
+        architectures: サポートアーキテクチャ
+      ReadmeEditor:
+        title: READMEファイル編集
+        note: リスト項目をドラッグして段落の順序を調整できます。テンプレートやアプリ説明の編集は、READMEファイルの内容をリセットします。
+        template:
+          title: テンプレート
+          defaultCredentials:
+            switch: デフォルトアカウント
+            input-user: ユーザー名
+            placeholder1: デフォルトユーザー名
+            input-pass: パスワード
+            placeholder2: デフォルトパスワード
+          configUsage: 
+            switch: 設定と使用説明
+        tabs:
+          tab-cn: 中国語README
+          tab-en: 英語README
+        sections:
+          introduction:
+            title: 製品紹介
+            defalt: これは1Panel用に自動生成されたアプリケーション構成です。
+          features:
+            title: 主な機能
+            defalt: アプリの主な機能をここに記入してください。
+          credentials:
+            title: デフォルトアカウント/パスワード
+          configUsage:
+            title: 設定と使用説明
+            defalt: アプリの設定説明と使用方法をここに記入してください。
+      AppDeclaration:
+        title: アプリメタデータファイル
+        note: アプリケーションフォルダのルートに配置され、アプリの基本情報を宣言するために使用されます。
+      DockerComposeEditor:
+        title: Docker Compose 設定
+        label: Docker Compose YAMLコンテンツを編集
+        var-info-area:
+          title: アプリパラメータを発見
+          subtitle: 合計 {count} 個のパラメータを発見
+          newVars:
+            title: 新規パラメータ
+            text1: '{count} 個追加可能'
+            text2: 新規パラメータなし
+          existingVars:
+            title: 既存
+            text1: '{count} 個設定済み'
+            text2: 既存パラメータなし
+          ignoredVars:
+            title: 無視
+            text1: '{count} 個のパラメータが無視されました'
+            text2: 無視されたパラメータなし
+            text3: 予約パラメータ
+        note: 入力されたDocker Composeファイルは変換後、1Panelアプリ標準に準拠します。
+      AppParams:
+        title: アプリパラメータ設定
+        note: ポート、データベース接続情報など、アプリインストール時にユーザーが入力する必要があるパラメータを設定します。
+        Param-card:
+          title: パラメータ
+          envKey:
+            label: 環境変数キー
+            placeholder1: '例: PANEL_DB_TYPE'
+            placeholder2: '例: PANEL_APP_PORT_HTTP'
+          type:
+            label: パラメータタイプ
+          dynamic-param-config:
+            info:
+              title: 選択可能なサービス依存関係
+              note: ユーザーは一級メニューから依存するサービス（App）を選択できます（例：MySQL、MariaDB、PostgreSQLなど）。サブメニューからインストール済みのサービスインスタンスを選択します。<br>一級メニューのオプション値は、公式アプリストア内のアプリケーションのキーを記入する必要があります。デフォルト値は、設定済みのサービス依存関係オプション値を記入する必要があります。
+              select:
+                label1: サービス依存関係オプション
+                label2: ドロップダウンメニューオプション
+                input-label: 表示ラベル
+                input-value1: 'オプション値: 公式アプリストア内のアプリケーションのキー'
+                input-value2: オプション値
+              sub-select:
+                card-title: オプションのサービス依存関係サブメニュー
+                label: 環境変数キー
+                placeholder: '例: PANEL_DB_TYPE'
+              key:
+                label: 依存関係キー
+                placeholder: '例: mysql, redis、値は公式アプリストア内のアプリケーションのキーを記入する必要があります'
+          default:
+            label: デフォルト値
+            placeholder1: この項目は必須です
+            placeholder2: デフォルト値
+          rule:
+            label: 検証ルール
+            placeholder: 選択してください
+          form-label:
+            title: フォームラベル (必須)
+            zh:
+              label: 簡体字中国語ラベル
+              placeholder: 簡体字中国語ラベル
+            zh-Hant:
+              label: 繁体字中国語ラベル
+              placeholder: 繁体字中国語ラベル
+            en:
+              label: 英語ラベル
+              placeholder: 英語ラベル
+            ja:
+              label: 日本語ラベル
+              placeholder: 日本語ラベル
+            ko:
+              label: 韓国語ラベル
+              placeholder: 韓国語ラベル
+            ms:
+              label: マレー語ラベル
+              placeholder: マレー語ラベル
+            pt-br:
+              label: ポルトガル語（ブラジル）ラベル
+              placeholder: ポルトガル語（ブラジル）ラベル
+            ru:
+              label: ロシア語ラベル
+              placeholder: ロシア語ラベル
+            tr:
+              label: トルコ語ラベル
+              placeholder: トルコ語ラベル
+          form-description:
+            title: フォーム説明 (オプション)
+            zh:
+              label: 簡体字中国語説明
+              placeholder: 簡体字中国語説明
+            zh-Hant:
+              label: 繁体字中国語説明
+              placeholder: 繁体字中国語説明
+            en:
+              label: 英語説明
+              placeholder: 英語説明
+            ja:
+              label: 日本語説明
+              placeholder: 日本語説明
+            ko:
+              label: 韓国語説明
+              placeholder: 韓国語説明
+            ms:
+              label: マレー語説明
+              placeholder: マレー語説明
+            pt-br:
+              label: ポルトガル語（ブラジル）説明
+              placeholder: ポルトガル語（ブラジル）説明
+            ru:
+              label: ロシア語説明
+              placeholder: ロシア語説明
+            tr:
+              label: トルコ語説明
+              placeholder: トルコ語説明
+          required: 必須かどうか
+          edit: 編集可能
+          random: ランダム文字
+          editableOptions: パラメータフォーム編集可能属性
+        divider: パラメータ設定プレビュー
+    components:
+      addDockerComposeParameters: パラメータをアプリパラメータ設定に追加
+      addOption: オプションを追加
+      addParams: パラメータを追加
+      backToTop: アプリケーションパッケージのダウンロードに戻る
+      cancel: キャンセル
+      clearAllData: 全てのデータをクリア
+      collapse: 折りたたむ
+      confirm: 確定
+      downloadAllAsZip: 全ての設定をパッケージ化してダウンロード
+      downloadAppDeclaration: アプリメタデータファイルをダウンロード
+      downloadAppParams: パラメータ設定をダウンロード
+      downloadDockerCompose: Docker Compose設定をダウンロード
+      downloadReadme: READMEファイルをダウンロード
+      expand: 展開
+      exportProject: JSONとしてエクスポート
+      importFromJson: JSONからインポート
+      importFromZip: ZIPからインポート
+      moveUp: 上に移動
+      moveDown: 下に移動
+      remove: 削除
+      removeOption: オプションを削除
+      resetParagraphOrder: 段落順序と有効状態をリセット
+    options:
+      availableTags:
+        ai: AI
+        bi: BI
+        crm: CRM
+        database: データベース
+        devops: DevOps
+        devtool: 開発ツール
+        email: メールサービス
+        game: カジュアルゲーム
+        local: ローカル
+        media: メディア
+        middleware: ミドルウェア
+        runtime: ランタイム
+        security: セキュリティ
+        server: ウェブサーバー
+        storage: クラウドストレージ
+        tool: ツール
+        website: ウェブサイト
+      editableOptions:
+        install-editable-post-editable: インストール時編集可能、インストール後編集可能
+        install-locked-post-editable: インストール時ロック、インストール後編集可能
+        install-editable-post-locked: インストール時編集可能、インストール後ロック
+        install-locked-post-locked: インストール時ロック、インストール後ロック
+      optionalEnvVars:
+        database: データベース
+      paramTypes:
+        apps: Apps - 選択可能なサービス依存関係
+        number: 数字
+        password: パスワード
+        select: ドロップダウン
+        service: Service - 固定のサービス依存関係
+        text: テキスト
+      ruleOptions:
+        paramPort: paramPort - ポート範囲 1-65535
+        paramExtUrl: paramExtUrl - HTTP(S) URL形式
+        paramCommon: paramCommon - 英数字.-_、長さ2-30
+        paramComplexity: paramComplexity - 複雑なパスワード、長さ6-30
+      typeOptions:
+        runtime: Runtime - ランタイムタイプ
+        tool: Tool - ツールタイプ
+        website: Website - ウェブサイトタイプ（ワンクリックデプロイ対応）
+    script:
+      errors:
+        clearLocalStorage: ローカルストレージのクリアに失敗
+        generation-failed: 生成失敗
+        conversion-failed: 変換失敗
+        extract-parameters-failed: パラメータ抽出失敗
+        validate-error: 画像ファイル検証中にエラーが発生しました
+        upload-error: ファイルアップロード中にエラーが発生しました
+        read-error: ファイル読み込み中にエラーが発生しました
+        image-load-error: 画像読み込み失敗
+        canvas-context-error: canvasコンテキストを作成できません
+      funcs:
+        clearAllData:
+          title: 全てのデータをクリア
+          content: プロジェクトをリセットします。続行しますか？この操作は元に戻せません。
+          success: プロジェクトのリセットが成功しました
+        saveToLocalStorage:
+          success: データをローカルストレージに保存しました
+          failed: ローカルストレージへの保存に失敗しました
+        loadFromLocalStorage:
+          noData: 保存されたデータが見つかりません
+          dataExpired: 保存されたデータは期限切れです。デフォルトデータを使用します。
+          success: ローカルストレージからの読み込みに成功しました
+          failed: ローカルストレージからの読み込みに失敗しました
+        clearLocalStorage:
+          success: ローカルストレージをクリアしました
+        convertedDockerCompose:
+          note1: 元の内容
+        addDockerComposeParameters:
+          success: アプリパラメータ設定に {count} 個の新規パラメータを追加しました
+          warning: パラメータが多すぎると、応答時間が長くなる可能性があります
+          failed: 新しいパラメータは見つかりませんでした。すべてのパラメータは既にアプリパラメータ設定に存在します
+          processingTime: '処理時間: {time} 秒'
+        handleLogoUpload:
+          no-imagefile: 画像ファイルをアップロードしてください。現在のファイルタイプ
+          no-image: アップロードされたファイルは有効な画像ファイルではありません。ファイルの内容を確認してください。
+        downloadAllAsZip:
+          image-compress-failed: 画像圧縮に失敗しました。デフォルトロゴを使用します。
+          package-failed: パッケージダウンロードに失敗
+        exportProject:
+          success: プロジェクトのエクスポートに成功しました
+          failed: プロジェクトのエクスポートに失敗しました
+        importProject:
+          appParamsParseError: アプリパラメータの解析に失敗
+          error: プロジェクトのインポートに失敗
+          invalidFile: 無効なファイル
+          invalidJsonFormat: 無効な形式
+          invalidLogo: 無効なlogo.pngファイルです。デフォルトロゴを使用します。
+          invalidPackageStructure: アプリケーションパッケージ構造が正しくありません
+          invalidZipFile: 無効なZIPファイル
+          missingAppDeclaration: アプリメタデータファイルが不足しています
+          missingVersionFiles: バージョンディレクトリ、またはバージョンディレクトリ内に必要なファイル (data.yml と docker-compose.yml) が不足しています
+          parseError: ファイル解析エラー
+          readError: ファイル読み込みエラー
+          success: プロジェクトのインポートに成功しました
+          zipError: ZIPファイルからのプロジェクトインポートに失敗
+          zipParseError: ZIPファイル解析エラー
+          zipReadError: ZIPファイル読み込みエラー
+          zipSuccess: ZIPファイルからのインポートに成功
+        validateAppPackageStructure:
+          noRootFolder: 有効なルートディレクトリが見つかりません
+          noFoundValidVersion: 有効なバージョンディレクトリが見つかりません
+
+locale-selector:
+  select-a-language: 言語を選択
+
+favoriteButton:
+  remove: お気に入りから削除
+  add: お気に入りに追加
+
+search:
+  label: 検索
+  placeholder: ツールを検索...
+
+textareaCopyable:
+  copy: クリップボードにコピー
+  copied: コピーしました！
+  download: ダウンロード
+
+inputCopyable:
+  copy: コピー
+  copied: コピーしました！
+
+about:
+  content-fork: |
+    # 1Panel アプリワークショップについて
+    
+    これはIT-Toolsの特別バージョンで、1Panelパネルアプリストアにワンストップのローカルアプリ構築サポートを提供することを目的としています。
+    
+    あなた自身の1Panelローカルアプリを簡単に構築できます。
+
+    このプロジェクトは [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be) を基に二次開発されています。
+  alltools-title: 全てのツール（{toolsCount} 個のツール）
+  tools:
+    category: カテゴリ
+    name: 名前
+    desc: 説明
+
+404:
+  notFound: ページが見つかりません
+  sorry: 申し訳ございません、お探しのページは存在しません。
+  maybe: ホームページに戻りますか？
+  backHome: ホームに戻る
+
+components:
+  MarkdownRender:
+    default-content: コンテンツがありません

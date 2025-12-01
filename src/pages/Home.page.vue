@@ -5,9 +5,10 @@ import { useHead } from '@vueuse/head';
 import { NSpin } from 'naive-ui';
 
 const router = useRouter();
+const { t } = useI18n();
 
-const title = '1Panel-Tools - 1Panel AppStore Creator';
-const desc = 'Create Docker Compose applications for 1Panel AppStore with ease';
+const title = t('tools.app-workshop.title');
+const desc = t('tools.app-workshop.description');
 
 useHead({
   title,
@@ -27,9 +28,8 @@ useHead({
   ],
 });
 
-// 直接重定向到Docker Compose工具
 onMounted(() => {
-  router.replace('/docker-compose-to-1panel-appstore');
+  router.replace('/app-workshop');
 });
 </script>
 
@@ -37,7 +37,7 @@ onMounted(() => {
   <div class="flex items-center justify-center min-h-screen">
     <div class="text-center">
       <n-spin size="large" />
-      <p class="mt-4 text-lg">正在跳转到 Docker Compose 转换工具...</p>
+      <p class="mt-4 text-lg">{{ $t('homepage.text-center') }}</p>
     </div>
   </div>
 </template>

@@ -50,7 +50,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
     },
     {
       name: 'Github repository',
-      href: 'https://github.com/arch3rPro/1Panel-Tools/releases/tag/v0.2.0',
+      href: 'https://github.com/pooneyy/1panel-app-workshop',
       category: 'External',
       description: 'View the source code of it-tools on Github.',
       keywords: ['github', 'repo', 'repository', 'source', 'code'],
@@ -59,7 +59,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
     {
       name: 'Report a bug or an issue',
       description: 'Report a bug or an issue to help improve it-tools.',
-      href: 'https://github.com/arch3rPro/1Panel-Tools/issues/new/choose',
+      href: 'https://github.com/pooneyy/1panel-app-workshop/issues/new',
       category: 'Actions',
       keywords: ['report', 'issue', 'bug', 'problem', 'error'],
       icon: BugIcon,

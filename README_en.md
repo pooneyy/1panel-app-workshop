@@ -1,74 +1,66 @@
-# 1Panel-Tools
+# 1Panel App Workshop
 
-[English](README_en.md) ｜ [Chinese](README.md)
+[English](README_en.md) ｜ [中文](README.md)
+
 ## Overview
 
-1Panel-Tools is a specialized toolkit designed to simplify the process of creating applications for the 1Panel AppStore. The primary tool in this collection is the Docker Compose to 1Panel AppStore converter, which transforms standard Docker Compose files into the format required by the 1Panel AppStore.
+1Panel App Workshop is a specialized version of IT-Tools, designed to provide one-stop local app building support for the 1Panel app store.
 
-![1Panel-Tools](./public/1Panel-Tools.png) 
-## Features
+## Main Features
 
-- **Docker Compose Conversion**: Automatically convert Docker Compose files to 1Panel AppStore format
-- **Parameter Configuration**: Easily define and manage application parameters
-- **Metadata Management**: Set application name, description, tags, and other metadata
-- **Multi-language Support**: Configure descriptions in both English and Chinese
-- **Export Functionality**: Download the converted files ready for 1Panel AppStore submission
+- **Complete Multilingual Support**
+  - Multilingual pages supporting language switching
+  - Chinese and English README file editor
+  - Create multilingual application packages compliant with 1Panel standards
+- **Project Management**
+  - Support exporting projects as zip files
+  - Support exporting projects as json files
+  - Support importing projects from zip files
+  - Support importing projects from json files
+  - Support automatic project saving to Local Storage, ensuring data persists after page refresh
+- **Metadata Management**
+  - Set application name, description, tags, and other metadata
+- **README Editor**
+  - Chinese and English README file editor
+  - Simple template management: add, remove preset paragraphs, and support drag-and-drop to adjust paragraph order
+  - Markdown editor with real-time preview
+- **Docker Compose Conversion**
+  - Automatically convert Docker Compose files to 1Panel AppStore format
+  - Recognize parameters like ${ENV} or ${ENV:-123}, support one-click addition to "Application Parameter Configuration" with default value setup
+- **Application Parameter Configuration**
+  - Support adding, deleting, and modifying parameters
+  - Support adjusting parameter order
 
 ## Getting Started
 
-### Prerequisites
+### Online Use
 
-- Node.js (v14 or higher)
-- pnpm (v9.11.0 or higher)
+Visit: https://pooneyy.github.io/1panel-app-workshop
 
-### Installation
+### Self-hosted
 
-```bash
-# Clone the repository
-git clone https://github.com/arch3rPro/1Panel-Tools.git
-cd 1Panel-Tools
+#### Using pre-built packages
 
-# Install dependencies
-pnpm install
-
-# Start the development server
-pnpm dev
-```
-
-The application will automatically redirect to the Docker Compose to 1Panel AppStore converter tool.
-
-## Usage
-
-1. **Input Docker Compose**: Paste your Docker Compose file into the editor
-2. **Configure Application**: Set the application name, key, description, and other metadata
-3. **Define Parameters**: Add parameters for your application (ports, environment variables, etc.)
-4. **Preview Conversion**: Review the generated 1Panel AppStore files
-5. **Export**: Download the converted files for use with 1Panel AppStore
-
-### Docker Usage
+[Download Pre-built Package](https://github.com/pooneyy/1panel-app-workshop/releases/latest/download/publish.tgz)
 
 #### Using Docker Run
 
 ```bash
-# Pull and run the Docker image
-docker run -d --name 1panel-tools -p 8080:80 vuldocker/1panel-tools:latest
+docker run -d --name app-workshop -p 8080:80 --pull=always ghcr.io/pooneyy/1panel-app-workshop:latest
 ```
-
-Access the tool at http://localhost:8080
 
 #### Using Docker Compose
 
-Use `docker-compose.yml` file with the following content and set port:
-
 ```yaml
-version: '3'
+version: '3.8'
 services:
-  1panel-tools:
-    image: vuldocker/1panel-tools:latest
-    container_name: 1panel-tools
+  app-workshop:
+    container_name: app-workshop
+    image: ghcr.io/pooneyy/1panel-app-workshop:latest
     ports:
-      - "8080:80"
-    restart: unless-stopped
+      - 8080:80
+    restart: always
+    pull_policy: always
 ```
 
 Then run:
@@ -77,7 +69,27 @@ Then run:
 docker-compose up -d
 ```
 
-Access the tool at http://localhost:8080
+## Local Development Mode
+
+- Precondition
+
+  [Setup Node.js](https://nodejs.org/en/download)
+
+  ```bash
+  npm i -g pnpm
+  ```
+
+- Install dependencies
+
+  ```bash
+  pnpm i
+  ```
+
+- Run development server
+
+  ```bash
+  pnpm run dev
+  ```
 
 ## 1Panel AppStore Format
 
@@ -88,10 +100,10 @@ The converter generates files following the 1Panel AppStore format:
     ├── logo.png
     ├── data.yml
     ├── README.md
+    ├── README_en.md
     └── version/
         ├── data.yml
-        ├── docker-compose.yml
-        └── scripts/
+        └── docker-compose.yml
 ```
 
 ## License
@@ -101,4 +113,4 @@ This project is licensed under the GNU GPLv3 License - see the LICENSE file for 
 ## Acknowledgements
 
 - Based on the IT-Tools project framework
-- Designed specifically for 1Panel AppStore application development
+- This project is forked from [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be) and has been further developed.

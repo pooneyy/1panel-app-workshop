@@ -45,15 +45,17 @@ syncRef(
 <template>
   <n-config-provider :theme="theme" :theme-overrides="themeOverrides">
     <NGlobalStyle />
-    <NMessageProvider placement="bottom">
-      <NNotificationProvider placement="bottom-right">
-        <div>
-          <component :is="layout">
-            <RouterView />
-          </component>
-        </div>
-      </NNotificationProvider>
-    </NMessageProvider>
+    <NDialogProvider>
+      <NMessageProvider placement="bottom">
+        <NNotificationProvider placement="bottom-right">
+          <div>
+            <component :is="layout">
+              <RouterView />
+            </component>
+          </div>
+        </NNotificationProvider>
+      </NMessageProvider>
+    </NDialogProvider>
   </n-config-provider>
 </template>
 

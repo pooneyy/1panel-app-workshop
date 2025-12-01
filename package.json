@@ -1,14 +1,14 @@
 {
-  "name": "docker-compose-to-1panel-appstore",
+  "name": "1panel-app-workshop",
   "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "packageManager": "pnpm@9.11.0",
-  "description": "Docker Compose to 1Panel AppStore converter tool",
+  "description": "One-stop build for 1Panel local applications",
   "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://corentin.tech)",
   "license": "GNU GPLv3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arch3rPro/1Panel-Tools"
+    "url": "https://github.com/pooneyy/1panel-app-workshop"
   },
   "keywords": [
     "productivity",
@@ -22,11 +22,20 @@
     "developer-productivity"
   ],
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
+    "build:gh-pages": "vite build --base=/1panel-app-workshop/",
+    "build:package": "vite build && pnpm package && pnpm clean",
+    "build:package:gh-pages": "vite build --base=/1panel-app-workshop/ && pnpm package && pnpm clean",
+    "build:preview": "pnpm clean && pnpm build && pnpm preview",
+    "clean": "rimraf dist",
+    "dev": "vite",
+    "dev:gh-pages": "vite --base=/1panel-app-workshop/",
+    "package": "tar -czf publish.tgz -C ./dist .",
+    "package2zip": "tar --format=zip -cf publish.tar.zip -C ./dist .",
     "preview": "vite preview --port 5050",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
-    "type-check": "vue-tsc --noEmit"
+    "type-check": "vue-tsc --noEmit",
+    "winrar": "winrar a -r -ep1 publish.zip ./dist/*"
   },
   "dependencies": {
     "@guolao/vue-monaco-editor": "^1.5.2",
@@ -42,8 +51,7 @@
     "flexsearch": "^0.8.205",
     "highlight.js": "^11.11.1",
     "js-base64": "^3.7.7",
-    "json5": "^2.2.3",
-    "jszip":"^3.10.1",
+    "jszip": "^3.10.1",
     "lodash": "^4.17.21",
     "marked": "^10.0.0",
     "mime-types": "^2.1.35",
@@ -56,22 +64,17 @@
     "yaml": "^2.8.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.41.0",
     "@iconify-json/mdi": "^1.1.50",
     "@intlify/unplugin-vue-i18n": "^6.0.8",
-    "@rushstack/eslint-patch": "^1.2.0",
-    "@tsconfig/node18": "^18.2.0",
+    "@types/file-saver": "^2.0.7",
     "@types/lodash": "^4.17.20",
     "@types/node": "^22.0.0",
-    "@unocss/eslint-config": "^0.57.1",
     "@vitejs/plugin-vue": "^4.3.4",
-    "@vitejs/plugin-vue-jsx": "^3.0.2",
     "@vue/compiler-sfc": "^3.2.47",
-    "@vue/runtime-dom": "^3.3.4",
     "@vue/tsconfig": "^0.4.0",
     "eslint": "^8.47.0",
     "less": "^4.2.2",
-    "prettier": "^3.0.0",
+    "rimraf": "^6.1.2",
     "typescript": "~5.2.2",
     "unocss": "^0.57.1",
     "unocss-preset-scrollbar": "^0.2.1",

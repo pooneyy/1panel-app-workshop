@@ -1,0 +1,419 @@
+home:
+  subtitle: Atelier d'Applications 1Panel
+  home: Accueil
+  toggleMenu: Basculer le Menu
+  menu:
+    title: App Workshop
+    subtitle: Assistant de création d'applications 1Panel
+  nav:
+    about: À propos
+    darkMode: Mode Sombre
+    lightMode: Mode Clair
+    mode: Basculer Mode Sombre/Clair
+    aboutLabel: À propos
+    github: Dépôt GitHub
+    githubRepository: Dépôt GitHub IT-Tools
+
+homepage:
+  text-center: Redirection vers l'Atelier d'Applications 1Panel...
+
+tools:
+  categories:
+    favorite-tools: Outils Favoris
+  app-workshop:
+    title: Atelier d'Applications 1Panel
+    description: Solution Tout-en-Un pour créer des Applications Locales 1Panel
+    cards:
+      ProjectManagement:
+        title: Gestion de Projet
+        PackageProject:
+          title: Empaqueter et Télécharger la Configuration d'Application
+          note: Téléversez un Logo, entrez le numéro de version de l'application, empaquetez tous les fichiers de configuration en un fichier ZIP à télécharger.
+          uploadArea:
+            title: Téléverser un Logo
+            note1: Cliquez ou faites glisser une image dans cette zone
+            note2: Image 180x180 pixels recommandée ; si la taille dépasse 180x180, elle sera automatiquement compressée.
+          previewArea: Aperçu du Logo
+          appVersionForm:
+            lable: Version de l'Application
+            placeholder: 'par exemple : 1.0.0'
+          warning:
+            title: 'Structure du fichier ZIP généré :'
+            paragraph1: Fichier de métadonnées d'application
+            paragraph2: Icône d'application
+            paragraph3: Documentation en Chinois
+            paragraph4: Documentation en Anglais
+            paragraph5: Fichier de configuration des paramètres
+            paragraph6: Configuration Docker Compose
+        ImportExport:
+          title: Importer et Exporter un Projet
+          note: Vous pouvez exporter le projet en fichier JSON, ou importer un fichier JSON pour restaurer le projet.
+      AppForm:
+        title: Informations de Base de l'Application
+        key:
+          label: Clé d'Application
+          placeholder: lettres anglaises minuscules, peut contenir des traits d'union, utilisé pour nommer le dossier de l'application
+        name:
+          label: Nom de l'Application
+          placeholder: Nom de l'application affiché publiquement
+        desc:
+          en:
+            label: Description en Anglais
+            placeholder: English description
+          zh:
+            label: Description en Chinois Simplifié
+            placeholder: Description en Chinois, ne pas dépasser 30 caractères
+          zh-Hant:
+            label: Description en Chinois Traditionnel
+            placeholder: ''
+          ja:
+            label: Description en Japonais
+            placeholder: ''
+          ko:
+            label: Description en Coréen
+            placeholder: ''
+          ms:
+            label: Description en Malais
+            placeholder: ''
+          pt-br:
+            label: Description en Portugais
+            placeholder: Description en Portugais (Brésil)
+          ru:
+            label: Description en Russe
+            placeholder: ''
+        tags:
+            label: Étiquettes d'Application
+            placeholder: Sélectionner les étiquettes d'application
+        type: Type d'Application
+        crossVersionUpdate: Mise à Jour Multi-Versions
+        limit:
+          label: Limite d'Installations
+          placeholder: 0 signifie illimité
+        website: Site Web Officiel
+        github: Adresse GitHub
+        document: Adresse de la Documentation
+        memoryRequired:
+          label: Mémoire Requise
+          placeholder: Laisser vide si aucun besoin mémoire
+        architectures: Architectures Supportées
+      ReadmeEditor:
+        title: Éditeur de Fichier README
+        note: Vous pouvez modifier l'ordre des paragraphes en faisant glisser les éléments de liste. Toute modification du modèle ou de la description de l'application réinitialisera le contenu du fichier README.
+        template:
+          title: Modèle
+          defaultCredentials:
+            switch: Compte par Défaut
+            input-user: Nom d'Utilisateur
+            placeholder1: Nom d'utilisateur par défaut
+            input-pass: Mot de passe
+            placeholder2: Mot de passe par défaut
+          configUsage:
+            switch: Instructions de Configuration et d'Utilisation
+        tabs:
+          tab-cn: README en Chinois
+          tab-en: README en Anglais
+        sections:
+          introduction:
+            title: Présentation du Produit
+            defalt: Ceci est une configuration d'application générée automatiquement pour 1Panel.
+          features:
+            title: Fonctionnalités Principales
+            defalt: Remplissez les fonctionnalités principales de l'application ici.
+          credentials:
+            title: Compte/Mot de passe par Défaut
+          configUsage:
+            title: Instructions de Configuration et d'Utilisation
+            defalt: Remplissez les instructions de configuration et d'utilisation de l'application ici.
+      AppDeclaration:
+        title: Fichier de Métadonnées d'Application
+        note: Situé à la racine du dossier de l'application, utilisé pour déclarer les informations de base de l'application.
+      DockerComposeEditor:
+        title: Configuration Docker Compose
+        label: Modifier le Contenu Docker Compose YAML
+        var-info-area:
+          title: Paramètres d'Application Détectés
+          subtitle: Total de {count} paramètres détectés
+          newVars:
+            title: Nouveaux Paramètres
+            text1: '{count} peuvent être ajoutés'
+            text2: Aucun nouveau paramètre
+          existingVars:
+            title: Déjà Existants
+            text1: '{count} configurés'
+            text2: Aucun paramètre existant
+          ignoredVars:
+            title: Ignorés
+            text1: '{count} paramètres ignorés'
+            text2: Aucun paramètre ignoré
+            text3: Paramètres Réservés
+        note: Le fichier Docker Compose saisi sera conforme aux normes d'application 1Panel après conversion.
+      AppParams:
+        title: Configuration des Paramètres d'Application
+        note: Configurez les paramètres que l'utilisateur doit remplir lors de l'installation de l'application, tels que le port, les informations de connexion à la base de données, etc.
+        Param-card:
+          title: Paramètre
+          envKey:
+            label: Clé de Variable d'Environnement
+            placeholder1: 'ex : PANEL_DB_TYPE'
+            placeholder2: 'ex : PANEL_APP_PORT_HTTP'
+          type:
+            label: Type de Paramètre
+          dynamic-param-config:
+            info:
+              title: Dépendances de Service Disponibles
+              note: "L'utilisateur peut sélectionner un service dépendant (App) via un menu de premier niveau, par exemple : MySQL, MariaDB, PostgreSQL, etc., et sélectionner une instance de service installée via un sous-menu.<br>Les valeurs d'option du menu de premier niveau doivent correspondre à la clé de l'application dans la boutique d'applications officielle, la valeur par défaut doit correspondre à la valeur d'option de dépendance de service définie."
+              select:
+                label1: Option de Dépendance de Service
+                label2: Options du Menu Déroulant
+                input-label: Étiquette d'Affichage
+                input-value1: "Valeur de l'Option : clé de l'application dans la boutique d'applications officielle"
+                input-value2: Valeur de l'Option
+              sub-select:
+                card-title: Sous-Menu de Dépendance de Service Optionnel
+                label: Clé de Variable d'Environnement
+                placeholder: 'ex : PANEL_DB_TYPE'
+              key:
+                label: Clé de Dépendance
+                placeholder: "ex : mysql, redis, la valeur doit correspondre à la clé de l'application dans la boutique d'applications officielle"
+          default:
+            label: Valeur par Défaut
+            placeholder1: Ce champ est obligatoire
+            placeholder2: Valeur par défaut
+          rule:
+            label: Règle de Validation
+            placeholder: Veuillez sélectionner
+          form-label:
+            title: Étiquette du Formulaire (Obligatoire)
+            zh:
+              label: Étiquette en Chinois Simplifié
+              placeholder: Étiquette en Chinois Simplifié
+            zh-Hant:
+              label: Étiquette en Chinois Traditionnel
+              placeholder: Étiquette en Chinois Traditionnel
+            en:
+              label: Étiquette en Anglais
+              placeholder: Étiquette en Anglais
+            ja:
+              label: Étiquette en Japonais
+              placeholder: Étiquette en Japonais
+            ko:
+              label: Étiquette en Coréen
+              placeholder: Étiquette en Coréen
+            ms:
+              label: Étiquette en Malais
+              placeholder: Étiquette en Malais
+            pt-br:
+              label: Étiquette en Portugais (Brésil)
+              placeholder: Étiquette en Portugais (Brésil)
+            ru:
+              label: Étiquette en Russe
+              placeholder: Étiquette en Russe
+            tr:
+              label: Étiquette en Turc
+              placeholder: Étiquette en Turc
+          form-description:
+            title: Description du Formulaire (Optionnelle)
+            zh:
+              label: Description en Chinois Simplifié
+              placeholder: Description en Chinois Simplifié
+            zh-Hant:
+              label: Description en Chinois Traditionnel
+              placeholder: Description en Chinois Traditionnel
+            en:
+              label: Description en Anglais
+              placeholder: Description en Anglais
+            ja:
+              label: Description en Japonais
+              placeholder: Description en Japonais
+            ko:
+              label: Description en Coréen
+              placeholder: Description en Coréen
+            ms:
+              label: Description en Malais
+              placeholder: Description en Malais
+            pt-br:
+              label: Description en Portugais (Brésil)
+              placeholder: Description en Portugais (Brésil)
+            ru:
+              label: Description en Russe
+              placeholder: Description en Russe
+            tr:
+              label: Description en Turc
+              placeholder: Description en Turc
+          required: Obligatoire
+          edit: Modifiable
+          random: Caractères Aléatoires
+          editableOptions: Propriétés de Modifiabilité du Formulaire de Paramètres
+        divider: Aperçu de la Configuration des Paramètres
+    components:
+      addDockerComposeParameters: Ajouter des Paramètres à la Configuration des Paramètres d'Application
+      addOption: Ajouter une Option
+      addParams: Ajouter un Paramètre
+      backToTop: Retour au Téléchargement du Package d'Application
+      cancel: Annuler
+      clearAllData: Effacer Toutes les Données
+      collapse: Réduire
+      confirm: Confirmer
+      downloadAllAsZip: Empaqueter et Télécharger Toutes les Configurations
+      downloadAppDeclaration: Télécharger le Fichier de Métadonnées d'Application
+      downloadAppParams: Télécharger la Configuration des Paramètres
+      downloadDockerCompose: Télécharger la Configuration Docker Compose
+      downloadReadme: Télécharger le Fichier README
+      expand: Développer
+      exportProject: Exporter en JSON
+      importFromJson: Importer depuis JSON
+      importFromZip: Importer depuis ZIP
+      moveUp: Monter
+      moveDown: Descendre
+      remove: Supprimer
+      removeOption: Supprimer l'Option
+      resetParagraphOrder: Réinitialiser l'Ordre et l'État des Paragraphes
+    options:
+      availableTags:
+        ai: IA
+        bi: BI
+        crm: CRM
+        database: Base de Données
+        devops: DevOps
+        devtool: Outil de Développement
+        email: Service de Messagerie
+        game: Jeux Occasionnels
+        local: Local
+        media: Multimédia
+        middleware: Middleware
+        runtime: Environnement d'Exécution
+        security: Sécurité
+        server: Serveur Web
+        storage: Stockage Cloud
+        tool: Outil
+        website: Site Web
+      editableOptions:
+        install-editable-post-editable: Modifiable pendant l'installation, modifiable après l'installation
+        install-locked-post-editable: Verrouillé pendant l'installation, modifiable après l'installation
+        install-editable-post-locked: Modifiable pendant l'installation, verrouillé après l'installation
+        install-locked-post-locked: Verrouillé pendant l'installation, verrouillé après l'installation
+      optionalEnvVars:
+        database: Base de Données
+      paramTypes:
+        apps: Apps - Dépendances de Service Disponibles au Choix
+        number: Nombre
+        password: Mot de passe
+        select: Menu Déroulant
+        service: Service - Dépendances de Service Fixes
+        text: Texte
+      ruleOptions:
+        paramPort: paramPort - Plage de Ports 1-65535
+        paramExtUrl: paramExtUrl - Format URL HTTP(S)
+        paramCommon: paramCommon - Lettres anglaises, chiffres .-_, longueur 2-30
+        paramComplexity: paramComplexity - Mot de passe complexe, longueur 6-30
+      typeOptions:
+        runtime: Runtime - Type d'Environnement d'Exécution
+        tool: Tool - Type d'Outil
+        website: Website - Type de Site Web (Prend en charge le déploiement en un clic)
+    script:
+      errors:
+        clearLocalStorage: Échec de la suppression du stockage local
+        generation-failed: Échec de la génération
+        conversion-failed: Échec de la conversion
+        extract-parameters-failed: Échec de l'extraction des paramètres
+        validate-error: Une erreur s'est produite lors de la validation du fichier image
+        upload-error: Une erreur s'est produite lors du téléversement du fichier
+        read-error: Une erreur s'est produite lors de la lecture du fichier
+        image-load-error: Échec du chargement de l'image
+        canvas-context-error: Impossible de créer le contexte canvas
+      funcs:
+        clearAllData:
+          title: Effacer Toutes les Données
+          content: Le projet va être réinitialisé. Continuer ? Cette action est irréversible.
+          success: Projet réinitialisé avec succès
+        saveToLocalStorage:
+          success: Données enregistrées dans le stockage local
+          failed: Échec de l'enregistrement dans le stockage local
+        loadFromLocalStorage:
+          noData: Aucune donnée sauvegardée trouvée
+          dataExpired: Les données sauvegardées ont expiré, utilisation des données par défaut
+          success: Chargement depuis le stockage local réussi
+          failed: Échec du chargement depuis le stockage local
+        clearLocalStorage:
+          success: Stockage local effacé
+        convertedDockerCompose:
+          note1: Contenu Original
+        addDockerComposeParameters:
+          success: "{count} nouveaux paramètres ajoutés avec succès à la configuration des paramètres d'application"
+          warning: Avec trop de paramètres, le temps de réponse peut augmenter
+          failed: Aucun nouveau paramètre trouvé, tous les paramètres existent déjà dans la configuration des paramètres d'application
+          processingTime: 'Temps de Traitement : {time} secondes'
+        handleLogoUpload:
+          no-imagefile: Veuillez téléverser un fichier image. Type de fichier actuel
+          no-image: Le fichier téléversé n'est pas un fichier image valide, veuillez vérifier le contenu du fichier.
+        downloadAllAsZip:
+          image-compress-failed: Échec de la compression de l'image, utilisation du logo par défaut
+          package-failed: Échec de l'empaquetage et du téléchargement
+        exportProject:
+          success: Projet exporté avec succès
+          failed: Échec de l'exportation du projet
+        importProject:
+          appParamsParseError: Échec de l'analyse des paramètres d'application
+          error: Échec de l'importation du projet
+          invalidFile: Fichier invalide
+          invalidJsonFormat: Format invalide
+          invalidLogo: Fichier logo.png invalide, utilisation du Logo par défaut
+          invalidPackageStructure: Structure du package d'application incorrecte
+          invalidZipFile: Fichier ZIP invalide
+          missingAppDeclaration: Fichier de métadonnées d'application manquant
+          missingVersionFiles: Répertoire de version manquant ou fichiers nécessaires (data.yml et docker-compose.yml) manquants dans le répertoire de version
+          parseError: Erreur d'analyse de fichier
+          readError: Erreur de lecture de fichier
+          success: Projet importé avec succès
+          zipError: Échec de l'importation du projet depuis le fichier ZIP
+          zipParseError: Erreur d'analyse du fichier ZIP
+          zipReadError: Erreur de lecture du fichier ZIP
+          zipSuccess: Importation depuis le fichier ZIP réussie
+        validateAppPackageStructure:
+          noRootFolder: Aucun répertoire racine valide trouvé
+          noFoundValidVersion: Aucun répertoire de version valide trouvé
+
+locale-selector:
+  select-a-language: Sélectionner une Langue
+
+favoriteButton:
+  remove: Retirer des Favoris
+  add: Ajouter aux Favoris
+
+search:
+  label: Rechercher
+  placeholder: Rechercher des outils...
+
+textareaCopyable:
+  copy: Copier dans le Presse-papiers
+  copied: Copié !
+  download: Télécharger
+
+inputCopyable:
+  copy: Copier
+  copied: Copié !
+
+about:
+  content-fork: |
+    # À propos de l'Atelier d'Applications 1Panel
+
+    Il s'agit d'une version spécialisée d'IT-Tools, destinée à fournir un support de construction d'applications locales tout-en-un pour la boutique d'applications du panneau 1Panel.
+
+    Créez facilement vos propres applications locales 1Panel.
+
+    Ce projet est un développement secondaire basé sur [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be).
+  alltools-title: Tous les Outils ({toolsCount} outils)
+  tools:
+    category: Catégorie
+    name: Nom
+    desc: Description
+
+404:
+  notFound: Page Non Trouvée
+  sorry: Désolé, la page que vous avez demandée n'existe pas.
+  maybe: Peut-être souhaitez-vous revenir à la page d'accueil ?
+  backHome: Retour à l'Accueil
+
+components:
+  MarkdownRender:
+    default-content: Aucun Contenu

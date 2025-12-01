@@ -1,0 +1,419 @@
+home:
+  subtitle: 1Panel Uygulama Atölyesi
+  home: Ana Sayfa
+  toggleMenu: Menüyü Değiştir
+  menu:
+    title: Uygulama Atölyesi
+    subtitle: 1Panel Uygulama Oluşturma Sihirbazı
+  nav:
+    about: Hakkında
+    darkMode: Karanlık Mod
+    lightMode: Aydınlık Mod
+    mode: Karanlık/Aydınlık Modu Değiştir
+    aboutLabel: Hakkında
+    github: GitHub Deposu
+    githubRepository: IT-Tools GitHub Deposu
+
+homepage:
+  text-center: 1Panel Uygulama Atölyesine Yönlendiriliyor...
+
+tools:
+  categories:
+    favorite-tools: Favori Araçlar
+  app-workshop:
+    title: 1Panel Uygulama Atölyesi
+    description: Tek Durakta 1Panel Yerel Uygulama Oluşturma
+    cards:
+      ProjectManagement:
+        title: Proje Yönetimi
+        PackageProject:
+          title: Uygulama Yapılandırmasını Paketle ve İndir
+          note: Logo yükleyin, uygulama sürüm numarasını girin, tüm yapılandırma dosyalarını ZIP dosyası olarak paketleyin ve indirin.
+          uploadArea:
+            title: Logo Yükle
+            note1: Tıklayın veya resmi bu alana sürükleyin
+            note2: 180x180 piksel resim önerilir; boyut 180x180'den büyükse otomatik olarak sıkıştırılacaktır.
+          previewArea: Logoyu Önizle
+          appVersionForm: 
+            lable: Uygulama Sürümü
+            placeholder: 'örn: 1.0.0'
+          warning:
+            title: 'Paketlenmiş ZIP Dosyasının Yapısı:'
+            paragraph1: Uygulama meta veri dosyası
+            paragraph2: Uygulama simgesi
+            paragraph3: Çince belgeler
+            paragraph4: İngilizce belgeler
+            paragraph5: Parametre yapılandırma dosyası
+            paragraph6: Docker Compose yapılandırması
+        ImportExport:
+          title: Projeyi İçe ve Dışa Aktar
+          note: Projeyi JSON dosyası olarak dışa aktarabilir veya bir JSON dosyasını içe aktararak projeyi geri yükleyebilirsiniz.
+      AppForm:
+        title: Uygulama Temel Bilgileri
+        key:
+          label: Uygulama Anahtarı
+          placeholder: küçük İngilizce harfler, tire içerebilir, uygulama klasörü adlandırmak için kullanılır
+        name:
+          label: Uygulama Adı
+          placeholder: Dışarıda görüntülenen uygulama adı
+        desc:
+          en:
+            label: İngilizce Açıklama
+            placeholder: English description
+          zh:
+            label: Basitleştirilmiş Çince Açıklama
+            placeholder: Çince açıklama, 30 karakteri geçmemeli
+          zh-Hant:
+            label: Geleneksel Çince Açıklama
+            placeholder: ''
+          ja:
+            label: Japonca Açıklama
+            placeholder: ''
+          ko:
+            label: Korece Açıklama
+            placeholder: ''
+          ms:
+            label: Malayca Açıklama
+            placeholder: ''
+          pt-br:
+            label: Portekizce Açıklama
+            placeholder: Portekizce (Brezilya) Açıklama
+          ru:
+            label: Rusça Açıklama
+            placeholder: ''
+        tags:
+            label: Uygulama Etiketleri
+            placeholder: Uygulama etiketlerini seçin
+        type: Uygulama Türü
+        crossVersionUpdate: Sürümler Arası Güncelleme
+        limit:
+          label: Kurulum Sınırı
+          placeholder: 0 sınırsız anlamına gelir
+        website: Resmi Web Sitesi
+        github: GitHub Adresi
+        document: Belgeler Adresi
+        memoryRequired:
+          label: Bellek Gereksinimi
+          placeholder: Boş bırakılırsa bellek gereksinimi yoktur
+        architectures: Desteklenen Mimariler
+      ReadmeEditor:
+        title: README Dosyası Düzenleyici
+        note: Liste öğelerini sürükleyerek paragraf sırasını ayarlayabilirsiniz. Şablon veya uygulama açıklamasını düzenlemek README dosyası içeriğini sıfırlar.
+        template:
+          title: Şablon
+          defaultCredentials:
+            switch: Varsayılan Hesap
+            input-user: Kullanıcı Adı
+            placeholder1: Varsayılan kullanıcı adı
+            input-pass: Şifre
+            placeholder2: Varsayılan şifre
+          configUsage: 
+            switch: Yapılandırma ve Kullanım Talimatları
+        tabs:
+          tab-cn: Çince README
+          tab-en: İngilizce README
+        sections:
+          introduction:
+            title: Ürün Tanıtımı
+            defalt: Bu, 1Panel için otomatik oluşturulmuş bir uygulama yapılandırmasıdır.
+          features:
+            title: Ana Özellikler
+            defalt: Uygulamanın ana özelliklerini buraya yazın.
+          credentials:
+            title: Varsayılan Hesap/Şifre
+          configUsage:
+            title: Yapılandırma ve Kullanım Talimatları
+            defalt: Uygulama yapılandırma talimatlarını ve kullanım yöntemlerini buraya yazın.
+      AppDeclaration:
+        title: Uygulama Meta Veri Dosyası
+        note: Uygulama klasörünün kök dizininde bulunur, uygulamanın temel bilgilerini bildirmek için kullanılır.
+      DockerComposeEditor:
+        title: Docker Compose Yapılandırması
+        label: Docker Compose YAML İçeriğini Düzenle
+        var-info-area:
+          title: Uygulama Parametreleri Tespit Edildi
+          subtitle: Toplam {count} parametre tespit edildi
+          newVars:
+            title: Yeni Parametreler
+            text1: '{count} eklenebilir'
+            text2: Yeni parametre yok
+          existingVars:
+            title: Mevcut
+            text1: '{count} yapılandırıldı'
+            text2: Mevcut parametre yok
+          ignoredVars:
+            title: Yoksayılan
+            text1: '{count} parametre yoksayıldı'
+            text2: Yoksayılan parametre yok
+            text3: Ayrılmış Parametreler
+        note: Girilen Docker Compose dosyası dönüştürüldükten sonra 1Panel uygulama standartlarına uygun olacaktır.
+      AppParams:
+        title: Uygulama Parametre Yapılandırması
+        note: Port, veritabanı bağlantı bilgileri gibi uygulama kurulumunda kullanıcının doldurması gereken parametreleri yapılandırın.
+        Param-card:
+          title: Parametre
+          envKey:
+            label: Ortam Değişkeni Anahtarı
+            placeholder1: 'örn: PANEL_DB_TYPE'
+            placeholder2: 'örn: PANEL_APP_PORT_HTTP'
+          type:
+            label: Parametre Türü
+          dynamic-param-config:
+            info:
+              title: Seçilebilir Servis Bağımlılıkları
+              note: "Kullanıcı, birinci seviye menüden bağımlı olunan bir hizmeti (App) seçebilir (örn: MySQL, MariaDB, PostgreSQL vb.). Alt menüden kurulu bir hizmet örneği seçer.<br>Birinci seviye menü seçenek değerleri, resmi uygulama mağazasındaki uygulamanın Anahtar'ını içermelidir, varsayılan değer ayarlanmış servis bağımlılığı seçenek değerini içermelidir."
+              select:
+                label1: Servis Bağımlılığı Seçeneği
+                label2: Açılır Menü Seçenekleri
+                input-label: Görünen Etiket
+                input-value1: 'Seçenek Değeri: Resmi uygulama mağazasındaki uygulamanın Anahtarı'
+                input-value2: Seçenek Değeri
+              sub-select:
+                card-title: İsteğe Bağlı Servis Bağımlılığı Alt Menüsü
+                label: Ortam Değişkeni Anahtarı
+                placeholder: 'örn: PANEL_DB_TYPE'
+              key:
+                label: Bağımlılık Anahtarı
+                placeholder: "örn: mysql, redis, değer resmi uygulama mağazasındaki uygulamanın Anahtar'ı olmalıdır"
+          default:
+            label: Varsayılan Değer
+            placeholder1: Bu alan zorunludur
+            placeholder2: Varsayılan değer
+          rule:
+            label: Doğrulama Kuralı
+            placeholder: Seçin
+          form-label:
+            title: Form Etiketi (Zorunlu)
+            zh:
+              label: Basitleştirilmiş Çince Etiket
+              placeholder: Basitleştirilmiş Çince Etiket
+            zh-Hant:
+              label: Geleneksel Çince Etiket
+              placeholder: Geleneksel Çince Etiket
+            en:
+              label: İngilizce Etiket
+              placeholder: İngilizce Etiket
+            ja:
+              label: Japonca Etiket
+              placeholder: Japonca Etiket
+            ko:
+              label: Korece Etiket
+              placeholder: Korece Etiket
+            ms:
+              label: Malayca Etiket
+              placeholder: Malayca Etiket
+            pt-br:
+              label: Portekizce (Brezilya) Etiket
+              placeholder: Portekizce (Brezilya) Etiket
+            ru:
+              label: Rusça Etiket
+              placeholder: Rusça Etiket
+            tr:
+              label: Türkçe Etiket
+              placeholder: Türkçe Etiket
+          form-description:
+            title: Form Açıklaması (İsteğe Bağlı)
+            zh:
+              label: Basitleştirilmiş Çince Açıklama
+              placeholder: Basitleştirilmiş Çince Açıklama
+            zh-Hant:
+              label: Geleneksel Çince Açıklama
+              placeholder: Geleneksel Çince Açıklama
+            en:
+              label: İngilizce Açıklama
+              placeholder: İngilizce Açıklama
+            ja:
+              label: Japonca Açıklama
+              placeholder: Japonca Açıklama
+            ko:
+              label: Korece Açıklama
+              placeholder: Korece Açıklama
+            ms:
+              label: Malayca Açıklama
+              placeholder: Malayca Açıklama
+            pt-br:
+              label: Portekizce (Brezilya) Açıklama
+              placeholder: Portekizce (Brezilya) Açıklama
+            ru:
+              label: Rusça Açıklama
+              placeholder: Rusça Açıklama
+            tr:
+              label: Türkçe Açıklama
+              placeholder: Türkçe Açıklama
+          required: Zorunlu mu
+          edit: Düzenlenebilir
+          random: Rastgele Karakter
+          editableOptions: Parametre Formu Düzenlenebilirlik Özellikleri
+        divider: Parametre Yapılandırma Önizlemesi
+    components:
+      addDockerComposeParameters: Uygulama Parametre Yapılandırmasına Parametre Ekle
+      addOption: Seçenek Ekle
+      addParams: Parametre Ekle
+      backToTop: Uygulama Paketi İndirmesine Geri Dön
+      cancel: İptal
+      clearAllData: Tüm Verileri Temizle
+      collapse: Daralt
+      confirm: Onayla
+      downloadAllAsZip: Tüm Yapılandırmaları Paketle ve İndir
+      downloadAppDeclaration: Uygulama Meta Veri Dosyasını İndir
+      downloadAppParams: Parametre Yapılandırmasını İndir
+      downloadDockerCompose: Docker Compose Yapılandırmasını İndir
+      downloadReadme: README Dosyasını İndir
+      expand: Genişlet
+      exportProject: JSON Olarak Dışa Aktar
+      importFromJson: JSON'dan İçe Aktar
+      importFromZip: ZIP'dan İçe Aktar
+      moveUp: Yukarı Taşı
+      moveDown: Aşağı Taşı
+      remove: Kaldır
+      removeOption: Seçeneği Kaldır
+      resetParagraphOrder: Paragraf Sırasını ve Etkin Durumu Sıfırla
+    options:
+      availableTags:
+        ai: AI
+        bi: BI
+        crm: CRM
+        database: Veritabanı
+        devops: DevOps
+        devtool: Geliştirme Aracı
+        email: E-posta Hizmeti
+        game: Gündelik Oyunlar
+        local: Yerel
+        media: Medya
+        middleware: Ara Yazılım
+        runtime: Çalışma Zamanı
+        security: Güvenlik
+        server: Web Sunucusu
+        storage: Bulut Depolama
+        tool: Araç
+        website: Web Sitesi
+      editableOptions:
+        install-editable-post-editable: Kurulum sırasında düzenlenebilir, kurulum sonrasında düzenlenebilir
+        install-locked-post-editable: Kurulum sırasında kilitli, kurulum sonrasında düzenlenebilir
+        install-editable-post-locked: Kurulum sırasında düzenlenebilir, kurulum sonrasında kilitli
+        install-locked-post-locked: Kurulum sırasında kilitli, kurulum sonrasında kilitli
+      optionalEnvVars:
+        database: Veritabanı
+      paramTypes:
+        apps: Apps - Seçilebilir Servis Bağımlılıkları
+        number: Sayı
+        password: Şifre
+        select: Açılır Menü
+        service: Service - Sabit Servis Bağımlılıkları
+        text: Metin
+      ruleOptions:
+        paramPort: paramPort - Port Aralığı 1-65535
+        paramExtUrl: paramExtUrl - HTTP(S) URL Formatı
+        paramCommon: paramCommon - İngilizce harf, rakam .-_, uzunluk 2-30
+        paramComplexity: paramComplexity - Karmaşık şifre, uzunluk 6-30
+      typeOptions:
+        runtime: Runtime - Çalışma Zamanı Türü
+        tool: Tool - Araç Türü
+        website: Website - Web Sitesi Türü (Tek tıklamayla dağıtımı destekler)
+    script:
+      errors:
+        clearLocalStorage: Yerel depolama temizleme başarısız
+        generation-failed: Oluşturma başarısız
+        conversion-failed: Dönüştürme başarısız
+        extract-parameters-failed: Parametre çıkarma başarısız
+        validate-error: Resim dosyası doğrulanırken hata oluştu
+        upload-error: Dosya yüklenirken hata oluştu
+        read-error: Dosya okunurken hata oluştu
+        image-load-error: Resim yükleme başarısız
+        canvas-context-error: Canvas bağlamı oluşturulamadı
+      funcs:
+        clearAllData:
+          title: Tüm Verileri Temizle
+          content: Proje sıfırlanacak. Devam etmek istiyor musunuz? Bu işlem geri alınamaz.
+          success: Proje başarıyla sıfırlandı
+        saveToLocalStorage:
+          success: Veriler yerel depolamaya kaydedildi
+          failed: Yerel depolamaya kaydetme başarısız
+        loadFromLocalStorage:
+          noData: Kaydedilmiş veri bulunamadı
+          dataExpired: Kaydedilmiş verilerin süresi doldu, varsayılan veriler kullanılıyor
+          success: Yerel depolamadan başarıyla yüklendi
+          failed: Yerel depolamadan yükleme başarısız
+        clearLocalStorage:
+          success: Yerel depolama temizlendi
+        convertedDockerCompose:
+          note1: Orijinal İçerik
+        addDockerComposeParameters:
+          success: Uygulama parametre yapılandırmasına {count} yeni parametre başarıyla eklendi
+          warning: Çok fazla parametre olduğunda yanıt süresi uzayabilir
+          failed: Yeni parametre bulunamadı, tüm parametreler zaten uygulama parametre yapılandırmasında mevcut
+          processingTime: 'İşlem Süresi: {time} saniye'
+        handleLogoUpload:
+          no-imagefile: 'Lütfen bir resim dosyası yükleyin. Geçerli dosya türü'
+          no-image: Yüklenen dosya geçerli bir resim dosyası değil, lütfen dosya içeriğini kontrol edin.
+        downloadAllAsZip:
+          image-compress-failed: Resim sıkıştırma başarısız, varsayılan logo kullanılıyor
+          package-failed: Paketleme ve indirme başarısız
+        exportProject:
+          success: Proje başarıyla dışa aktarıldı
+          failed: Proje dışa aktarma başarısız
+        importProject:
+          appParamsParseError: Uygulama parametreleri ayrıştırma başarısız
+          error: Proje içe aktarma başarısız
+          invalidFile: Geçersiz dosya
+          invalidJsonFormat: Geçersiz biçim
+          invalidLogo: Geçersiz logo.png dosyası, varsayılan Logo kullanılıyor
+          invalidPackageStructure: Uygulama paketi yapısı doğru değil
+          invalidZipFile: Geçersiz ZIP dosyası
+          missingAppDeclaration: Uygulama meta veri dosyası eksik
+          missingVersionFiles: Sürüm dizini eksik veya sürüm dizininde gerekli dosyalar (data.yml ve docker-compose.yml) eksik
+          parseError: Dosya ayrıştırma hatası
+          readError: Dosya okuma hatası
+          success: Proje başarıyla içe aktarıldı
+          zipError: ZIP dosyasından proje içe aktarma başarısız
+          zipParseError: ZIP dosyası ayrıştırma hatası
+          zipReadError: ZIP dosyası okuma hatası
+          zipSuccess: ZIP dosyasından içe aktarma başarılı
+        validateAppPackageStructure:
+          noRootFolder: Geçerli kök dizin bulunamadı
+          noFoundValidVersion: Geçerli sürüm dizini bulunamadı
+
+locale-selector:
+  select-a-language: Dil Seçin
+
+favoriteButton:
+  remove: Favorilerden Kaldır
+  add: Favorilere Ekle
+
+search:
+  label: Ara
+  placeholder: Araçları ara...
+
+textareaCopyable:
+  copy: Panoya Kopyala
+  copied: Kopyalandı!
+  download: İndir
+
+inputCopyable:
+  copy: Kopyala
+  copied: Kopyalandı!
+
+about:
+  content-fork: |
+    # 1Panel Uygulama Atölyesi Hakkında
+    
+    Bu, 1Panel panel uygulama mağazasına tek duraklı yerel uygulama oluşturma desteği sağlamayı amaçlayan, IT-Tools'un özelleştirilmiş bir sürümüdür.
+    
+    Kendi 1Panel yerel uygulamalarınızı kolayca oluşturun.
+
+    Bu proje, [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be) temel alınarak ikincil geliştirilmiştir.
+  alltools-title: Tüm Araçlar ({toolsCount} araç)
+  tools:
+    category: Kategori
+    name: İsim
+    desc: Açıklama
+
+404:
+  notFound: Sayfa Bulunamadı
+  sorry: Üzgünüz, erişmeye çalıştığınız sayfa mevcut değil.
+  maybe: Belki ana sayfaya dönmek istersiniz?
+  backHome: Ana Sayfaya Dön
+
+components:
+  MarkdownRender:
+    default-content: İçerik Yok

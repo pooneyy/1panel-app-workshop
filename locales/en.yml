@@ -1,7 +1,10 @@
 home:
-  subtitle: Docker Compose to 1Panel AppStore Creator
+  subtitle: 1Panel App Workshop
   home: Home
   toggleMenu: Toggle menu
+  menu:
+    title: App Workshop
+    subtitle: 1Panel App Creation Wizard
   nav:
     about: About
     darkMode: Dark mode
@@ -11,12 +14,364 @@ home:
     github: GitHub repository
     githubRepository: IT-Tools GitHub repository
 
+homepage:
+  text-center: Redirecting to 1Panel App Workshop
+
 tools:
   categories:
     favorite-tools: Favorite tools
-  docker-compose-to-1panel-appstore:
-    title: Docker Compose to 1Panel AppStore
-    description: Convert Docker Compose files to 1Panel AppStore format
+  app-workshop:
+    title: 1Panel App Workshop
+    description: One-stop build for 1Panel local applications.
+    cards:
+      ProjectManagement:
+        title: Project Management
+        PackageProject:
+          title: Package and Download Application Configuration
+          note: Upload the logo, enter the application version number, and package all configuration files into a ZIP file for download.
+          uploadArea:
+            title: Upload Logo
+            note1: Click or drag the image to this area.
+            note2: If the size exceeds 180x180, it will be automatically compressed.
+          previewArea: Preview Logo
+          appVersionForm: 
+            lable: App Version
+            placeholder: e.g., 1.0.0
+          warning:
+            title: 'The structure of the packaged ZIP file:'
+            paragraph1: Application Metadata File
+            paragraph2: App Logo
+            paragraph3: Readme File Chinese
+            paragraph4: Readme File English
+            paragraph5: Parameter Configuration File
+            paragraph6: Docker Compose File
+        ImportExport:
+          title: Import and Export Project
+          note: You can export the project as a JSON file or import a JSON file to restore the project.
+      AppForm:
+        title: Application Basic Information
+        key:
+          label: App Key
+          placeholder: Lowercase letters, may include hyphens, used for naming application folders.
+        name:
+          label: App Name
+          placeholder: The application name displayed to users
+        desc:
+          en:
+            label: English Description
+            placeholder: English description
+          zh:
+            label: Chinese Description
+            placeholder: Chinese Simplified  description, no more than 30 characters.
+          zh-Hant:
+            label: Chinese Description
+            placeholder: Chinese Traditional Description
+          ja:
+            label: Japanese Description
+            placeholder: ''
+          ko:
+            label: Korean Description
+            placeholder: ''
+          ms:
+            label: Malay Description
+            placeholder: ''
+          pt-br:
+            label: Portuguese Description
+            placeholder: Portuguese (Brazil) Description
+          ru:
+            label: Russian Description
+            placeholder: ''
+        tags:
+            label: App Tag(s)
+            placeholder: Selected Application Tag(s)
+        type: App Type
+        crossVersionUpdate: Cross-Version Upgrade
+        limit:
+          label: Maximum Installations
+          placeholder: Set to 0 for no limit.
+        website: Website
+        github: GitHub URL
+        document: Document URL
+        memoryRequired:
+          label: Memory Required
+          placeholder: Empty means no requirement
+        architectures: Architectures
+      ReadmeEditor:
+        title: Edit README
+        note: You can adjust the paragraph order by dragging the list items. Any editing of the template or application description will reset the README content.
+        template:
+          title: Template
+          defaultCredentials:
+            switch: Default Credentials
+            input-user: Username
+            placeholder1: Default Username
+            input-pass: Password
+            placeholder2: Default Password
+          configUsage:
+            switch: Configuration and Usage Instructions
+        tabs:
+          tab-cn: Chinese README
+          tab-en: English README
+        sections:
+          introduction:
+            title: Introduction
+            defalt: This is an auto-generated application configuration for 1Panel.
+          features:
+            title: Features
+            defalt: Fill in the application features here.
+          credentials:
+            title: Default Credentials
+          configUsage:
+            title: Configuration and Usage Instructions
+            defalt: Fill in your application configuration instructions and usage methods here.
+      AppDeclaration:
+        title: Application Metadata
+        note: Located in the app's root directory to declare the application's basic metadata.
+      DockerComposeEditor:
+        title: Docker Compose Configuration
+        label: Edit Docker Compose YAML
+        var-info-area:
+          title: Application Parameters Found
+          subtitle: Found {count} parameter in total | Found {count} parameters in total
+          newVars:
+            title: New Parameters
+            text1: '{count} item available for addition | {count} items available for addition'
+            text2: No new parameters
+          existingVars:
+            title: Existing
+            text1: '{count} item configured | {count} items configured'
+            text2: No existing parameters
+          ignoredVars:
+            title: Ignored
+            text1: '{count} item ignored | {count} items ignored'
+            text2: No ignored parameters
+            text3: Reserved Parameters
+        note: Your Docker Compose file will be transformed to meet the 1Panel app standard.
+      AppParams:
+        title: Configure Application Parameters
+        note: Parameters to be set during installation (e.g., port, database connection).
+        Param-card:
+          title: Param
+          envKey:
+            label: Env Key
+            placeholder1: 'e.g., PANEL_DB_TYPE'
+            placeholder2: 'e.g., PANEL_APP_PORT_HTTP'
+          type:
+            label: Param Type
+          dynamic-param-config:
+            info:
+              title: Optional Service Dependencies
+              note: Users can select a dependent service (App), such as MySQL, MariaDB, or PostgreSQL, via the primary menu, and then choose a specific installed service instance via the sub-menu.<br>The option value in the primary menu must be the App Key from the official App Store. The default value must be set to the value of a pre-configured service dependency option.
+              select:
+                label1: Service Dependency Option
+                label2: Select Option
+                input-label: Label
+                input-value1: 'App Key from Official App Store'
+                input-value2: Value
+              sub-select:
+                card-title: Optional Service Dependency Submenu
+                label: Env Key
+                placeholder: e.g., PANEL_DB_TYPE
+              key:
+                label: Dependency Key
+                placeholder: e.g., mysql, redis. The Key from Official App Store.
+          default:
+            label: Default Value
+            placeholder1: This field must be completed.
+            placeholder2: Default Value
+          rule:
+            label: Validation Rules
+            placeholder: Please Select
+          form-label:
+            title: Form Label (Required)
+            zh:
+              label: Chinese Simplified  Label
+              placeholder: Chinese Simplified Label
+            zh-Hant:
+              label: Chinese Traditional Label
+              placeholder: Chinese Traditional Label
+            en:
+              label: English Label
+              placeholder: English Label
+            ja:
+              label: Japanese Label
+              placeholder: Japanese Label
+            ko:
+              label: Korean Label
+              placeholder: Korean Label
+            ms:
+              label: Malay Label
+              placeholder: Malay Label
+            pt-br:
+              label: Portuguese (Brazil) Label
+              placeholder: Portuguese (Brazil) Label
+            ru:
+              label: Russian Label
+              placeholder: Russian Label
+            tr:
+              label: Turkish Label
+              placeholder: Turkish Label
+          form-description:
+            title: Form Description (Optional)
+            zh:
+              label: Chinese Simplified Description
+              placeholder: Chinese Simplified Description
+            zh-Hant:
+              label: Chinese Traditional Description
+              placeholder: Chinese Traditional Description
+            en:
+              label: English Description
+              placeholder: English Description
+            ja:
+              label: Japanese Description
+              placeholder: Japanese Description
+            ko:
+              label: Korean Description
+              placeholder: Korean Description
+            ms:
+              label: Malay Description
+              placeholder: Malay Description
+            pt-br:
+              label: Portuguese (Brazil) Description
+              placeholder: Portuguese (Brazil) Description
+            ru:
+              label: Russian Description
+              placeholder: Russian Description
+            tr:
+              label: Turkish Description
+              placeholder: Turkish Description
+          required: Required
+          edit: Editable
+          random: Random Characters
+          editableOptions: Editable Property for Parameter Form
+        divider: Parameter Configuration Preview
+    components:
+      addDockerComposeParameters: Add parameter to application parameter configuration | Add parameters to application parameter configuration
+      addOption: Add Option
+      addParams: Add Parameters
+      backToTop: Return to<br>Download Package
+      cancel: Cancel
+      clearAllData: Clear All Data
+      collapse: Collapse
+      confirm: Confirm
+      downloadAllAsZip: Package and Download All Configurations
+      downloadAppDeclaration: Download the Application Metadata File
+      downloadAppParams: Download Parameter Configuration
+      downloadDockerCompose: Download Docker Compose File
+      downloadReadme: Download Readme File
+      expand: Expand
+      exportProject: Export as JSON
+      importFromJson: Import from JSON
+      importFromZip: Import from ZIP Package
+      moveUp: Move Up
+      moveDown: Move Down
+      remove: Remove
+      removeOption: Remove
+      resetParagraphOrder: Reset Paragraph Arrangement and Enable/Disable State
+    options:
+      availableTags:
+        ai: AI
+        bi: BI
+        crm: CRM
+        database: Database
+        devops: DevOps
+        devtool: Development Tool
+        email: Email Service
+        game: Casual Games
+        local: Local
+        media: Media
+        middleware: Middleware
+        runtime: Runtime
+        security: Security
+        server: Web Server
+        storage: Cloud Storage
+        tool: Tool
+        website: Website
+      editableOptions:
+        install-editable-post-editable: Editable During Installation, Editable After Installation
+        install-locked-post-editable: Locked During Installation, Editable After Installation
+        install-editable-post-locked: Editable During Installation, Locked After Installation
+        install-locked-post-locked: Locked During Installation, Locked After Installation
+      optionalEnvVars:
+        database: Database
+      paramTypes:
+        apps: Apps - Optional Service Dependencies
+        number: Number
+        password: Password
+        select: Select
+        service: Service - Required Service Dependencies
+        text: Text
+      ruleOptions:
+        paramPort: paramPort - Port Range 1-65535
+        paramExtUrl: paramExtUrl - HTTP(S) URL Scheme
+        paramCommon: paramCommon - Letters, Numbers, . - _ ; 2-30 Chars
+        paramComplexity: paramComplexity - Strong Password, 6-30 Chars
+      typeOptions:
+        runtime: Runtime - Runtime Environment Type
+        tool: Tool - Tool Type
+        website: Website - Website Types (with One-Stop Deployment)
+    script:
+      errors:
+        clearLocalStorage: Failed to clear local storage
+        generation-failed: Generation failed
+        conversion-failed: Conversion failed
+        extract-parameters-failed: Failed to extract parameters
+        validate-error: Error validating image file
+        upload-error: Error uploading file
+        read-error: Unable to read the file
+        image-load-error: Image load failed
+        canvas-context-error: Canvas context creation failed
+      funcs:
+        clearAllData:
+          title: Clear All Data
+          content: About to reset project. Continue? This action cannot be undone.
+          success: Successfully reset project
+        saveToLocalStorage:
+          success: Successfully saved to local storage
+          failed: Failed to save to local storage
+        loadFromLocalStorage:
+          noData: No saved data found
+          dataExpired: Saved data has expired. Using default data
+          success: Successfully loaded project from local storage
+          failed: Failed to load from local storage
+        clearLocalStorage:
+          success: Successfully cleared local storage
+        convertedDockerCompose:
+          note1: Raw Content
+        addDockerComposeParameters:
+          success: Successfully added {count} new parameters to app parameters
+          warning: A large number of parameters increases the response time.
+          failed: All parameters are already set up in your application parameters.
+          processingTime: 'Processing Time: {time} s.'
+        handleLogoUpload:
+          no-imagefile: Please upload an image file. Current file type
+          no-image: The uploaded file is not a valid image. Please verify the file contents.
+        downloadAllAsZip:
+          image-compress-failed: Image compression failed. Using default logo.
+          package-failed: Package download failed
+        exportProject:
+          success: Successfully exported project
+          failed: Failed to export project
+        importProject:
+          appParamsParseError: Application parameter configuration parsing error
+          error: Failed to import project
+          invalidFile: Invalid file
+          invalidJsonFormat: Invalid format
+          invalidLogo: Invalid logo.png file. Default Logo has been used.
+          invalidPackageStructure: Invalid application package structure
+          invalidZipFile: Invalid ZIP file
+          missingAppDeclaration: Missing application metadata file
+          missingVersionFiles: Missing version directory or required files (data.yml, docker-compose.yml)
+          parseError: File Parsing Error
+          readError: File Reading Error
+          success: Successfully imported project
+          zipError: Failed to import project from ZIP package
+          zipParseError: ZIP File Parsing Error
+          zipReadError: ZIP File Reading Error
+          zipSuccess: Successfully imported ZIP package
+        validateAppPackageStructure:
+          noRootFolder: No root folder
+          noFoundValidVersion: No valid version found
 
 locale-selector:
   select-a-language: Select a language
@@ -40,11 +395,13 @@ inputCopyable:
 
 about:
   content-fork: |
-    # About 1Panel Tools
+    # About 1Panel App Workshop
     
-    This is a specialized version of IT-Tools focused on Docker Compose to 1Panel AppStore conversion.
+    This is a specialized version of IT-Tools, designed to provide one-stop local app building support for the 1Panel app store.
     
-    Convert your Docker Compose files to 1Panel AppStore format with ease.
+    Easily create your own 1Panel local applications.
+
+    This project is forked from [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be) and has been further developed.
   alltools-title: All tools ({toolsCount} tools)
   tools:
     category: Category
@@ -56,3 +413,7 @@ about:
   sorry: Sorry, the page you visited does not exist.
   maybe: Maybe you want to go back to the home page?
   backHome: Back to home
+
+components:
+  MarkdownRender:
+    default-content: No content yet.

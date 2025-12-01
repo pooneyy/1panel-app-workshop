@@ -10,37 +10,41 @@ import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
 
 const route = useRoute();
-
+const { t } = useI18n();
+const i18nKey = computed<string>(() => route.path.trim().replace('/', ''));
+const toolTitle = computed<string>(() => t(`tools.${i18nKey.value}.title`, String(route.meta.name)));
+const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.description`, String(route.meta.description)));
+const themeVars = useThemeVars();
 const head = computed<HeadObject>(() => ({
-  title: `${route.meta.name} - 1Panel Tools`,
+  title: toolTitle.value,
   meta: [
     {
       itemprop: 'name',
-      content: `${route.meta.name} - 1Panel Tools`,
+      content: toolTitle.value,
     },
     {
       property: 'og:title',
-      content: `${route.meta.name} - 1Panel Tools`,
+      content: toolTitle.value,
     },
     {
       property: 'twitter:title',
-      content: `${route.meta.name} - 1Panel Tools`,
+      content: toolTitle.value,
     },
     {
       name: 'description',
-      content: route.meta?.description as string,
+      content: toolDescription.value,
     },
     {
       itemprop: 'description',
-      content: route.meta?.description as string,
+      content: toolDescription.value,
     },
     {
       property: 'og:description',
-      content: route.meta?.description as string,
+      content: toolDescription.value,
     },
     {
       property: 'twitter:description',
-      content: route.meta?.description as string,
+      content: toolDescription.value,
     },
     {
       name: 'keywords',
@@ -49,12 +53,6 @@ const head = computed<HeadObject>(() => ({
   ],
 }));
 useHead(head);
-const { t } = useI18n();
-
-const i18nKey = computed<string>(() => route.path.trim().replace('/', ''));
-const toolTitle = computed<string>(() => t(`tools.${i18nKey.value}.title`, String(route.meta.name)));
-const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.description`, String(route.meta.description)));
-const themeVars = useThemeVars();
 </script>
 
 <template>

@@ -10,6 +10,7 @@ import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import packageJson from './package.json'; // https://vitejs.dev/config/
 
 export default defineConfig({
   plugins: [
@@ -19,7 +20,7 @@ export default defineConfig({
       fullInstall: true,
       include: [resolve(__dirname, 'locales/**')],
       strictMessage: false,
-      escapeHtml: true,
+      escapeHtml: false,
     }),
     AutoImport({
       imports: [
@@ -57,17 +58,45 @@ export default defineConfig({
   },
   define: {
     __VUEUSE_OPTIONS_API__: 'false',
-    'import.meta.env.PACKAGE_VERSION': JSON.stringify('1.0.0'),
+    'import.meta.env.PACKAGE_NAME': JSON.stringify(packageJson.name),
+    'import.meta.env.PACKAGE_VERSION': JSON.stringify(packageJson.version),
   },
   build: {
     target: 'esnext',
     minify: true,
-    reportCompressedSize: false,
+    reportCompressedSize: true,
+    cssCodeSplit: false,
     rollupOptions: {
       output: {
         format: 'es',
-        manualChunks: {
-          vendor: ['vue', 'vue-router', 'naive-ui'],
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('/naive-ui/')) {
+              return 'naive-ui';
+            }
+            if ( id.includes('/vue/') || id.includes('/vue-router/') || id.includes('/vue-i18n/')
+              || id.includes('/pinia/') || id.includes('/@vueuse/') || id.includes('/@guolao/vue-monaco-editor/')
+              || id.includes('/dompurify/') || id.includes('/file-saver/') || id.includes("/js-base64/")
+              || id.includes('/jszip/') || id.includes("/lodash/") || id.includes('/marked/')){
+              return 'vendor';
+            }
+            if (id.includes('/monaco-editor/')) {
+              return 'monaco-editor';
+            }
+            if (id.includes('/highlight.js/')) {
+              if (id.includes('/highlight.js/lib/')) {
+                if ( id.includes('/languages/m') || id.includes('/languages/i')
+                  || id.includes('/languages/a') || id.includes('/languages/b')
+                  || id.includes('/languages/c') || id.includes('/languages/d')
+                  || id.includes('/languages/e') || id.includes('/languages/f')
+                  || id.includes('/languages/g')) {
+                  return 'highlight.js-1';
+                }
+                return 'highlight.js-2';
+              }
+            }
+          }
+          return undefined;
         },
       },
     },

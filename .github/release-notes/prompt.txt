@@ -1,0 +1,33 @@
+请根据下面的git差异内容，生成一份专业、清晰的变更日志。
+
+日志需要遵循 Angular 风格
+请按照以下模板组织变更日志：
+
+## Changelog
+
+[此处简要概述本次变更的主要内容]
+
+### Features
+- {new feature}
+
+### Fixed
+- {fixed bug}
+
+### Optimized
+- {optimized feature}
+
+### Changed
+- {changed feature}
+
+
+此外还须要满足以下要求
+1. 按类别分组列出具体变更，（例如：新功能、Bug修复、优化等）
+2. 仅列出已出现的类别，不要列出未出现的类别
+3. 如果有破坏性变更（breaking changes），请明确指出
+4. 仅列出变更内容，不需要给出升级建议
+
+请用 {language} 输出，保持专业且易于理解。
+
+差异内容如下：
+
+{diff}

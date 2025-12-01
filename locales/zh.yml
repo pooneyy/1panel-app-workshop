@@ -1,7 +1,10 @@
 home:
-  subtitle: Docker Compose 转 1Panel 应用商店创建器
+  subtitle: 1Panel 应用工场
   home: 首页
   toggleMenu: 切换菜单
+  menu:
+    title: 应用工场
+    subtitle: 1Panel 应用构建向导
   nav:
     about: 关于
     darkMode: 深色模式
@@ -11,12 +14,364 @@ home:
     github: GitHub 仓库
     githubRepository: IT-Tools GitHub 仓库
 
+homepage:
+  text-center: 正在跳转到 1Panel 应用工场...
+
 tools:
   categories:
     favorite-tools: 收藏工具
-  docker-compose-to-1panel-appstore:
-    title: Docker Compose 转 1Panel 应用商店
-    description: 将 Docker Compose 文件转换为 1Panel 应用商店格式
+  app-workshop:
+    title: 1Panel 应用工场
+    description: 一站式构建 1Panel 本地应用
+    cards:
+      ProjectManagement:
+        title: 项目管理
+        PackageProject:
+          title: 打包下载应用配置
+          note: 上传 Logo，输入应用版本号，将所有配置文件打包为 ZIP 文件下载。
+          uploadArea:
+            title: 上传 Logo
+            note1: 点击或拖动图片到此区域
+            note2: 建议上传180x180像素的图片，如果尺寸大于180x180将自动压缩
+          previewArea: 预览 Logo
+          appVersionForm: 
+            lable: 应用版本
+            placeholder: '例如: 1.0.0'
+          warning:
+            title: 打包后的 ZIP 文件结构：
+            paragraph1: 应用元数据文件
+            paragraph2: 应用图标
+            paragraph3: 中文说明文档
+            paragraph4: 英文说明文档
+            paragraph5: 参数配置文件
+            paragraph6: Docker Compose 配置
+        ImportExport:
+          title: 导入与导出项目
+          note: 你可以将项目导出为 JSON 文件，或将 JSON 文件导入以恢复项目。
+      AppForm:
+        title: 应用基本信息
+        key:
+          label: 应用 Key
+          placeholder: 小写英文字母，可包含连字符，用于命名应用文件夹
+        name:
+          label: 应用名称
+          placeholder: 对外显示的应用名称
+        desc:
+          en:
+            label: 英文描述
+            placeholder: English description
+          zh:
+            label: 简体中文描述
+            placeholder: 中文描述，不要超过30个字
+          zh-Hant:
+            label: 繁体中文描述
+            placeholder: ''
+          ja:
+            label: 日本语描述
+            placeholder: ''
+          ko:
+            label: 韩语描述
+            placeholder: ''
+          ms:
+            label: 马来语描述
+            placeholder: ''
+          pt-br:
+            label: 葡萄牙语描述
+            placeholder: 葡萄牙语（巴西）描述
+          ru:
+            label: 俄罗斯语描述
+            placeholder: ''
+        tags:
+            label: 应用标签
+            placeholder: 选择应用标签
+        type: 应用类型
+        crossVersionUpdate: 跨版本升级
+        limit:
+          label: 安装数量限制
+          placeholder: 0代表无限制
+        website: 官网地址
+        github: GitHub 地址
+        document: 文档地址
+        memoryRequired:
+          label: 内存需求
+          placeholder: 留空表示没有内存需求
+        architectures: 支持架构
+      ReadmeEditor:
+        title: 编辑自述文件
+        note: 你可以通过拖拽列表项以调整段落顺序。任何编辑模板或应用描述的行为均会重置自述文件内容。
+        template:
+          title: 模板
+          defaultCredentials:
+            switch: 默认账户
+            input-user: 用户名
+            placeholder1: 默认用户名
+            input-pass: 密码
+            placeholder2: 默认密码
+          configUsage: 
+            switch: 配置和使用说明
+        tabs:
+          tab-cn: 中文自述文件
+          tab-en: 英文自述文件
+        sections:
+          introduction:
+            title: 产品介绍
+            defalt: 这是为 1Panel 自动生成的应用程序配置。
+          features:
+            title: 主要功能
+            defalt: 在这里填写应用主要功能。
+          credentials:
+            title: 默认账户密码
+          configUsage:
+            title: 配置和使用说明
+            defalt: 在这里填写应用配置说明和使用方法。
+      AppDeclaration:
+        title: 应用元数据文件
+        note: 位于应用文件夹根目录，用于声明应用的基本信息。
+      DockerComposeEditor:
+        title: Docker Compose 配置
+        label: 编辑 Docker Compose YAML 内容
+        var-info-area:
+          title: 发现应用参数
+          subtitle: 共发现 {count} 个参数
+          newVars:
+            title: 新参数
+            text1: '{count} 个可添加'
+            text2: 无新参数
+          existingVars:
+            title: 已存在
+            text1: '{count} 个已配置'
+            text2: 无已存在参数
+          ignoredVars:
+            title: 被忽略
+            text1: '{count} 个已忽略参数'
+            text2: 无被忽略参数
+            text3: 保留参数
+        note: 输入的 Docker Compose 文件转换后将会符合 1Panel 应用标准。
+      AppParams:
+        title: 应用参数配置
+        note: 配置应用安装时需要用户填写的参数，如端口、数据库连接信息等。
+        Param-card:
+          title: 参数
+          envKey:
+            label: 环境变量 Key
+            placeholder1: '如: PANEL_DB_TYPE'
+            placeholder2: '如: PANEL_APP_PORT_HTTP'
+          type:
+            label: 参数类型
+          dynamic-param-config:
+            info:
+              title: 可供选择的服务依赖
+              note: 用户可以通过一级菜单选择依赖的服务(App)，例如：MySQL、MariaDB、PostgreSQL 等，通过子菜单选择已安装的服务实例。<br>一级菜单的选项值必须填写官方应用商店中应用的 Key，默认值必须填写已设定的服务依赖选项值
+              select:
+                label1: 服务依赖选项
+                label2: 下拉菜单选项
+                input-label: 显示标签
+                input-value1: '选项值: 官方应用商店中应用的 Key'
+                input-value2: 选项值
+              sub-select:
+                card-title: 可选的服务依赖子菜单
+                label: 环境变量 Key
+                placeholder: '如: PANEL_DB_TYPE'
+              key:
+                label: 依赖 Key
+                placeholder: '如: mysql, redis, 值必须填写官方应用商店中应用的Key'
+          default:
+            label: 默认值
+            placeholder1: 此项必须填写
+            placeholder2: 默认值
+          rule:
+            label: 校验规则
+            placeholder: 请选择
+          form-label:
+            title: 表单标签 (必填)
+            zh:
+              label: 简体中文标签
+              placeholder: 简体中文标签
+            zh-Hant:
+              label: 繁体中文标签
+              placeholder: 繁体中文标签
+            en:
+              label: 英文标签
+              placeholder: 英文标签
+            ja:
+              label: 日文标签
+              placeholder: 日文标签
+            ko:
+              label: 韩文标签
+              placeholder: 韩文标签
+            ms:
+              label: 马来文标签
+              placeholder: 马来文标签
+            pt-br:
+              label: 葡萄牙文 (巴西) 标签
+              placeholder: 葡萄牙文 (巴西) 标签
+            ru:
+              label: 俄文标签
+              placeholder: 俄文标签
+            tr:
+              label: 土耳其文标签
+              placeholder: 土耳其文标签
+          form-description:
+            title: 表单描述 (可选)
+            zh:
+              label: 简体中文描述
+              placeholder: 简体中文描述
+            zh-Hant:
+              label: 繁体中文描述
+              placeholder: 繁体中文描述
+            en:
+              label: 英文描述
+              placeholder: 英文描述
+            ja:
+              label: 日文描述
+              placeholder: 日文描述
+            ko:
+              label: 韩文描述
+              placeholder: 韩文描述
+            ms:
+              label: 马来文描述
+              placeholder: 马来文描述
+            pt-br:
+              label: 葡萄牙文 (巴西) 描述
+              placeholder: 葡萄牙文 (巴西) 描述
+            ru:
+              label: 俄文描述
+              placeholder: 俄文描述
+            tr:
+              label: 土耳其文描述
+              placeholder: 土耳其文描述
+          required: 是否必填
+          edit: 可编辑
+          random: 随机字符
+          editableOptions: 参数表单可编辑属性
+        divider: 参数配置预览
+    components:
+      addDockerComposeParameters: 添加参数到应用参数配置
+      addOption: 添加选项
+      addParams: 添加参数
+      backToTop: 返回下载应用包
+      cancel: 取消
+      clearAllData: 清除所有数据
+      collapse: 折叠
+      confirm: 确定
+      downloadAllAsZip: 打包下载所有配置
+      downloadAppDeclaration: 下载应用元数据文件
+      downloadAppParams: 下载参数配置
+      downloadDockerCompose: 下载 Docker Compose 配置
+      downloadReadme: 下载自述文件
+      expand: 展开
+      exportProject: 导出为 JSON
+      importFromJson: 从 JSON 导入
+      importFromZip: 从 ZIP 导入
+      moveUp: 上移
+      moveDown: 下移
+      remove: 删除
+      removeOption: 删除选项
+      resetParagraphOrder: 重置段落顺序与启用状态
+    options:
+      availableTags:
+        ai: AI
+        bi: BI
+        crm: CRM
+        database: 数据库
+        devops: DevOps
+        devtool: 开发工具
+        email: 邮件服务
+        game: 休闲游戏
+        local: 本地
+        media: 多媒体
+        middleware: 中间件
+        runtime: 运行环境
+        security: 安全
+        server: Web 服务器
+        storage: 云存储
+        tool: 实用工具
+        website: 建站
+      editableOptions:
+        install-editable-post-editable: 安装时可编辑，安装后可编辑
+        install-locked-post-editable: 安装时锁定，安装后可编辑
+        install-editable-post-locked: 安装时可编辑，安装后锁定
+        install-locked-post-locked: 安装时锁定，安装后锁定
+      optionalEnvVars:
+        database: 数据库
+      paramTypes:
+        apps: Apps - 可供选择的服务依赖
+        number: 数字
+        password: 密码
+        select: 下拉菜单
+        service: Service - 固定的服务依赖
+        text: 文本
+      ruleOptions:
+        paramPort: paramPort - 端口范围 1-65535
+        paramExtUrl: paramExtUrl - HTTP(S) URL格式
+        paramCommon: paramCommon - 英文数字.-_，长度2-30
+        paramComplexity: paramComplexity - 复杂密码，长度6-30
+      typeOptions:
+        runtime: Runtime - 运行环境类型
+        tool: Tool - 工具类型
+        website: Website - 网站类型（支持一键部署）
+    script:
+      errors:
+        clearLocalStorage: 清除本地存储失败
+        generation-failed: 生成失败
+        conversion-failed: 转换失败
+        extract-parameters-failed: 提取参数失败
+        validate-error: 验证图片文件时发生错误
+        upload-error: 上传文件时发生错误
+        read-error: 读取文件时发生错误
+        image-load-error: 图片加载失败
+        canvas-context-error: 无法创建 canvas 上下文
+      funcs:
+        clearAllData:
+          title: 清除所有数据
+          content: 即将重置项目，是否继续？此项操作无法撤销
+          success: 项目重置成功
+        saveToLocalStorage:
+          success: 数据已保存到本地存储
+          failed: 保存到本地存储失败
+        loadFromLocalStorage:
+          noData: 没有找到保存的数据
+          dataExpired: 保存的数据已过期，使用默认数据
+          success: 从本地存储加载成功
+          failed: 从本地存储加载失败
+        clearLocalStorage:
+          success: 本地存储已清除
+        convertedDockerCompose:
+          note1: 原始内容
+        addDockerComposeParameters:
+          success: 成功添加 {count} 个新参数到应用参数配置
+          warning: 当参数过多时，会导致响应时间变长
+          failed: 没有发现新的参数，所有参数都已存在于应用参数配置中
+          processingTime: '处理时间: {time} 秒'
+        handleLogoUpload:
+          no-imagefile: 请上传图片文件，当前文件类型
+          no-image: 上传的文件不是有效的图片文件，请检查文件内容
+        downloadAllAsZip:
+          image-compress-failed: 图片压缩失败，使用默认 logo
+          package-failed: 打包下载失败
+        exportProject:
+          success: 导出项目成功
+          failed: 导出项目失败
+        importProject:
+          appParamsParseError: 应用参数解析失败
+          error: 导入项目失败
+          invalidFile: 无效的文件
+          invalidJsonFormat: 无效的格式
+          invalidLogo: 无效的 logo.png 文件，已使用默认 Logo
+          invalidPackageStructure: 应用包结构不正确
+          invalidZipFile: 无效的 ZIP 文件
+          missingAppDeclaration: 缺少应用元数据文件
+          missingVersionFiles: 缺少版本目录或版本目录中缺少必要的文件 (data.yml 和 docker-compose.yml)
+          parseError: 文件解析错误
+          readError: 文件读取错误
+          success: 导入项目成功
+          zipError: 从 ZIP 文件导入项目失败
+          zipParseError: ZIP 文件解析错误
+          zipReadError: ZIP 文件读取错误
+          zipSuccess: ZIP 文件导入成功
+        validateAppPackageStructure:
+          noRootFolder: 未找到有效的根目录
+          noFoundValidVersion: 未找到有效的版本目录
 
 locale-selector:
   select-a-language: 选择语言
@@ -40,11 +395,13 @@ inputCopyable:
 
 about:
   content-fork: |
-    # 关于 1Panel 工具
+    # 关于 1Panel 应用工场
     
-    这是 IT-Tools 的专门版本，专注于 Docker Compose 到 1Panel 应用商店的转换。
+    这是 IT-Tools 的专门版本，旨在为 1Panel 面板应用商店提供一站式的本地应用构建支持。
     
-    轻松将您的 Docker Compose 文件转换为 1Panel 应用商店格式。
+    轻松构建属于自己的 1Panel 本地应用。
+
+    本项目基于 [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be) 进行二次开发。
   alltools-title: 所有工具（{toolsCount} 个工具）
   tools:
     category: 分类
@@ -56,3 +413,7 @@ about:
   sorry: 抱歉，您访问的页面不存在。
   maybe: 也许您想回到首页？
   backHome: 回到首页
+
+components:
+  MarkdownRender:
+    default-content: 暂无内容

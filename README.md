@@ -1,75 +1,66 @@
-# 1Panel-Tools
+# 1Panel 应用工场
 
-[英文](README_en.md) ｜ [中文](README.md)
+[English](README_en.md) ｜ [中文](README.md)
+
 ## 概述
 
-1Panel-Tools 是一个专门设计的工具集，旨在简化为 1Panel AppStore 创建应用程序的过程。该集合中的主要工具是 Docker Compose 到 1Panel AppStore 的转换器，它将标准的 Docker Compose 文件转换为 1Panel AppStore 所需的格式。
+1Panel 应用工场是 IT-Tools 的专门版本，旨在为 1Panel 面板应用商店提供一站式的本地应用构建支持。
 
-![1Panel-Tools](./public/1Panel-Tools.png) 
+## 主要功能
 
-## 功能特点
-
-- **Docker Compose 转换**：自动将 Docker Compose 文件转换为 1Panel AppStore 格式
-- **参数配置**：轻松定义和管理应用程序参数
-- **元数据管理**：设置应用程序名称、描述、标签和其他元数据
-- **多语言支持**：配置中英文描述
-- **导出功能**：下载转换后的文件，准备提交到 1Panel AppStore
+- **完整的多语言支持**
+  - 多语言页面，支持切换语言
+  - 中英文 README 文件编辑器
+  - 创建符合 1Panel 标准的多语言应用包
+- **项目管理**
+  - 支持将项目导出为 zip 文件
+  - 支持将项目导出为 json 文件
+  - 支持从 zip 文件导入项目
+  - 支持从 json 文件导入项目
+  - 支持将项目自动保存到 Local Storage, 刷新页面后数据不丢失
+- **元数据管理**
+  - 设置应用程序名称、描述、标签和其他元数据
+- **自述文件编辑器**
+  - 中英文 README 文件编辑器
+  - 简单的模板管理，可以添加、移除预设的段落，支持拖拽以调整预设段落顺序
+  - Markdown 编辑器，支持实时预览
+- **Docker Compose 转换**
+  - 自动将 Docker Compose 文件转换为 1Panel AppStore 格式
+  - 识别到形如 ${ENV} 或 ${ENV:-123} 的参数，支持一键添加到“应用参数配置”中，支持添加默认值
+- **应用参数配置**
+  - 支持添加、删除、修改参数
+  - 支持为参数调整顺序
 
 ## 快速开始
 
-### 前提条件
+### 在线使用
 
-- Node.js (v14 或更高版本)
-- pnpm (v9.11.0 或更高版本)
+访问：https://pooneyy.github.io/1panel-app-workshop
 
-### 安装
+### 自托管
 
-```bash
-# 克隆仓库
-git clone https://github.com/arch3rPro/1Panel-Tools.git
-cd 1Panel-Tools
+#### 使用预构建包
 
-# 安装依赖
-pnpm install
-
-# 启动开发服务器
-pnpm dev
-```
-
-应用程序将自动重定向到 Docker Compose 到 1Panel AppStore 的转换工具。
-
-## 使用方法
-
-1. **输入 Docker Compose**：将您的 Docker Compose 文件粘贴到编辑器中
-2. **配置应用程序**：设置应用程序名称、键值、描述和其他元数据
-3. **定义参数**：为您的应用程序添加参数（端口、环境变量等）
-4. **预览转换**：查看生成的 1Panel AppStore 文件
-5. **导出**：下载转换后的文件，用于 1Panel AppStore
-
-### Docker 使用方法
+[下载预构建包](https://github.com/pooneyy/1panel-app-workshop/releases/latest/download/publish.tgz)
 
 #### 使用 Docker Run
 
 ```bash
-# 拉取并运行 Docker 镜像
-docker run -d --name 1panel-tools -p 8080:80 vuldocker/1panel-tools:latest
+docker run -d --name app-workshop -p 8080:80 --pull=always ghcr.io/pooneyy/1panel-app-workshop:latest
 ```
-
-访问工具：http://localhost:8080
 
 #### 使用 Docker Compose
 
-使用项目 `docker-compose.yml` 文件，修改映射端口，内容如下：
-
 ```yaml
-version: '3'
+version: '3.8'
 services:
-  1panel-tools:
-    image: vuldocker/1panel-tools:latest
-    container_name: 1panel-tools
+  app-workshop:
+    container_name: app-workshop
+    image: ghcr.io/pooneyy/1panel-app-workshop:latest
     ports:
-      - "8080:80"
-    restart: unless-stopped
+      - 8080:80
+    restart: always
+    pull_policy: always
 ```
 
 然后运行：
@@ -78,21 +69,41 @@ services:
 docker-compose up -d
 ```
 
-访问工具：http://localhost:8080
+## 本地开发模式
+
+- 先决条件
+
+  [安装 Node.js](https://nodejs.org/zh-cn/download)
+
+  ```bash
+  npm i -g pnpm
+  ```
+
+- 安装依赖
+
+  ```bash
+  pnpm i
+  ```
+
+- 启动开发服务器
+
+  ```bash
+  pnpm dev
+  ```
 
 ## 1Panel AppStore 格式
 
-转换器生成的文件遵循 1Panel AppStore 格式：
+1Panel 应用工场生成的软件包遵循 1Panel AppStore 格式：
 
 ```
 ├── app-key/
     ├── logo.png
     ├── data.yml
     ├── README.md
+    ├── README_en.md
     └── version/
         ├── data.yml
-        ├── docker-compose.yml
-        └── scripts/
+        └── docker-compose.yml
 ```
 
 ## 许可证
@@ -102,4 +113,4 @@ docker-compose up -d
 ## 致谢
 
 - 基于 IT-Tools 项目框架
-- 专为 1Panel AppStore 应用程序开发设计
+- 本项目基于 [arch3rPro/1Panel-Tools@8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be) 进行二次开发。

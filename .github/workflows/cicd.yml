@@ -1,0 +1,293 @@
+name: CI/CD
+
+on:
+  push:
+    tags: "*"
+
+env:
+  ARCHITECTURES: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/riscv64,linux/s390x
+  GH_TOKEN: ${{ github.token }}
+  IMAGE_NAME: 1panel-app-workshop
+  IMAGE_DESCRIPTION: Built by GitHub Actions, the associated workflow is https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+  LICENSES: GPLv3
+
+jobs:
+  change-log:
+    name: Generate change log
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - uses: actions/setup-python@main
+        with:
+          python-version: 3.x
+          pip-install: llm-release-notes
+
+      - name: Get diff file
+        run: |
+          tags=($(git for-each-ref --sort=-creatordate --format='%(refname:short)' refs/tags | head -2))
+          git diff ${tags[1]} ${tags[0]} > diff.txt
+
+      - name: Generate change log
+        run: |
+          llm-release-notes --baseurl="${{ vars.LLM_API }}" \
+            --apikey="${{ secrets.LLM_API_KEY }}" \
+            --model="${{ vars.LLM_MODEL }}" \
+            --language="zh-CN" \
+            --promptfile=".github/release-notes/prompt.txt" \
+            --diffile="diff.txt" \
+            --output="changelog.md"
+
+      - name: Upload change log
+        uses: actions/upload-artifact@v4
+        with:
+          name: change-log
+          path: |
+            changelog.md
+            diff.txt
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get-version.outputs.version }}
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Get version
+        id: get-version
+        run: |
+          version=$(git describe --tags --abbrev=0)
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: latest
+
+      - name: Install dependencies
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: true
+
+      - name: Build
+        run: |
+          pnpm build:package:gh-pages
+          mv publish.tgz publish.gh.tgz
+          pnpm build:package
+
+      - name: Upload normal-built
+        uses: actions/upload-artifact@v4
+        with:
+          name: normal-built
+          path: publish.tgz
+
+      - name: Upload gh-pages-built
+        uses: actions/upload-artifact@v4
+        with:
+          name: gh-built
+          path: publish.gh.tgz
+
+      - name: Upload docker-configs
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-configs
+          path: |
+            Dockerfile
+            nginx.conf
+
+  publish-images:
+    name: Publish images
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
+    
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: normal-built
+
+      - name: Download docker-configs
+        uses: actions/download-artifact@v7
+        with:
+          name: docker-configs
+
+      - name: Unpack artifact
+        run: |
+          mkdir -p dist
+          tar -xzf publish.tgz -C dist
+
+      - name: Set env
+        run: |
+          owner=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')
+          echo "OWNER=$owner" >> "$GITHUB_ENV"
+          echo "IMAGE_FULL_NAME=ghcr.io/$owner/${{ env.IMAGE_NAME }}" >> $GITHUB_ENV
+          echo "IMAGE_TAG=${{ needs.build.outputs.version }}" >> $GITHUB_ENV
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ env.OWNER }}
+          password: ${{ env.GH_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for image registry
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_FULL_NAME }}
+          annotations: |
+            org.opencontainers.image.description=${{ env.IMAGE_DESCRIPTION }}
+            org.opencontainers.image.licenses=${{ env.LICENSES }}
+            org.opencontainers.image.title=${{ env.IMAGE_NAME }}
+            org.opencontainers.image.version=${{ env.IMAGE_TAG }}
+          labels: |
+            org.opencontainers.image.description=${{ env.IMAGE_DESCRIPTION }}
+            org.opencontainers.image.licenses=${{ env.LICENSES }}
+            org.opencontainers.image.title=${{ env.IMAGE_NAME }}
+            org.opencontainers.image.version=${{ env.IMAGE_TAG }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=raw,value=latest
+            type=sha
+        env:
+          DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          annotations: ${{ steps.meta.outputs.annotations }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: ${{ ENV.ARCHITECTURES }}
+
+      - name: Calculate image size
+        run: |
+          docker manifest inspect ${{ env.IMAGE_FULL_NAME }}:${{ env.IMAGE_TAG }} -v > manifest.json
+          curl -o ./get_image_size.sh -s https://raw.githubusercontent.com/pooneyy/1Panel-Appstore/refs/heads/script/get_image_size.sh
+          chmod +x get_image_size.sh
+
+      - name: Get the package id
+        run: |
+          response=$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /users/${{ env.OWNER }}/packages/container/${{ env.IMAGE_NAME }}/versions)
+          version_id=$(echo "$response" | jq -r '.[] | select(.metadata.container.tags[]? == "${{ env.IMAGE_TAG }}") | .id')
+          echo "VERSION_ID=$version_id" >> $GITHUB_ENV
+
+      - name: Add a summary for the job
+        run: |
+          arch_array=($(echo ${{ ENV.ARCHITECTURES }} | tr -d '"' | tr ',' '\n' | tr -d ' '))
+          echo "## Build Report" >> $GITHUB_STEP_SUMMARY
+          echo "### Get the image" >> $GITHUB_STEP_SUMMARY
+          echo "<pre lang="bash">" >> $GITHUB_STEP_SUMMARY
+          echo "<code>docker pull ${{ env.IMAGE_FULL_NAME }}:${{ env.IMAGE_TAG }}</code>" >> $GITHUB_STEP_SUMMARY
+          echo "</pre>" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Image Url: https://github.com/users/${{ env.OWNER }}/packages/container/${{ env.IMAGE_NAME }}/${{ env.VERSION_ID }}?tag=${{ env.IMAGE_TAG }}" >> $GITHUB_STEP_SUMMARY
+          echo "### Image info" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Architecture | Image Size |" >> $GITHUB_STEP_SUMMARY
+          echo "|:-:|:-:|" >> $GITHUB_STEP_SUMMARY
+          for arch in "${arch_array[@]}"; do
+            echo "| $arch | $(./get_image_size.sh --arch $arch) |" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "<details><summary><strong>Image manifest</strong></summary>" >> $GITHUB_STEP_SUMMARY
+          echo "<pre lang="json"><code>" >> $GITHUB_STEP_SUMMARY
+          cat manifest.json >> $GITHUB_STEP_SUMMARY
+          echo "</code></pre></details>" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+  publish-gh-pages:
+    name: Publish to gh-pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Download artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: gh-built
+
+      - name: Unpack artifact
+        run: |
+          mkdir -p dist
+          tar -xzf publish.gh.tgz -C ./dist
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          commit-message: "feat: publish version ${{ needs.build.outputs.version }}"
+          folder: dist
+          git-config-name: github-actions[bot]
+          git-config-email: 41898282+github-actions[bot]@users.noreply.github.com
+          silent: true
+
+  publish-release:
+    name: Publish release
+    needs: 
+      - build
+      - change-log
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: normal-built
+
+      - name: Download docker-configs
+        uses: actions/download-artifact@v7
+        with:
+          name: change-log
+
+      - name: Publish release
+        id: release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifacts: publish.tgz
+          bodyFile: changelog.md
+          draft: true
+          generateReleaseNotes: true
+
+      - name: Add a summary for the job
+        run: |
+          echo "## Release Report" >> $GITHUB_STEP_SUMMARY
+          publish_hash=$(sha256sum -z publish.tgz | awk '{print $1}')
+          echo "[publish.tgz]( $(echo '${{ steps.release.outputs.assets }}' | jq -r '.["publish.tgz"]') ) <code>sha256:$publish_hash</code>" >> $GITHUB_STEP_SUMMARY

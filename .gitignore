@@ -13,6 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
+components.d.ts
 
 /cypress/videos/
 /cypress/screenshots/
@@ -40,3 +41,13 @@ salt
 # IDE
 .vscode
 .qoder
+
+# builds
+*.zip
+*.tar.gz
+*.tar
+*.tgz
+
+# scripts
+*.sh
+*.bat

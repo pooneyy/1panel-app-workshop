@@ -1,0 +1,419 @@
+home:
+  subtitle: Мастерская приложений 1Panel
+  home: Главная
+  toggleMenu: Переключить меню
+  menu:
+    title: App Workshop
+    subtitle: Мастер создания приложений 1Panel
+  nav:
+    about: О проекте
+    darkMode: Тёмный режим
+    lightMode: Светлый режим
+    mode: Переключить тёмный/светлый режим
+    aboutLabel: О проекте
+    github: Репозиторий GitHub
+    githubRepository: Репозиторий IT-Tools на GitHub
+
+homepage:
+  text-center: Перенаправление в Мастерскую приложений 1Panel...
+
+tools:
+  categories:
+    favorite-tools: Избранные инструменты
+  app-workshop:
+    title: Мастерская приложений 1Panel
+    description: Комплексное создание локальных приложений для 1Panel
+    cards:
+      ProjectManagement:
+        title: Управление проектом
+        PackageProject:
+          title: Упаковать и скачать конфигурацию приложения
+          note: Загрузите логотип, введите версию приложения, упакуйте все конфигурационные файлы в ZIP-архив для скачивания.
+          uploadArea:
+            title: Загрузить логотип
+            note1: Нажмите или перетащите изображение в эту область
+            note2: Рекомендуется загружать изображение размером 180x180 пикселей; если размер больше, оно будет автоматически сжато
+          previewArea: Предпросмотр логотипа
+          appVersionForm:
+            lable: Версия приложения
+            placeholder: 'например: 1.0.0'
+          warning:
+            title: 'Структура ZIP-архива после упаковки:'
+            paragraph1: Файл метаданных приложения
+            paragraph2: Значок приложения
+            paragraph3: Документация на китайском
+            paragraph4: Документация на английском
+            paragraph5: Конфигурационный файл параметров
+            paragraph6: Конфигурация Docker Compose
+        ImportExport:
+          title: Импорт и экспорт проекта
+          note: Вы можете экспортировать проект в файл JSON или импортировать файл JSON для восстановления проекта.
+      AppForm:
+        title: Основная информация о приложении
+        key:
+          label: Ключ приложения
+          placeholder: строчные английские буквы, может содержать дефисы, используется для именования папки приложения
+        name:
+          label: Название приложения
+          placeholder: Отображаемое название приложения
+        desc:
+          en:
+            label: Описание на английском
+            placeholder: English description
+          zh:
+            label: Описание на упрощённом китайском
+            placeholder: Описание на китайском, не более 30 символов
+          zh-Hant:
+            label: Описание на традиционном китайском
+            placeholder: ''
+          ja:
+            label: Описание на японском
+            placeholder: ''
+          ko:
+            label: Описание на корейском
+            placeholder: ''
+          ms:
+            label: Описание на малайском
+            placeholder: ''
+          pt-br:
+            label: Описание на португальском
+            placeholder: Описание на португальском (Бразилия)
+          ru:
+            label: Описание на русском
+            placeholder: ''
+        tags:
+            label: Теги приложения
+            placeholder: Выберите теги приложения
+        type: Тип приложения
+        crossVersionUpdate: Межверсионное обновление
+        limit:
+          label: Ограничение на количество установок
+          placeholder: 0 означает без ограничений
+        website: Адрес веб-сайта
+        github: Адрес GitHub
+        document: Адрес документации
+        memoryRequired:
+          label: Требования к памяти
+          placeholder: Оставьте пустым, если требований нет
+        architectures: Поддерживаемые архитектуры
+      ReadmeEditor:
+        title: Редактор файла README
+        note: Вы можете изменить порядок абзацев, перетаскивая элементы списка. Любое редактирование шаблона или описания приложения приведёт к сбросу содержимого README.
+        template:
+          title: Шаблон
+          defaultCredentials:
+            switch: Учётная запись по умолчанию
+            input-user: Имя пользователя
+            placeholder1: Имя пользователя по умолчанию
+            input-pass: Пароль
+            placeholder2: Пароль по умолчанию
+          configUsage:
+            switch: Конфигурация и инструкции по использованию
+        tabs:
+          tab-cn: README на китайском
+          tab-en: README на английском
+        sections:
+          introduction:
+            title: Описание продукта
+            defalt: Это автоматически сгенерированная конфигурация приложения для 1Panel.
+          features:
+            title: Основные функции
+            defalt: Опишите здесь основные функции приложения.
+          credentials:
+            title: Учётные данные по умолчанию
+          configUsage:
+            title: Конфигурация и инструкции по использованию
+            defalt: Опишите здесь конфигурацию и способ использования приложения.
+      AppDeclaration:
+        title: Файл метаданных приложения
+        note: Располагается в корневой папке приложения, содержит основную информацию о приложении.
+      DockerComposeEditor:
+        title: Конфигурация Docker Compose
+        label: Редактировать содержимое YAML Docker Compose
+        var-info-area:
+          title: Обнаружены параметры приложения
+          subtitle: Всего обнаружено {count} параметров
+          newVars:
+            title: Новые параметры
+            text1: '{count} можно добавить'
+            text2: Нет новых параметров
+          existingVars:
+            title: Существующие
+            text1: '{count} настроено'
+            text2: Нет существующих параметров
+          ignoredVars:
+            title: Игнорируемые
+            text1: '{count} проигнорированных параметров'
+            text2: Нет игнорируемых параметров
+            text3: Зарезервированные параметры
+        note: Введённый файл Docker Compose после преобразования будет соответствовать стандартам приложений 1Panel.
+      AppParams:
+        title: Конфигурация параметров приложения
+        note: Настройте параметры, которые пользователь должен заполнить при установке приложения, такие как порты, данные подключения к БД и т.д.
+        Param-card:
+          title: Параметр
+          envKey:
+            label: Ключ переменной окружения
+            placeholder1: 'напр.: PANEL_DB_TYPE'
+            placeholder2: 'напр.: PANEL_APP_PORT_HTTP'
+          type:
+            label: Тип параметра
+          dynamic-param-config:
+            info:
+              title: Доступные зависимости сервисов
+              note: 'Пользователь может выбрать зависимый сервис (App) через главное меню, например: MySQL, MariaDB, PostgreSQL и т.д., и выбрать установленный экземпляр сервиса через подменю.<br>Значения опций главного меню должны соответствовать Key приложения в официальном магазине приложений. Значение по умолчанию должно быть выбрано из установленных опций зависимостей сервисов.'
+              select:
+                label1: Опция зависимости сервиса
+                label2: Опция выпадающего списка
+                input-label: Отображаемая метка
+                input-value1: 'Значение опции: Key приложения в официальном магазине'
+                input-value2: Значение опции
+              sub-select:
+                card-title: Дополнительное подменю зависимости сервиса
+                label: Ключ переменной окружения
+                placeholder: 'напр.: PANEL_DB_TYPE'
+              key:
+                label: Ключ зависимости
+                placeholder: 'напр.: mysql, redis, значение должно быть Key приложения из официального магазина'
+          default:
+            label: Значение по умолчанию
+            placeholder1: Это поле обязательно для заполнения
+            placeholder2: Значение по умолчанию
+          rule:
+            label: Правило проверки
+            placeholder: Выберите
+          form-label:
+            title: Метка формы (обязательно)
+            zh:
+              label: Метка на упрощённом китайском
+              placeholder: Метка на упрощённом китайском
+            zh-Hant:
+              label: Метка на традиционном китайском
+              placeholder: Метка на традиционном китайском
+            en:
+              label: Метка на английском
+              placeholder: Метка на английском
+            ja:
+              label: Метка на японском
+              placeholder: Метка на японском
+            ko:
+              label: Метка на корейском
+              placeholder: Метка на корейском
+            ms:
+              label: Метка на малайском
+              placeholder: Метка на малайском
+            pt-br:
+              label: Метка на португальском (Бразилия)
+              placeholder: Метка на португальском (Бразилия)
+            ru:
+              label: Метка на русском
+              placeholder: Метка на русском
+            tr:
+              label: Метка на турецком
+              placeholder: Метка на турецком
+          form-description:
+            title: Описание формы (опционально)
+            zh:
+              label: Описание на упрощённом китайском
+              placeholder: Описание на упрощённом китайском
+            zh-Hant:
+              label: Описание на традиционном китайском
+              placeholder: Описание на традиционном китайском
+            en:
+              label: Описание на английском
+              placeholder: Описание на английском
+            ja:
+              label: Описание на японском
+              placeholder: Описание на японском
+            ko:
+              label: Описание на корейском
+              placeholder: Описание на корейском
+            ms:
+              label: Описание на малайском
+              placeholder: Описание на малайском
+            pt-br:
+              label: Описание на португальском (Бразилия)
+              placeholder: Описание на португальском (Бразилия)
+            ru:
+              label: Описание на русском
+              placeholder: Описание на русском
+            tr:
+              label: Описание на турецком
+              placeholder: Описание на турецком
+          required: Обязательно
+          edit: Редактируемый
+          random: Случайные символы
+          editableOptions: Редактируемые свойства формы параметра
+        divider: Предпросмотр конфигурации параметров
+    components:
+      addDockerComposeParameters: Добавить параметры в конфигурацию параметров приложения
+      addOption: Добавить опцию
+      addParams: Добавить параметр
+      backToTop: Вернуться к скачиванию пакета приложения
+      cancel: Отмена
+      clearAllData: Очистить все данные
+      collapse: Свернуть
+      confirm: Подтвердить
+      downloadAllAsZip: Упаковать и скачать все конфигурации
+      downloadAppDeclaration: Скачать файл метаданных приложения
+      downloadAppParams: Скачать конфигурацию параметров
+      downloadDockerCompose: Скачать конфигурацию Docker Compose
+      downloadReadme: Скачать файл README
+      expand: Развернуть
+      exportProject: Экспортировать как JSON
+      importFromJson: Импортировать из JSON
+      importFromZip: Импортировать из ZIP
+      moveUp: Переместить вверх
+      moveDown: Переместить вниз
+      remove: Удалить
+      removeOption: Удалить опцию
+      resetParagraphOrder: Сбросить порядок и состояние абзацев
+    options:
+      availableTags:
+        ai: AI
+        bi: BI
+        crm: CRM
+        database: База данных
+        devops: DevOps
+        devtool: Инструмент разработки
+        email: Почтовый сервис
+        game: Казуальные игры
+        local: Локальный
+        media: Медиа
+        middleware: Промежуточное ПО
+        runtime: Среда выполнения
+        security: Безопасность
+        server: Веб-сервер
+        storage: Облачное хранилище
+        tool: Инструмент
+        website: Веб-сайт
+      editableOptions:
+        install-editable-post-editable: Редактируемо при установке, редактируемо после установки
+        install-locked-post-editable: Заблокировано при установке, редактируемо после установки
+        install-editable-post-locked: Редактируемо при установке, заблокировано после установки
+        install-locked-post-locked: Заблокировано при установке, заблокировано после установки
+      optionalEnvVars:
+        database: База данных
+      paramTypes:
+        apps: Apps - Доступные зависимости сервисов
+        number: Число
+        password: Пароль
+        select: Выпадающий список
+        service: Service - Фиксированные зависимости сервисов
+        text: Текст
+      ruleOptions:
+        paramPort: paramPort - Диапазон портов 1-65535
+        paramExtUrl: paramExtUrl - Формат HTTP(S) URL
+        paramCommon: paramCommon - Английские буквы, цифры .-_, длина 2-30
+        paramComplexity: paramComplexity - Сложный пароль, длина 6-30
+      typeOptions:
+        runtime: Runtime - Тип среды выполнения
+        tool: Tool - Тип инструмента
+        website: Website - Тип веб-сайта (с поддержкой развёртывания в один клик)
+    script:
+      errors:
+        clearLocalStorage: Не удалось очистить локальное хранилище
+        generation-failed: Ошибка генерации
+        conversion-failed: Ошибка преобразования
+        extract-parameters-failed: Ошибка извлечения параметров
+        validate-error: Ошибка при проверке файла изображения
+        upload-error: Ошибка загрузки файла
+        read-error: Ошибка чтения файла
+        image-load-error: Ошибка загрузки изображения
+        canvas-context-error: Не удалось создать контекст canvas
+      funcs:
+        clearAllData:
+          title: Очистить все данные
+          content: Сбросить проект? Это действие нельзя отменить.
+          success: Проект успешно сброшен
+        saveToLocalStorage:
+          success: Данные сохранены в локальное хранилище
+          failed: Не удалось сохранить в локальное хранилище
+        loadFromLocalStorage:
+          noData: Сохранённые данные не найдены
+          dataExpired: Сохранённые данные устарели, используются данные по умолчанию
+          success: Успешно загружено из локального хранилища
+          failed: Не удалось загрузить из локального хранилища
+        clearLocalStorage:
+          success: Локальное хранилище очищено
+        convertedDockerCompose:
+          note1: Исходное содержимое
+        addDockerComposeParameters:
+          success: Успешно добавлено {count} новых параметров в конфигурацию параметров приложения
+          warning: При большом количестве параметров время отклика может увеличиться
+          failed: Новых параметров не обнаружено, все параметры уже существуют в конфигурации
+          processingTime: 'Время обработки: {time} сек.'
+        handleLogoUpload:
+          no-imagefile: Загрузите файл изображения. Текущий тип файла
+          no-image: Загруженный файл не является допустимым изображением, проверьте содержимое
+        downloadAllAsZip:
+          image-compress-failed: Ошибка сжатия изображения, используется логотип по умолчанию
+          package-failed: Ошибка упаковки и скачивания
+        exportProject:
+          success: Проект успешно экспортирован
+          failed: Не удалось экспортировать проект
+        importProject:
+          appParamsParseError: Ошибка разбора параметров приложения
+          error: Не удалось импортировать проект
+          invalidFile: Недопустимый файл
+          invalidJsonFormat: Недопустимый формат
+          invalidLogo: Недопустимый файл logo.png, используется логотип по умолчанию
+          invalidPackageStructure: Некорректная структура пакета приложения
+          invalidZipFile: Недопустимый ZIP-файл
+          missingAppDeclaration: Отсутствует файл метаданных приложения
+          missingVersionFiles: Отсутствует каталог версии или необходимые файлы в нём (data.yml и docker-compose.yml)
+          parseError: Ошибка разбора файла
+          readError: Ошибка чтения файла
+          success: Проект успешно импортирован
+          zipError: Ошибка импорта проекта из ZIP-файла
+          zipParseError: Ошибка разбора ZIP-файла
+          zipReadError: Ошибка чтения ZIP-файла
+          zipSuccess: ZIP-файл успешно импортирован
+        validateAppPackageStructure:
+          noRootFolder: Не найдена допустимая корневая папка
+          noFoundValidVersion: Не найдена допустимая версия
+
+locale-selector:
+  select-a-language: Выберите язык
+
+favoriteButton:
+  remove: Удалить из избранного
+  add: Добавить в избранное
+
+search:
+  label: Поиск
+  placeholder: Поиск инструментов...
+
+textareaCopyable:
+  copy: Копировать в буфер обмена
+  copied: Скопировано!
+  download: Скачать
+
+inputCopyable:
+  copy: Копировать
+  copied: Скопировано!
+
+about:
+  content-fork: |
+    # О Мастерской приложений 1Panel
+    
+    Это специализированная версия IT-Tools, предназначенная для комплексного создания локальных приложений для магазина приложений панели 1Panel.
+    
+    Легко создавайте свои собственные локальные приложения для 1Panel.
+
+    Этот проект представляет собой дальнейшую разработку на основе [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be).
+  alltools-title: Все инструменты ({toolsCount} инструментов)
+  tools:
+    category: Категория
+    name: Название
+    desc: Описание
+
+404:
+  notFound: Страница не найдена
+  sorry: Извините, запрашиваемая страница не существует.
+  maybe: Возможно, вы хотите вернуться на главную?
+  backHome: Вернуться на главную
+
+components:
+  MarkdownRender:
+    default-content: Содержание отсутствует

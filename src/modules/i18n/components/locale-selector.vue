@@ -2,19 +2,24 @@
 const { availableLocales, locale, t } = useI18n();
 
 const localesLong: Record<string, string> = {
-  en: 'English',
+  ar: 'عربي',
   de: 'Deutsch',
+  en: 'English',
   es: 'Español',
   fr: 'Français',
   ga: 'Gaeilge',
+  ja: '日本語',
+  ko: '한국어',
+  ms: 'Bahasa Melayu',
   no: 'Norwegian',
   pl: 'Polski',
   pt: 'Português',
   ru: 'Русский',
+  tr: 'Turkish',
   uk: 'Українська',
-  zh: '中文',
   vi: 'Tiếng Việt',
-  ar: 'عربي',
+  zh: '简体中文',
+  'zh-hant': '繁體中文',
 };
 
 const localeOptions = computed(() =>
@@ -30,6 +35,6 @@ const localeOptions = computed(() =>
     v-model:value="locale"
     :options="localeOptions"
     :placeholder="t('locale-selector.select-a-language')"
-    w-100px
+    w-110px
   />
 </template>

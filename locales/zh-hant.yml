@@ -1,0 +1,419 @@
+home:
+  subtitle: 1Panel 應用工場
+  home: 首頁
+  toggleMenu: 切換選單
+  menu:
+    title: 應用工場
+    subtitle: 1Panel 应用建立向導
+  nav:
+    about: 關於
+    darkMode: 深色模式
+    lightMode: 淺色模式
+    mode: 切換深色/淺色模式
+    aboutLabel: 關於
+    github: GitHub 倉庫
+    githubRepository: IT-Tools GitHub 倉庫
+
+homepage:
+  text-center: 正在跳轉到 1Panel 應用工場...
+
+tools:
+  categories:
+    favorite-tools: 收藏工具
+  app-workshop:
+    title: 1Panel 應用工場
+    description: 一站式建構 1Panel 本地應用
+    cards:
+      ProjectManagement:
+        title: 專案管理
+        PackageProject:
+          title: 打包下載應用配置
+          note: 上傳 Logo，輸入應用版本號，將所有配置檔案打包為 ZIP 檔案下載。
+          uploadArea:
+            title: 上傳 Logo
+            note1: 點擊或拖曳圖片到此區域
+            note2: 建議上傳180x180像素的圖片，如果尺寸大於180x180將自動壓縮
+          previewArea: 預覽 Logo
+          appVersionForm: 
+            lable: 應用版本
+            placeholder: '例如: 1.0.0'
+          warning:
+            title: 打包後的 ZIP 檔案結構：
+            paragraph1: 應用元數據檔案
+            paragraph2: 應用圖示
+            paragraph3: 中文說明文件
+            paragraph4: 英文說明文件
+            paragraph5: 參數配置檔案
+            paragraph6: Docker Compose 配置
+        ImportExport:
+          title: 匯入與匯出專案
+          note: 你可以將專案匯出為 JSON 檔案，或將 JSON 檔案匯入以恢復專案。
+      AppForm:
+        title: 應用基本資訊
+        key:
+          label: 應用 Key
+          placeholder: 小寫英文字母，可包含連字元，用於命名應用資料夾
+        name:
+          label: 應用名稱
+          placeholder: 對外顯示的應用名稱
+        desc:
+          en:
+            label: 英文描述
+            placeholder: English description
+          zh:
+            label: 簡體中文描述
+            placeholder: 中文描述，不要超過30個字
+          zh-Hant:
+            label: 繁體中文描述
+            placeholder: ''
+          ja:
+            label: 日本語描述
+            placeholder: ''
+          ko:
+            label: 韓語描述
+            placeholder: ''
+          ms:
+            label: 馬來語描述
+            placeholder: ''
+          pt-br:
+            label: 葡萄牙語描述
+            placeholder: 葡萄牙語（巴西）描述
+          ru:
+            label: 俄羅斯語描述
+            placeholder: ''
+        tags:
+            label: 應用標籤
+            placeholder: 選擇應用標籤
+        type: 應用類型
+        crossVersionUpdate: 跨版本升級
+        limit:
+          label: 安裝數量限制
+          placeholder: 0代表無限制
+        website: 官網地址
+        github: GitHub 地址
+        document: 文件地址
+        memoryRequired:
+          label: 記憶體需求
+          placeholder: 留空表示沒有記憶體需求
+        architectures: 支援架構
+      ReadmeEditor:
+        title: 編輯自述檔案
+        note: 你可以透過拖曳列表項目以調整段落順序。任何編輯範本或應用描述的行為均會重設自述檔案內容。
+        template:
+          title: 範本
+          defaultCredentials:
+            switch: 預設帳戶
+            input-user: 使用者名稱
+            placeholder1: 預設使用者名稱
+            input-pass: 密碼
+            placeholder2: 預設密碼
+          configUsage: 
+            switch: 配置和使用說明
+        tabs:
+          tab-cn: 中文自述檔案
+          tab-en: 英文自述檔案
+        sections:
+          introduction:
+            title: 產品介紹
+            defalt: 這是為 1Panel 自動產生的應用程式配置。
+          features:
+            title: 主要功能
+            defalt: 在這裡填寫應用主要功能。
+          credentials:
+            title: 預設帳戶密碼
+          configUsage:
+            title: 配置和使用說明
+            defalt: 在這裡填寫應用配置說明和使用方法。
+      AppDeclaration:
+        title: 應用元數據檔案
+        note: 位於應用資料夾根目錄，用於宣告應用的基本資訊。
+      DockerComposeEditor:
+        title: Docker Compose 配置
+        label: 編輯 Docker Compose YAML 內容
+        var-info-area:
+          title: 發現應用參數
+          subtitle: 共發現 {count} 個參數
+          newVars:
+            title: 新參數
+            text1: '{count} 個可新增'
+            text2: 無新參數
+          existingVars:
+            title: 已存在
+            text1: '{count} 個已配置'
+            text2: 無已存在參數
+          ignoredVars:
+            title: 被忽略
+            text1: '{count} 個已忽略參數'
+            text2: 無被忽略參數
+            text3: 保留參數
+        note: 輸入的 Docker Compose 檔案轉換後將會符合 1Panel 應用標準。
+      AppParams:
+        title: 應用參數配置
+        note: 配置應用安裝時需要使用者填寫的參數，如連接埠、資料庫連線資訊等。
+        Param-card:
+          title: 參數
+          envKey:
+            label: 環境變數 Key
+            placeholder1: '如: PANEL_DB_TYPE'
+            placeholder2: '如: PANEL_APP_PORT_HTTP'
+          type:
+            label: 參數類型
+          dynamic-param-config:
+            info:
+              title: 可供選擇的服務依賴
+              note: 使用者可以透過一級選單選擇依賴的服務(App)，例如：MySQL、MariaDB、PostgreSQL 等，透過子選單選擇已安裝的服務實例。<br>一級選單的選項值必須填寫官方應用商店中應用的 Key，預設值必須填寫已設定的服務依賴選項值
+              select:
+                label1: 服務依賴選項
+                label2: 下拉選單選項
+                input-label: 顯示標籤
+                input-value1: '選項值: 官方應用商店中應用的 Key'
+                input-value2: 選項值
+              sub-select:
+                card-title: 可選的服務依賴子選單
+                label: 環境變數 Key
+                placeholder: '如: PANEL_DB_TYPE'
+              key:
+                label: 依賴 Key
+                placeholder: '如: mysql, redis, 值必須填寫官方應用商店中應用的Key'
+          default:
+            label: 預設值
+            placeholder1: 此項必須填寫
+            placeholder2: 預設值
+          rule:
+            label: 驗證規則
+            placeholder: 請選擇
+          form-label:
+            title: 表單標籤 (必填)
+            zh:
+              label: 簡體中文標籤
+              placeholder: 簡體中文標籤
+            zh-Hant:
+              label: 繁體中文標籤
+              placeholder: 繁體中文標籤
+            en:
+              label: 英文標籤
+              placeholder: 英文標籤
+            ja:
+              label: 日文標籤
+              placeholder: 日文標籤
+            ko:
+              label: 韓文標籤
+              placeholder: 韓文標籤
+            ms:
+              label: 馬來文標籤
+              placeholder: 馬來文標籤
+            pt-br:
+              label: 葡萄牙文 (巴西) 標籤
+              placeholder: 葡萄牙文 (巴西) 標籤
+            ru:
+              label: 俄文標籤
+              placeholder: 俄文標籤
+            tr:
+              label: 土耳其文標籤
+              placeholder: 土耳其文標籤
+          form-description:
+            title: 表單描述 (可選)
+            zh:
+              label: 簡體中文描述
+              placeholder: 簡體中文描述
+            zh-Hant:
+              label: 繁體中文描述
+              placeholder: 繁體中文描述
+            en:
+              label: 英文描述
+              placeholder: 英文描述
+            ja:
+              label: 日文描述
+              placeholder: 日文描述
+            ko:
+              label: 韓文描述
+              placeholder: 韓文描述
+            ms:
+              label: 馬來文描述
+              placeholder: 馬來文描述
+            pt-br:
+              label: 葡萄牙文 (巴西) 描述
+              placeholder: 葡萄牙文 (巴西) 描述
+            ru:
+              label: 俄文描述
+              placeholder: 俄文描述
+            tr:
+              label: 土耳其文描述
+              placeholder: 土耳其文描述
+          required: 是否必填
+          edit: 可編輯
+          random: 隨機字元
+          editableOptions: 參數表單可編輯屬性
+        divider: 參數配置預覽
+    components:
+      addDockerComposeParameters: 新增參數到應用參數配置
+      addOption: 新增選項
+      addParams: 新增參數
+      backToTop: 返回下載應用包
+      cancel: 取消
+      clearAllData: 清除所有資料
+      collapse: 折疊
+      confirm: 確定
+      downloadAllAsZip: 打包下載所有配置
+      downloadAppDeclaration: 下載應用元數據檔案
+      downloadAppParams: 下載參數配置
+      downloadDockerCompose: 下載 Docker Compose 配置
+      downloadReadme: 下載自述檔案
+      expand: 展開
+      exportProject: 匯出為 JSON
+      importFromJson: 從 JSON 匯入
+      importFromZip: 從 ZIP 匯入
+      moveUp: 上移
+      moveDown: 下移
+      remove: 刪除
+      removeOption: 刪除選項
+      resetParagraphOrder: 重設段落順序與啟用狀態
+    options:
+      availableTags:
+        ai: AI
+        bi: BI
+        crm: CRM
+        database: 資料庫
+        devops: DevOps
+        devtool: 開發工具
+        email: 郵件服務
+        game: 休閒遊戲
+        local: 本地
+        media: 多媒體
+        middleware: 中介軟體
+        runtime: 執行環境
+        security: 安全
+        server: Web 伺服器
+        storage: 雲端儲存
+        tool: 實用工具
+        website: 建站
+      editableOptions:
+        install-editable-post-editable: 安裝時可編輯，安裝後可編輯
+        install-locked-post-editable: 安裝時鎖定，安裝後可編輯
+        install-editable-post-locked: 安裝時可編輯，安裝後鎖定
+        install-locked-post-locked: 安裝時鎖定，安裝後鎖定
+      optionalEnvVars:
+        database: 資料庫
+      paramTypes:
+        apps: Apps - 可供選擇的服務依賴
+        number: 數字
+        password: 密碼
+        select: 下拉選單
+        service: Service - 固定的服務依賴
+        text: 文字
+      ruleOptions:
+        paramPort: paramPort - 連接埠範圍 1-65535
+        paramExtUrl: paramExtUrl - HTTP(S) URL格式
+        paramCommon: paramCommon - 英文數字.-_，長度2-30
+        paramComplexity: paramComplexity - 複雜密碼，長度6-30
+      typeOptions:
+        runtime: Runtime - 執行環境類型
+        tool: Tool - 工具類型
+        website: Website - 網站類型（支援一鍵部署）
+    script:
+      errors:
+        clearLocalStorage: 清除本地儲存失敗
+        generation-failed: 產生失敗
+        conversion-failed: 轉換失敗
+        extract-parameters-failed: 提取參數失敗
+        validate-error: 驗證圖片檔案時發生錯誤
+        upload-error: 上傳檔案時發生錯誤
+        read-error: 讀取檔案時發生錯誤
+        image-load-error: 圖片載入失敗
+        canvas-context-error: 無法建立 canvas 上下文
+      funcs:
+        clearAllData:
+          title: 清除所有資料
+          content: 即將重設專案，是否繼續？此項操作無法復原
+          success: 專案重設成功
+        saveToLocalStorage:
+          success: 資料已儲存到本地儲存
+          failed: 儲存到本地儲存失敗
+        loadFromLocalStorage:
+          noData: 沒有找到儲存的資料
+          dataExpired: 儲存的資料已過期，使用預設資料
+          success: 從本地儲存載入成功
+          failed: 從本地儲存載入失敗
+        clearLocalStorage:
+          success: 本地儲存已清除
+        convertedDockerCompose:
+          note1: 原始內容
+        addDockerComposeParameters:
+          success: 成功新增 {count} 個新參數到應用參數配置
+          warning: 當參數過多時，會導致響應時間變長
+          failed: 沒有發現新的參數，所有參數都已存在於應用參數配置中
+          processingTime: '處理時間: {time} 秒'
+        handleLogoUpload:
+          no-imagefile: 請上傳圖片檔案，目前檔案類型
+          no-image: 上傳的檔案不是有效的圖片檔案，請檢查檔案內容
+        downloadAllAsZip:
+          image-compress-failed: 圖片壓縮失敗，使用預設 logo
+          package-failed: 打包下載失敗
+        exportProject:
+          success: 匯出專案成功
+          failed: 匯出專案失敗
+        importProject:
+          appParamsParseError: 應用參數解析失敗
+          error: 匯入專案失敗
+          invalidFile: 無效的檔案
+          invalidJsonFormat: 無效的格式
+          invalidLogo: 無效的 logo.png 檔案，已使用預設 Logo
+          invalidPackageStructure: 應用包結構不正確
+          invalidZipFile: 無效的 ZIP 檔案
+          missingAppDeclaration: 缺少應用元數據檔案
+          missingVersionFiles: 缺少版本目錄或版本目錄中缺少必要的檔案 (data.yml 和 docker-compose.yml)
+          parseError: 檔案解析錯誤
+          readError: 檔案讀取錯誤
+          success: 匯入專案成功
+          zipError: 從 ZIP 檔案匯入專案失敗
+          zipParseError: ZIP 檔案解析錯誤
+          zipReadError: ZIP 檔案讀取錯誤
+          zipSuccess: ZIP 檔案匯入成功
+        validateAppPackageStructure:
+          noRootFolder: 未找到有效的根目錄
+          noFoundValidVersion: 未找到有效的版本目錄
+
+locale-selector:
+  select-a-language: 選擇語言
+
+favoriteButton:
+  remove: 從收藏夾中移除
+  add: 新增到收藏夾
+
+search:
+  label: 搜尋
+  placeholder: 搜尋工具...
+
+textareaCopyable:
+  copy: 複製到剪貼簿
+  copied: 已複製！
+  download: 下載
+
+inputCopyable:
+  copy: 複製
+  copied: 已複製！
+
+about:
+  content-fork: |
+    # 關於 1Panel 應用工場
+    
+    這是 IT-Tools 的專門版本，旨在為 1Panel 面板應用商店提供一站式的本地應用建構支援。
+    
+    輕鬆建構屬於自己的 1Panel 本地應用。
+
+    本專案基於 [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be) 進行二次開發。
+  alltools-title: 所有工具（{toolsCount} 個工具）
+  tools:
+    category: 分類
+    name: 名稱
+    desc: 描述
+
+404:
+  notFound: 頁面未找到
+  sorry: 抱歉，您存取的頁面不存在。
+  maybe: 也許您想回到首頁？
+  backHome: 回到首頁
+
+components:
+  MarkdownRender:
+    default-content: 暫無內容

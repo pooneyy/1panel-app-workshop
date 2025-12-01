@@ -1,0 +1,419 @@
+home:
+  subtitle: Bengkel Aplikasi 1Panel
+  home: Laman Utama
+  toggleMenu: Togol Menu
+  menu:
+    title: Bengkel Aplikasi
+    subtitle: Pembantu Penciptaan Aplikasi 1Panel
+  nav:
+    about: Tentang
+    darkMode: Mod Gelap
+    lightMode: Mod Cerah
+    mode: Togol Mod Gelap/Cerah
+    aboutLabel: Tentang
+    github: Repositori GitHub
+    githubRepository: Repositori GitHub IT-Tools
+
+homepage:
+  text-center: Mengalihkan ke Bengkel Aplikasi 1Panel...
+
+tools:
+  categories:
+    favorite-tools: Alat Kegemaran
+  app-workshop:
+    title: Bengkel Aplikasi 1Panel
+    description: Penyelesaian Sehenti untuk membina Aplikasi Tempatan 1Panel
+    cards:
+      ProjectManagement:
+        title: Pengurusan Projek
+        PackageProject:
+          title: Pakej dan Muat Turun Konfigurasi Aplikasi
+          note: Muat naik Logo, masukkan nombor versi aplikasi, pakej semua fail konfigurasi sebagai fail ZIP untuk dimuat turun.
+          uploadArea:
+            title: Muat Naik Logo
+            note1: Klik atau seret imej ke kawasan ini
+            note2: Imej 180x180 piksel disyorkan; jika saiz melebihi 180x180, ia akan dimampatkan secara automatik.
+          previewArea: Pratonton Logo
+          appVersionForm:
+            lable: Versi Aplikasi
+            placeholder: 'contoh: 1.0.0'
+          warning:
+            title: 'Struktur Fail ZIP yang Dihasilkan:'
+            paragraph1: Fail metadata aplikasi
+            paragraph2: Ikon aplikasi
+            paragraph3: Dokumentasi dalam Bahasa Cina
+            paragraph4: Dokumentasi dalam Bahasa Inggeris
+            paragraph5: Fail konfigurasi parameter
+            paragraph6: Konfigurasi Docker Compose
+        ImportExport:
+          title: Import dan Eksport Projek
+          note: Anda boleh mengeksport projek sebagai fail JSON, atau mengimport fail JSON untuk memulihkan projek.
+      AppForm:
+        title: Maklumat Asas Aplikasi
+        key:
+          label: Kunci Aplikasi
+          placeholder: huruf Inggeris kecil, boleh mengandungi sengkang, digunakan untuk menamakan folder aplikasi
+        name:
+          label: Nama Aplikasi
+          placeholder: Nama aplikasi yang dipaparkan kepada umum
+        desc:
+          en:
+            label: Penerangan Bahasa Inggeris
+            placeholder: English description
+          zh:
+            label: Penerangan Bahasa Cina Ringkas
+            placeholder: Penerangan dalam Bahasa Cina, tidak lebih daripada 30 aksara
+          zh-Hant:
+            label: Penerangan Bahasa Cina Tradisional
+            placeholder: ''
+          ja:
+            label: Penerangan Bahasa Jepun
+            placeholder: ''
+          ko:
+            label: Penerangan Bahasa Korea
+            placeholder: ''
+          ms:
+            label: Penerangan Bahasa Melayu
+            placeholder: ''
+          pt-br:
+            label: Penerangan Bahasa Portugis
+            placeholder: Penerangan dalam Bahasa Portugis (Brazil)
+          ru:
+            label: Penerangan Bahasa Rusia
+            placeholder: ''
+        tags:
+            label: Tag Aplikasi
+            placeholder: Pilih tag aplikasi
+        type: Jenis Aplikasi
+        crossVersionUpdate: Kemaskini Rentas Versi
+        limit:
+          label: Had Kuantiti Pemasangan
+          placeholder: 0 bermaksud tiada had
+        website: Laman Web Rasmi
+        github: Alamat GitHub
+        document: Alamat Dokumentasi
+        memoryRequired:
+          label: Keperluan Memori
+          placeholder: Biarkan kosong jika tiada keperluan memori
+        architectures: Seni Bina yang Disokong
+      ReadmeEditor:
+        title: Penyunting Fail README
+        note: Anda boleh mengubah susunan perenggan dengan menyeret item senarai. Sebarang suntingan pada templat atau penerangan aplikasi akan menetapkan semula kandungan fail README.
+        template:
+          title: Templat
+          defaultCredentials:
+            switch: Akaun Lalai
+            input-user: Nama Pengguna
+            placeholder1: Nama pengguna lalai
+            input-pass: Kata Laluan
+            placeholder2: Kata laluan lalai
+          configUsage:
+            switch: Arahan Konfigurasi dan Penggunaan
+        tabs:
+          tab-cn: README dalam Bahasa Cina
+          tab-en: README dalam Bahasa Inggeris
+        sections:
+          introduction:
+            title: Pengenalan Produk
+            defalt: Ini adalah konfigurasi aplikasi yang dijana secara automatik untuk 1Panel.
+          features:
+            title: Ciri Utama
+            defalt: Isikan ciri utama aplikasi di sini.
+          credentials:
+            title: Maklumat Akaun/Kata Laluan Lalai
+          configUsage:
+            title: Arahan Konfigurasi dan Penggunaan
+            defalt: Isikan arahan konfigurasi dan penggunaan aplikasi di sini.
+      AppDeclaration:
+        title: Fail Metadata Aplikasi
+        note: Terletak di folder akar aplikasi, digunakan untuk mengisytiharkan maklumat asas aplikasi.
+      DockerComposeEditor:
+        title: Konfigurasi Docker Compose
+        label: Edit Kandungan Docker Compose YAML
+        var-info-area:
+          title: Parameter Aplikasi Dikesan
+          subtitle: Sejumlah {count} parameter ditemui
+          newVars:
+            title: Parameter Baru
+            text1: '{count} tersedia untuk ditambah'
+            text2: Tiada parameter baru
+          existingVars:
+            title: Sedia Ada
+            text1: '{count} dikonfigurasikan'
+            text2: Tiada parameter sedia ada
+          ignoredVars:
+            title: Diabaikan
+            text1: '{count} parameter diabaikan'
+            text2: Tiada parameter diabaikan
+            text3: Parameter Terpelihara
+        note: Fail Docker Compose yang dimasukkan akan mematuhi piawaian aplikasi 1Panel selepas penukaran.
+      AppParams:
+        title: Konfigurasi Parameter Aplikasi
+        note: Konfigurasikan parameter yang perlu diisi oleh pengguna semasa pemasangan aplikasi, seperti port, maklumat sambungan pangkalan data, dll.
+        Param-card:
+          title: Parameter
+          envKey:
+            label: Kunci Pembolehubah Persekitaran
+            placeholder1: 'cth: PANEL_DB_TYPE'
+            placeholder2: 'cth: PANEL_APP_PORT_HTTP'
+          type:
+            label: Jenis Parameter
+          dynamic-param-config:
+            info:
+              title: Kebergantungan Perkhidmatan yang Tersedia
+              note: 'Pengguna boleh memilih perkhidmatan bergantung (App) melalui menu tahap pertama, contohnya: MySQL, MariaDB, PostgreSQL, dan lain-lain, dan memilih contoh perkhidmatan yang telah dipasang melalui submenu.<br>Nilai pilihan menu tahap pertama mesti sama dengan kunci aplikasi di kedai aplikasi rasmi, nilai lalai mesti sama dengan nilai pilihan kebergantungan perkhidmatan yang telah ditetapkan.'
+              select:
+                label1: Pilihan Kebergantungan Perkhidmatan
+                label2: Pilihan Menu Lungkup
+                input-label: Label Paparan
+                input-value1: 'Nilai Pilihan: Kunci aplikasi di kedai aplikasi rasmi'
+                input-value2: Nilai Pilihan
+              sub-select:
+                card-title: Submenu Kebergantungan Perkhidmatan Pilihan
+                label: Kunci Pembolehubah Persekitaran
+                placeholder: 'cth: PANEL_DB_TYPE'
+              key:
+                label: Kunci Kebergantungan
+                placeholder: 'cth: mysql, redis, nilai mesti sama dengan kunci aplikasi di kedai aplikasi rasmi'
+          default:
+            label: Nilai Lalai
+            placeholder1: Medan ini wajib diisi
+            placeholder2: Nilai lalai
+          rule:
+            label: Peraturan Pengesahan
+            placeholder: Sila pilih
+          form-label:
+            title: Label Borang (Wajib)
+            zh:
+              label: Label Bahasa Cina Ringkas
+              placeholder: Label Bahasa Cina Ringkas
+            zh-Hant:
+              label: Label Bahasa Cina Tradisional
+              placeholder: Label Bahasa Cina Tradisional
+            en:
+              label: Label Bahasa Inggeris
+              placeholder: Label Bahasa Inggeris
+            ja:
+              label: Label Bahasa Jepun
+              placeholder: Label Bahasa Jepun
+            ko:
+              label: Label Bahasa Korea
+              placeholder: Label Bahasa Korea
+            ms:
+              label: Label Bahasa Melayu
+              placeholder: Label Bahasa Melayu
+            pt-br:
+              label: Label Bahasa Portugis (Brazil)
+              placeholder: Label Bahasa Portugis (Brazil)
+            ru:
+              label: Label Bahasa Rusia
+              placeholder: Label Bahasa Rusia
+            tr:
+              label: Label Bahasa Turki
+              placeholder: Label Bahasa Turki
+          form-description:
+            title: Penerangan Borang (Pilihan)
+            zh:
+              label: Penerangan Bahasa Cina Ringkas
+              placeholder: Penerangan Bahasa Cina Ringkas
+            zh-Hant:
+              label: Penerangan Bahasa Cina Tradisional
+              placeholder: Penerangan Bahasa Cina Tradisional
+            en:
+              label: Penerangan Bahasa Inggeris
+              placeholder: Penerangan Bahasa Inggeris
+            ja:
+              label: Penerangan Bahasa Jepun
+              placeholder: Penerangan Bahasa Jepun
+            ko:
+              label: Penerangan Bahasa Korea
+              placeholder: Penerangan Bahasa Korea
+            ms:
+              label: Penerangan Bahasa Melayu
+              placeholder: Penerangan Bahasa Melayu
+            pt-br:
+              label: Penerangan Bahasa Portugis (Brazil)
+              placeholder: Penerangan Bahasa Portugis (Brazil)
+            ru:
+              label: Penerangan Bahasa Rusia
+              placeholder: Penerangan Bahasa Rusia
+            tr:
+              label: Penerangan Bahasa Turki
+              placeholder: Penerangan Bahasa Turki
+          required: Wajib atau Tidak
+          edit: Boleh Diedit
+          random: Aksara Rawak
+          editableOptions: Sifat Kebolehubahan Borang Parameter
+        divider: Pratonton Konfigurasi Parameter
+    components:
+      addDockerComposeParameters: Tambah Parameter ke Konfigurasi Parameter Aplikasi
+      addOption: Tambah Pilihan
+      addParams: Tambah Parameter
+      backToTop: Kembali ke Muat Turun Pakej Aplikasi
+      cancel: Batal
+      clearAllData: Kosongkan Semua Data
+      collapse: Runtuh
+      confirm: Sahkan
+      downloadAllAsZip: Pakej dan Muat Turun Semua Konfigurasi
+      downloadAppDeclaration: Muat Turun Fail Metadata Aplikasi
+      downloadAppParams: Muat Turun Konfigurasi Parameter
+      downloadDockerCompose: Muat Turun Konfigurasi Docker Compose
+      downloadReadme: Muat Turun Fail README
+      expand: Kembangkan
+      exportProject: Eksport sebagai JSON
+      importFromJson: Import dari JSON
+      importFromZip: Import dari ZIP
+      moveUp: Naik ke Atas
+      moveDown: Turun ke Bawah
+      remove: Padam
+      removeOption: Padam Pilihan
+      resetParagraphOrder: Tetapkan Semula Susunan dan Status Perenggan
+    options:
+      availableTags:
+        ai: AI
+        bi: BI
+        crm: CRM
+        database: Pangkalan Data
+        devops: DevOps
+        devtool: Alat Pembangunan
+        email: Perkhidmatan E-mel
+        game: Permainan Santai
+        local: Tempatan
+        media: Media
+        middleware: Middleware
+        runtime: Masa Jalan
+        security: Keselamatan
+        server: Pelayan Web
+        storage: Penyimpanan Awan
+        tool: Alat
+        website: Laman Web
+      editableOptions:
+        install-editable-post-editable: Boleh diedit semasa pemasangan, boleh diedit selepas pemasangan
+        install-locked-post-editable: Dikunci semasa pemasangan, boleh diedit selepas pemasangan
+        install-editable-post-locked: Boleh diedit semasa pemasangan, dikunci selepas pemasangan
+        install-locked-post-locked: Dikunci semasa pemasangan, dikunci selepas pemasangan
+      optionalEnvVars:
+        database: Pangkalan Data
+      paramTypes:
+        apps: Apps - Kebergantungan Perkhidmatan yang Tersedia untuk Dipilih
+        number: Nombor
+        password: Kata Laluan
+        select: Menu Lungkup
+        service: Service - Kebergantungan Perkhidmatan Tetap
+        text: Teks
+      ruleOptions:
+        paramPort: paramPort - Julat Port 1-65535
+        paramExtUrl: paramExtUrl - Format URL HTTP(S)
+        paramCommon: paramCommon - Huruf Inggeris nombor.-_, panjang 2-30
+        paramComplexity: paramComplexity - Kata laluan kompleks, panjang 6-30
+      typeOptions:
+        runtime: Runtime - Jenis Masa Jalan
+        tool: Tool - Jenis Alat
+        website: Website - Jenis Laman Web (Menyokong penyebaran satu klik)
+    script:
+      errors:
+        clearLocalStorage: Gagal mengosongkan storan tempatan
+        generation-failed: Penjanaan gagal
+        conversion-failed: Penukaran gagal
+        extract-parameters-failed: Pengekstrakan parameter gagal
+        validate-error: Ralat berlaku semasa mengesahkan fail imej
+        upload-error: Ralat berlaku semasa memuat naik fail
+        read-error: Ralat berlaku semasa membaca fail
+        image-load-error: Gagal memuatkan imej
+        canvas-context-error: Tidak dapat membuat konteks kanvas
+      funcs:
+        clearAllData:
+          title: Kosongkan Semua Data
+          content: Projek akan ditetapkan semula. Teruskan? Tindakan ini tidak dapat dibuat asal.
+          success: Projek berjaya ditetapkan semula
+        saveToLocalStorage:
+          success: Data telah disimpan ke storan tempatan
+          failed: Gagal menyimpan ke storan tempatan
+        loadFromLocalStorage:
+          noData: Tiada data yang disimpan ditemui
+          dataExpired: Data yang disimpan telah tamat tempoh, menggunakan data lalai
+          success: Berjaya dimuatkan dari storan tempatan
+          failed: Gagal memuatkan dari storan tempatan
+        clearLocalStorage:
+          success: Storan tempatan telah dikosongkan
+        convertedDockerCompose:
+          note1: Kandungan Asal
+        addDockerComposeParameters:
+          success: Berjaya menambah {count} parameter baru ke konfigurasi parameter aplikasi
+          warning: Dengan terlalu banyak parameter, masa tindak balas mungkin menjadi lebih panjang
+          failed: Tiada parameter baru ditemui, semua parameter telah wujud dalam konfigurasi parameter aplikasi
+          processingTime: 'Masa Pemprosesan: {time} saat'
+        handleLogoUpload:
+          no-imagefile: Sila muat naik fail imej. Jenis fail semasa
+          no-image: Fail yang dimuat naik bukan fail imej yang sah, sila semak kandungan fail.
+        downloadAllAsZip:
+          image-compress-failed: Mampatan imej gagal, menggunakan logo lalai
+          package-failed: Pakej dan muat turun gagal
+        exportProject:
+          success: Projek berjaya dieksport
+          failed: Eksport projek gagal
+        importProject:
+          appParamsParseError: Huraian parameter aplikasi gagal
+          error: Import projek gagal
+          invalidFile: Fail tidak sah
+          invalidJsonFormat: Format tidak sah
+          invalidLogo: Fail logo.png tidak sah, menggunakan Logo lalai
+          invalidPackageStructure: Struktur pakej aplikasi tidak betul
+          invalidZipFile: Fail ZIP tidak sah
+          missingAppDeclaration: Fail metadata aplikasi tiada
+          missingVersionFiles: Direktori versi tiada atau fail yang diperlukan (data.yml dan docker-compose.yml) tiada dalam direktori versi
+          parseError: Ralat menghurai fail
+          readError: Ralat membaca fail
+          success: Projek berjaya diimport
+          zipError: Gagal mengimport projek dari fail ZIP
+          zipParseError: Ralat menghurai fail ZIP
+          zipReadError: Ralat membaca fail ZIP
+          zipSuccess: Berjaya mengimport dari fail ZIP
+        validateAppPackageStructure:
+          noRootFolder: Direktori akar yang sah tidak ditemui
+          noFoundValidVersion: Direktori versi yang sah tidak ditemui
+
+locale-selector:
+  select-a-language: Pilih Bahasa
+
+favoriteButton:
+  remove: Keluarkan daripada Kegemaran
+  add: Tambah ke Kegemaran
+
+search:
+  label: Cari
+  placeholder: Cari alat...
+
+textareaCopyable:
+  copy: Salin ke Papan Keratan
+  copied: Tersalin!
+  download: Muat Turun
+
+inputCopyable:
+  copy: Salin
+  copied: Tersalin!
+
+about:
+  content-fork: |
+    # Tentang Bengkel Aplikasi 1Panel
+
+    Ini adalah versi khusus IT-Tools, bertujuan untuk menyediakan sokongan pembinaan aplikasi tempatan sehenti untuk kedai aplikasi panel 1Panel.
+
+    Bina aplikasi tempatan 1Panel anda sendiri dengan mudah.
+
+    Projek ini dibangunkan semula berdasarkan [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be).
+  alltools-title: Semua Alat ({toolsCount} alat)
+  tools:
+    category: Kategori
+    name: Nama
+    desc: Penerangan
+
+404:
+  notFound: Halaman Tidak Ditemui
+  sorry: Maaf, halaman yang anda akses tidak wujud.
+  maybe: Mungkin anda ingin kembali ke laman utama?
+  backHome: Kembali ke Laman Utama
+
+components:
+  MarkdownRender:
+    default-content: Tiada Kandungan

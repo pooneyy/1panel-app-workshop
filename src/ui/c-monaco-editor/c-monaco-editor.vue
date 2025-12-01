@@ -3,10 +3,10 @@ import * as monacoEditor from 'monaco-editor';
 import { VueMonacoEditor, loader } from '@guolao/vue-monaco-editor';
 import type { MonacoEditor } from '@guolao/vue-monaco-editor';
 import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-import JsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
-import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
-import TsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+// import JsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
+// import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
+// import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
+// import TsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 import { useStyleStore } from '@/stores/style.store';
 
 const props = withDefaults(defineProps<EditorProps>(), {
@@ -38,18 +38,18 @@ const value = useVModel(props, 'value', emits);
 
 globalThis.MonacoEnvironment = {
   getWorker(_: any, label: string) {
-    if (label === 'json') {
-      return new JsonWorker();
-    }
-    if (label === 'css' || label === 'scss' || label === 'less') {
-      return new CssWorker();
-    }
-    if (label === 'html' || label === 'handlebars' || label === 'razor') {
-      return new HtmlWorker();
-    }
-    if (label === 'typescript' || label === 'javascript') {
-      return new TsWorker();
-    }
+    // if (label === 'json') {
+    //   return new JsonWorker();
+    // }
+    // if (label === 'css' || label === 'scss' || label === 'less') {
+    //   return new CssWorker();
+    // }
+    // if (label === 'html' || label === 'handlebars' || label === 'razor') {
+    //   return new HtmlWorker();
+    // }
+    // if (label === 'typescript' || label === 'javascript') {
+    //   return new TsWorker();
+    // }
     return new EditorWorker();
   },
 };
@@ -85,7 +85,7 @@ monacoEditor.editor.defineTheme('it-tools-dark', {
   inherit: true,
   rules: [],
   colors: {
-    'editor.background': '#00000000',
+    // 'editor.background': '#00000000',
   },
 });
 
@@ -94,7 +94,7 @@ monacoEditor.editor.defineTheme('it-tools-light', {
   inherit: true,
   rules: [],
   colors: {
-    'editor.background': '#00000000',
+    // 'editor.background': '#00000000',
   },
 });
 
@@ -105,6 +105,18 @@ watch(
   isDarkTheme => monacoEditor.editor.setTheme(isDarkTheme ? 'it-tools-dark' : 'it-tools-light'),
   { immediate: true },
 );
+const applyTheme = (monaco: MonacoEditor) => {
+  const isDarkTheme = styleStore.isDarkTheme;
+  monaco.editor.setTheme(isDarkTheme ? 'it-tools-dark' : 'it-tools-light');
+};
+const handleMount = (editor: monacoEditor.editor.IStandaloneCodeEditor, monaco: MonacoEditor) => {
+  applyTheme(monaco);
+  emits('mount', editor, monaco);
+};
+const handleBeforeMount = (monaco: MonacoEditor) => {
+  applyTheme(monaco);
+  emits('beforeMount', monaco);
+};
 
 const attrs = useAttrs();
 const inheritedAttrs = { ...attrs, ...props };
@@ -120,8 +132,8 @@ export default {
   <VueMonacoEditor
     v-bind="inheritedAttrs"
     v-model:value="value"
-    @before-mount="(monaco: MonacoEditor) => emits('beforeMount', monaco)"
-    @mount="(editor: monacoEditor.editor.IStandaloneCodeEditor, monaco: MonacoEditor) => emits('mount', editor, monaco)"
+    @before-mount="handleBeforeMount"
+    @mount="handleMount"
     @change="(value: string | undefined, event: monacoEditor.editor.IModelContentChangedEvent) => emits('change', value, event)"
     @validate="(markers: monacoEditor.editor.IMarker[]) => emits('validate', markers)"
   />
