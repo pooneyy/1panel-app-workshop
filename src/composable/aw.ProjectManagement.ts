@@ -3,7 +3,7 @@ import { storeToRefs } from 'pinia';
 import JSZip from 'jszip';
 import yaml from 'yaml';
 import { config } from '@/config';
-import { type AppParam, base64ToFile, defaultAppParam, defaultLogoBase64, PLACEHOLDERS } from '@/composable/aw.defind';
+import { type AppParam, base64ToFile, defaultAppParam, defaultLogoBase64, fileToBase64, PLACEHOLDERS, svgToPng } from '@/composable/aw.defind';
 import { useReactiveReferenceStore } from '@/stores/aw.store';
 export function useProjectManagement() {
   const { t } = useI18n();
@@ -24,7 +24,7 @@ export function useProjectManagement() {
   const {
     resetParagraphOrder, initializeReadmeSections,
   } = useReactiveReferenceStore()
-  const validateImageFile = (file: any) => {
+  const validateImageFile = (file: File) => {
     return new Promise((resolve) => {
       const img = new Image();
       const url = URL.createObjectURL(file);
@@ -63,11 +63,18 @@ export function useProjectManagement() {
           appLogo.value = null;
           return false;
         }
-        const compressedBase64 = await compressImage(uploadedFile.file)
-        appLogo.value = base64ToFile(compressedBase64, 'logo.png');
-        // 创建预览
-        logoPreview.value = compressedBase64;
-        return true;
+        if (uploadedFile.type === 'image/svg+xml') {
+          const compressedBase64 = await svgToPng(uploadedFile.file, 180, 180);
+          appLogo.value = base64ToFile(compressedBase64, 'logo.png');
+          logoPreview.value = compressedBase64;
+          return true;
+        } else {
+          const compressedBase64 = await compressImage(uploadedFile.file)
+          appLogo.value = base64ToFile(compressedBase64, 'logo.png');
+          // 创建预览
+          logoPreview.value = compressedBase64;
+          return true;
+        }
       }).catch(error => {
         notification.error({  
           title: t('tools.app-workshop.script.errors.validate-error'),
@@ -138,6 +145,7 @@ export function useProjectManagement() {
         let logoData = defaultLogoBase64;
         if (appLogo.value) {
           try {
+            logoData = await fileToBase64(appLogo.value);
             logoData = logoData.replace(/^data:image\/png;base64,/, '');
           } catch (error) {
             notification.error({
