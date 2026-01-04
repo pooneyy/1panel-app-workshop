@@ -1,7 +1,8 @@
 export {
   type AppParam, type ReadmeSection, PLACEHOLDERS, memoryUnitOptions,
   architectureOptions, ignoredVariables, defaultLogoBase64, MONACO_EDITOR_OPTIONS,
-  processNumbersForYaml, defaultAppParam, transformKeys, base64ToFile,
+  processNumbersForYaml, defaultAppParam, transformKeys, base64ToFile, fileToBase64,
+  svgToPng,
 };
 /** 参数类型定义 */
 interface AppParam {
@@ -230,4 +231,72 @@ const base64ToFile = (dataUrl: string, filename: string): File | null => {
     console.error('Error converting base64 to File:', error);
     return null;
   }
+};
+/**
+ * 将文件转换为Base64编码的字符串
+ * 
+ * @param file - 要转换的File对象
+ * @returns 返回一个Promise，解析为Base64字符串或默认Logo Base64字符串（如果转换失败）
+ */
+const fileToBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve) => {
+    try {
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = () => {
+        console.error('Func(fileToBase64): Error reading file, ', reader.error);
+        resolve("data:image/png;base64," + defaultLogoBase64);
+      };
+      reader.readAsDataURL(file);
+    } catch (error) {
+      console.error('Func(fileToBase64): Error converting file to base64, ', error);
+      resolve("data:image/png;base64," + defaultLogoBase64);
+    }
+  });
+};
+/**
+ * 将SVG字符串转换为PNG格式的DataURL(Base64)
+ * 
+ * @param {string} svgData - SVG格式的字符串数据
+ * @param {number} [width] - 可选，输出PNG的宽度，不指定则使用SVG原始宽度
+ * @param {number} [height] - 可选，输出PNG的高度，不指定则使用SVG原始高度
+ * @returns {Promise<string>} 解析为PNG格式的DataURL字符串
+ */
+const svgToPng = (svgData: string, width?: number, height?: number): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(svgBlob);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        reject(new Error("Func(svgToPng): Canvas context is not available"));
+        return;
+      }
+      // 设置画布尺寸
+      canvas.width = width !== undefined ? width : img.width;
+      canvas.height = height !== undefined ? height : img.height;
+      // 清空画布
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // 计算缩放比例，保持宽高比，让图片适应画布
+      const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+      // 计算居中位置
+      const scaledWidth = img.width * scale;
+      const scaledHeight = img.height * scale;
+      const offsetX = (canvas.width - scaledWidth) / 2;
+      const offsetY = (canvas.height - scaledHeight) / 2;
+      ctx.drawImage(img, offsetX, offsetY, scaledWidth, scaledHeight);
+      const pngDataUrl = canvas.toDataURL('image/png');
+      resolve(pngDataUrl);
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Func(svgToPng): Failed to render SVG image"));
+    };
+    img.src = url;
+  });
 };
