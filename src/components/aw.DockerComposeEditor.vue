@@ -89,6 +89,7 @@ const convertedDockerCompose = computed({
       <div relative w-full>
         <c-monaco-editor
           v-model:value="dockerCompose"
+          theme="vs"
           language="yaml"
           height="300px"
           :options="MONACO_EDITOR_OPTIONS"

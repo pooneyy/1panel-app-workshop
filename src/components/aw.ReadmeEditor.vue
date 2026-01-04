@@ -236,6 +236,7 @@ const readmeContentEN = computed({
               <div relative w-full>
                 <c-monaco-editor
                   v-model:value="readmeContentZH"
+                  theme="vs"
                   language="markdown"
                   height="400px"
                   :options="MONACO_EDITOR_OPTIONS"
@@ -264,6 +265,7 @@ const readmeContentEN = computed({
               <div relative w-full>
                 <c-monaco-editor
                   v-model:value="readmeContentEN"
+                  theme="vs"
                   language="markdown"
                   height="400px"
                   :options="MONACO_EDITOR_OPTIONS"
