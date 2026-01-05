@@ -55,8 +55,8 @@ const {
 } = useReadmeEditor()
 const { extractedVariablesInfo, addDockerComposeParameters } = useDockerComposeEditor()
 const {
-  getFilteredEnvVarsOptions, addParam, moveParamUp, moveParamDown, removeParam,
-  removeOption, addOption
+  getFilteredEnvVarsOptions, addParam, moveParamUp, moveParamDown, handleScrollToParam,
+  removeParam, addOption, removeOption
 } = useAppParams()
 const { handleScroll, manageScrollListeners, scrollToTop } = useScrollManagement()
 onMounted(() => {
@@ -110,6 +110,7 @@ onMounted(() => {
       v-model:new-vars-collapsed="newVarsCollapsed" v-model:existing-vars-collapsed="existingVarsCollapsed"
       v-model:ignored-vars-collapsed="ignoredVarsCollapsed" @add-docker-compose-parameters="addDockerComposeParameters"
       @download-docker-compose="downloadDockerCompose" v-model:converted-docker-compose="convertedDockerCompose"
+      @jump-to-param="handleScrollToParam"
     />
     <AppParams app-params-card
       v-model:expanded="expandAppParams" v-model:app-params="appParams" @move-param-up="moveParamUp"

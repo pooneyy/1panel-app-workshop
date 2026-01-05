@@ -36,6 +36,7 @@ const emit = defineEmits<{
   'addDockerComposeParameters': [];
   'downloadDockerCompose': [];
   'update:convertedDockerCompose': [value: string];
+  'jumpToParam': [paramId: number];
 }>();
 const expanded = computed({
   get: () => props.expanded,
@@ -184,8 +185,8 @@ const convertedDockerCompose = computed({
                 
                 <div v-show="!existingVarsCollapsed">
                   <n-space v-if="extractedVariablesInfo.existingVariables.length > 0" vertical class="mt-2">
-                    <n-tag v-for="variable in extractedVariablesInfo.existingVariables" :key="variable" type="success" size="small">
-                      {{ variable }}
+                    <n-tag v-for="variable in extractedVariablesInfo.existingVariables" :key="variable" type="success" size="small" @click="emit('jumpToParam', variable.id)">
+                      {{ variable.envKey }}
                     </n-tag>
                   </n-space>
                 </div>

@@ -263,17 +263,17 @@ export function useDockerComposeEditor() {
   /** 在模板中显示提取的变量信息 */
   const extractedVariablesInfo = computed(() => {
     const variables = extractVariablesFromDockerCompose();
-    // 收集所有已存在的环境变量（包括主参数和子参数）
-    const existingEnvKeys = new Set<string>();
+    // 收集所有已存在的环境变量（包括主参数和子参数）及其id
+    const existingEnvKeys = new Map<string, number>();
     // 遍历所有参数，收集主参数和子参数的 envKey
     appParams.value.forEach(param => {
       // 添加主参数的 envKey
       if (param.envKey) {
-        existingEnvKeys.add(param.envKey);
+        existingEnvKeys.set(param.envKey, param.id);
       }
       // 添加子参数的 envKey（如果存在且不为空）
       if (param.child && param.child.envKey) {
-        existingEnvKeys.add(param.child.envKey);
+        existingEnvKeys.set(param.child.envKey, param.id);
       }
     });
     const ignoredVars = variables.filter(v => ignoredVariables.includes(v));
@@ -282,9 +282,12 @@ export function useDockerComposeEditor() {
       !existingEnvKeys.has(v) && !ignoredVariables.includes(v)
     );
     // 过滤出已存在的变量（排除被忽略的）
-    const existingVariables = variables.filter(v => 
-      existingEnvKeys.has(v) && !ignoredVariables.includes(v)
-    );
+    const existingVariables = variables
+      .filter(v => existingEnvKeys.has(v) && !ignoredVariables.includes(v))
+      .map(v => ({
+        envKey: v,
+        id: existingEnvKeys.get(v)!
+      }));
     return {
       total: variables.length,
       new: newVariables.length,

@@ -32,6 +32,12 @@ export interface AppParams {
    */
   moveParamDown: (index: number) => void
   /**
+   * 滚动到指定参数元素
+   * 
+   * @param paramId - 参数元素的唯一标识ID
+   */
+  handleScrollToParam: (paramId: number) => void;
+  /**
    * 移除指定索引的参数
    * 
    * @param index - 要移除的参数索引
@@ -73,7 +79,7 @@ export interface AppParams {
  * @see {@link useReactiveReferenceStore} 响应式存储引用
  */
 export function useAppParams(): AppParams {
-  const { appParams, optionalEnvVars } = storeToRefs(useReactiveReferenceStore())
+  const { expandAppParams, appParams, optionalEnvVars } = storeToRefs(useReactiveReferenceStore())
   const optionalEnvVarsCount = computed(() => {
     return optionalEnvVars.value.reduce((total, item) => {
       if (item.type === 'group' && item.children) {
@@ -161,8 +167,14 @@ export function useAppParams(): AppParams {
       param.values.splice(index, 1);
     }
   };
+  const handleScrollToParam = (paramId: number) => {
+    expandAppParams.value = true;
+    nextTick(() => {
+      scrollToParam(paramId, 'smooth');
+    });
+  };
   return {
-    getFilteredEnvVarsOptions, addParam, moveParamUp, moveParamDown, removeParam,
-    addOption, removeOption
+    getFilteredEnvVarsOptions, addParam, moveParamUp, moveParamDown, handleScrollToParam,
+    removeParam, addOption, removeOption
   };
 }
