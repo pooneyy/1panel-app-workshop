@@ -103,19 +103,21 @@ const appParamsYaml = computed({
     <div v-for="(param, index) in appParams" :key="param.id" class="param-form" :data-param-id="param.id">
       <n-card :title="`${$t('tools.app-workshop.cards.AppParams.Param-card.title')} ${index + 1}`" class="mb-4">
         <template #header-extra>
-          <n-button @click="$emit('moveParamUp', index)" 
-            :disable="index === 0"
-            type="default" size="small">
-            {{ $t('tools.app-workshop.components.moveUp') }}
-          </n-button>
-          <n-button @click="$emit('moveParamDown', index)" 
-            :disable="index === appParams.length - 1"
-            type="default" size="small" >
-            {{ $t('tools.app-workshop.components.moveDown') }}
-          </n-button>
-          <n-button @click="$emit('removeParam', index)" type="error" size="small">
-            {{ $t('tools.app-workshop.components.remove') }}
-          </n-button>
+          <div class="flex gap-1">
+            <n-button @click="$emit('moveParamUp', index)" 
+              :disabled="index === 0"
+              type="default" size="small">
+              {{ $t('tools.app-workshop.components.moveUp') }}
+            </n-button>
+            <n-button @click="$emit('moveParamDown', index)" 
+              :disabled="index === appParams.length - 1"
+              type="default" size="small" >
+              {{ $t('tools.app-workshop.components.moveDown') }}
+            </n-button>
+            <n-button @click="$emit('removeParam', index)" type="error" size="small">
+              {{ $t('tools.app-workshop.components.remove') }}
+            </n-button>
+          </div>
         </template>
         
         <n-grid cols="2" x-gap="12">
