@@ -191,7 +191,7 @@ const appVersion = computed({
           <n-gi>
             <n-button 
               @click="$emit('exportProject')" 
-              type="primary" 
+              type="success" 
               block
               size="large"
               style="height: 80px;"
