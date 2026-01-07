@@ -63,13 +63,13 @@ const tools = computed<ToolCategory[]>(() => [
 
         <div class="footer">
           <div>
-            1Panel App Workshop
+            {{ $t('home.subtitle') }}
             <c-link target="_blank" rel="noopener" :href="`https://github.com/pooneyy/1panel-app-workshop/tree/${version}`">
-              {{ version }}
+              v{{ version }}
             </c-link>
           </div>
           <div>
-            © {{ new Date().getFullYear() }}
+            © 2025 - {{ new Date().getFullYear() }}
             <c-link target="_blank" rel="noopener" href="https://github.com/pooneyy/">
               poney
             </c-link>
