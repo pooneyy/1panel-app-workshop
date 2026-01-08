@@ -52,10 +52,12 @@ function createTheme({ style }: { style: 'light' | 'dark' }) {
         pressedBackground: theme.default.colorPressed,
       }),
       primary: createState({
-        textColor: theme.primary.color,
+        textColor: theme.primary.textColor,
+        hoveredTextColor: theme.primary.hoveredTextColor,
+        pressedTextColor: theme.primary.hoveredTextColor,
         backgroundColor: theme.primary.colorFaded,
-        hoverBackground: lighten(theme.primary.colorFaded, 30),
-        pressedBackground: darken(theme.primary.colorFaded, 30),
+        hoverBackground: theme.primary.colorHover,
+        pressedBackground: theme.primary.colorPressed,
       }),
       warning: createState({
         textColor: theme.warning.color,

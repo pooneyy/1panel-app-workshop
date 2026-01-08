@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Download as IconDownload } from '@vicons/tabler';
+import { useThemeVars } from 'naive-ui';
 import ExpandCollapseCard from '@/components/aw.ExpandCollapseCard.vue';
 import MarkdownRender from '@/components/MarkdownRender.vue';
 import { type ReadmeSection } from '@/composable/aw.defind';
@@ -133,6 +134,8 @@ const readmeContentEN = computed({
     emit('update:readmeContentEN', value);
   }
 });
+const theme = useThemeVars();
+const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor.slice(i,i+2)}`).join(', '));
 </script>
 <template>
   <ExpandCollapseCard
@@ -149,9 +152,9 @@ const readmeContentEN = computed({
       :title="$t('tools.app-workshop.cards.ReadmeEditor.template.title')"
     >
       <div class="section-template-header">
-        <n-button @click="$emit('resetParagraphOrder')" type="error" dashed>
+        <c-button @click="$emit('resetParagraphOrder')" type="error">
           {{ $t('tools.app-workshop.components.resetParagraphOrder') }}
-        </n-button>
+        </c-button>
       </div>
       
       <n-list class="draggable-list">
@@ -331,7 +334,7 @@ const readmeContentEN = computed({
   opacity: 0.9;
   transform: scale(1.02);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border: 2px solid #18a058;
+  border: 2px solid rgba(v-bind('primaryColorRGB'));
   z-index: 1000;
   position: relative;
 }
@@ -355,7 +358,7 @@ const readmeContentEN = computed({
   color: #666;
 }
 .section-item.dragging-active .drag-handle {
-  color: #18a058;
+  color: rgba(v-bind('primaryColorRGB'));
 }
 /* 全局拖拽状态 */
 body.drag-in-progress .section-item {
@@ -444,8 +447,8 @@ body.drag-in-progress .section-item {
   pointer-events: none;
 }
 .section-item.dragging-active::before {
-  background: linear-gradient(135deg, rgba(24, 160, 88, 0.05) 0%, rgba(24, 160, 88, 0.1) 100%);
-  border: 2px solid #18a058;
+  background: linear-gradient(135deg, rgba(v-bind('primaryColorRGB'), 0.05) 0%, rgba(v-bind('primaryColorRGB'), 0.1) 100%);
+  border: 2px solid rgba(v-bind('primaryColorRGB'));
 }
 /* 列表项悬停效果 */
 .section-item:hover {

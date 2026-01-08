@@ -104,19 +104,19 @@ const appParamsYaml = computed({
       <n-card :title="`${$t('tools.app-workshop.cards.AppParams.Param-card.title')} ${index + 1}`" class="mb-4">
         <template #header-extra>
           <div class="flex gap-1">
-            <n-button @click="$emit('moveParamUp', index)" 
+            <c-button @click="$emit('moveParamUp', index)" 
               :disabled="index === 0"
-              type="default" size="small">
+              type="primary">
               {{ $t('tools.app-workshop.components.moveUp') }}
-            </n-button>
-            <n-button @click="$emit('moveParamDown', index)" 
+            </c-button>
+            <c-button @click="$emit('moveParamDown', index)" 
               :disabled="index === appParams.length - 1"
-              type="default" size="small" >
+              type="primary">
               {{ $t('tools.app-workshop.components.moveDown') }}
-            </n-button>
-            <n-button @click="$emit('removeParam', index)" type="error" size="small">
+            </c-button>
+            <c-button @click="$emit('removeParam', index)" type="error">
               {{ $t('tools.app-workshop.components.remove') }}
-            </n-button>
+            </c-button>
           </div>
         </template>
         
@@ -162,23 +162,15 @@ const appParamsYaml = computed({
                       />
                     </n-gi>
                     <n-gi>
-                      <n-button
-                        @click="$emit('removeOption', param, optionIndex as number)"
-                        type="error"
-                        quaternary
-                      >
+                      <c-button @click="$emit('removeOption', param, optionIndex as number)" type="error">
                         {{ $t('tools.app-workshop.components.removeOption') }}
-                      </n-button>
+                      </c-button>
                     </n-gi>
                   </n-grid>
                 </div>
-                <n-button
-                  @click="$emit('addOption', param)"
-                  type="primary"
-                  dashed
-                >
+                <c-button @click="$emit('addOption', param)" type="primary">
                   {{ $t('tools.app-workshop.components.addOption') }}
-                </n-button>
+                </c-button>
               </div>
             </n-form-item>
           </n-gi>

@@ -78,7 +78,7 @@ const size = computed(() => theme.value.size[sizeName.value]);
   color: v-bind('variantTheme.textColor');
   padding: 0 14px;
   border-radius: 4px;
-  transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
   background-color: v-bind('variantTheme.backgroundColor');
   display: inline-flex;
@@ -101,15 +101,17 @@ const size = computed(() => theme.value.size[sizeName.value]);
   &:not(.disabled) {
     &:hover {
       background-color: v-bind('variantTheme.hover.backgroundColor');
+      color: v-bind('variantTheme.hover.textColor');
     }
 
     &:active {
       background-color: v-bind('variantTheme.pressed.backgroundColor');
+      color: v-bind('variantTheme.pressed.textColor');
     }
   }
 
   &:focus {
-    outline: 1px solid v-bind('appTheme.primary.color');
+    outline: 1px solid v-bind('variantTheme.textColor');
   }
 
   &.disabled {

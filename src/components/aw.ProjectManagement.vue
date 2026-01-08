@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Download as IconDownload, Upload as IconUpload } from '@vicons/tabler';
+import { Download as IconDownload, Upload as IconUpload, Trash as IconDelete } from '@vicons/tabler';
 import ExpandCollapseCard from '@/components/aw.ExpandCollapseCard.vue';
 interface Props {
   title?: string;
@@ -178,9 +178,7 @@ const appVersion = computed({
             >
               <template #icon>
                 <n-icon>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
-                  </svg>
+                  <IconDelete />
                 </n-icon>
               </template>
               <div style="font-size: 14px; line-height: 1.2;">
@@ -240,13 +238,7 @@ const appVersion = computed({
                 style="height: 80px;"
               >
                 <template #icon>
-                  <n-icon>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                      <polyline points="17 8 12 3 7 8"/>
-                      <line x1="12" y1="3" x2="12" y2="15"/>
-                    </svg>
-                  </n-icon>
+                  <n-icon><IconUpload /></n-icon>
                 </template>
                 <div style="font-size: 14px; line-height: 1.2;">
                   {{ $t('tools.app-workshop.components.importFromZip') }}
