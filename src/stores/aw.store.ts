@@ -66,6 +66,10 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
   const isDragging = ref(false);
   // 位置交换的视觉反馈
   const swapPositions = ref<{from: number, to: number} | null>(null);
+  // 用于强制刷新列表的计数器
+  const listRefreshCounter = ref(0);
+  // 控制是否抑制列表强制刷新（避免输入过程中重建节点导致焦点丢失）
+  const suppressListRefresh = ref(false);
   // Docker Compose 内容
   const dockerCompose = ref(`services:
     app:
@@ -545,6 +549,10 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
       .filter(section => section.trim())
       .join('\n\n');
     readmeContentEN.value = enContent;
+    // 强制刷新列表以确保视图正确渲染（受抑制开关控制）
+    if (!suppressListRefresh.value) {
+      listRefreshCounter.value += 1;
+    }
   };
   // 更新默认内容（只在初始化或重置时调用）
   const updateDefaultContent = () => {
@@ -581,6 +589,8 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
     // 自述文件编辑模板卡片表单相关
     defaultUsername, defaultPassword, readmeContentZH, readmeContentEN, readmeSections,
     dragStartIndex, draggedSection, dragOverIndex, isDragging, swapPositions,
+    // 强制刷新列表
+    listRefreshCounter, suppressListRefresh,
     // 自述文件编辑器卡片相关
     descZh, descEn, resetParagraphOrder, initializeReadmeSections, updateReadmeContent,
     updateDefaultContent,

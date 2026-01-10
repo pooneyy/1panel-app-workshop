@@ -51,7 +51,8 @@ const {
 } = useProjectManagement()
 const {
   handleDragStart, handleDragOver, handleDragLeave, handleDrop, handleDragEnd,
-  toggleSection, initReadmeEditorWatchListeners,shouldShowSwapAnimation, getItemTransform,
+  toggleSection, initReadmeEditorWatchListeners, shouldShowSwapAnimation, getItemTransform,
+  listRefreshCounter,
 } = useReadmeEditor()
 const { extractedVariablesInfo, addDockerComposeParameters } = useDockerComposeEditor()
 const {
@@ -92,13 +93,15 @@ onMounted(() => {
       v-model:expanded="expandReadmeEditor" v-model:expand-template="expandReadmeEditorTemplate"
       v-model:readme-editor-active-tab="readmeEditorActiveTab" @reset-paragraph-order="resetParagraphOrder"
       v-model:readme-sections="readmeSections" v-model:drag-start-index="dragStartIndex"
-      @should-show-swap-animation="shouldShowSwapAnimation" @get-item-transform="getItemTransform"
-      v-model:is-dragging="isDragging" @handle-drag-start="handleDragStart"
+      :should-show-swap-animation="shouldShowSwapAnimation" :get-item-transform="getItemTransform"
+      v-model:is-dragging="isDragging"
+      @handle-drag-start="handleDragStart"
       @handle-drag-over="handleDragOver" @handle-drag-leave="handleDragLeave" @handle-drop="handleDrop"
       @handle-drag-end="handleDragEnd" @toggle-section="toggleSection" v-model:default-username="defaultUsername"
       v-model:default-password="defaultPassword" :monaco-editor-options="MONACO_EDITOR_OPTIONS"
       v-model:readme-content-ZH="readmeContentZH" v-model:readme-content-EN="readmeContentEN"
       @download-readme-ZH="downloadReadmeZH" @download-readme-EN="downloadReadmeEN"
+      :list-refresh-counter="listRefreshCounter"
     />
     <AppDeclaration
       v-model:expanded="expandAppDeclaration" @download-app-declaration="downloadAppDeclaration"

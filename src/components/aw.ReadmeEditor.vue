@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Download as IconDownload } from '@vicons/tabler';
+import { Download as IconDownload, GripVertical as DragHandle } from '@vicons/tabler';
 import { useThemeVars } from 'naive-ui';
 import ExpandCollapseCard from '@/components/aw.ExpandCollapseCard.vue';
 import MarkdownRender from '@/components/MarkdownRender.vue';
@@ -28,6 +28,7 @@ interface Props {
   readmeContentEN?: string;
   downloadReadmeZH?: () => void;
   downloadReadmeEN?: () => void;
+  listRefreshCounter?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
   expanded: false,
@@ -50,7 +51,8 @@ const props = withDefaults(defineProps<Props>(), {
   readmeContentZH: '',
   readmeContentEN: '',
   downloadReadmeZH: () => {},
-  downloadReadmeEN: () => {}
+  downloadReadmeEN: () => {},
+  listRefreshCounter: 0
 });
 const emit = defineEmits<{
   'update:expanded': [value: boolean];
@@ -160,15 +162,16 @@ const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor
       <n-list class="draggable-list">
         <n-list-item
           v-for="(section, index) in readmeSections"
-          :key="section.id"
+          :key="`${section.id}-${listRefreshCounter}`"
           class="section-item"
           :class="{
             'dragging-active': dragStartIndex === index,
-            'swap-animation': shouldShowSwapAnimation(index)
+            'swap-animation': props.shouldShowSwapAnimation(index)
           }"
           :style="{
-            transform: getItemTransform(index),
-            transition: isDragging ? 'transform 0.2s ease' : 'none'
+            transform: props.getItemTransform(index),
+            transition: isDragging ? 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : '',
+            zIndex: dragStartIndex === index ? 1000 : props.shouldShowSwapAnimation(index) ? 999 : 'auto'
           }"
           draggable="true"
           @dragstart="$emit('handleDragStart', $event, index)"
@@ -178,17 +181,11 @@ const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor
           @dragend="$emit('handleDragEnd')"
         >
           <template #prefix>
-            <div class="drag-handle" @click.stop>
-              <n-icon>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="9" cy="5" r="1"/>
-                  <circle cx="9" cy="12" r="1"/>
-                  <circle cx="9" cy="19" r="1"/>
-                  <circle cx="15" cy="5" r="1"/>
-                  <circle cx="15" cy="12" r="1"/>
-                  <circle cx="15" cy="19" r="1"/>
-                </svg>
-              </n-icon>
+            <div 
+              class="drag-handle" 
+              @click.stop
+            >
+              <n-icon><DragHandle/></n-icon>
             </div>
           </template>
           
@@ -203,7 +200,15 @@ const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor
                   <n-text strong>{{ $t(section.title) }}</n-text>
                 </div>
               </div>
-              <div v-if="section.type === 'credentials'" class="credentials-inputs">
+              <div 
+                v-if="section.type === 'credentials'"
+                id="credential-item"
+                class="credentials-inputs"
+                draggable="false"
+                @dragstart.stop.prevent
+                @dragenter.stop.prevent
+                @dragover.stop.prevent
+              >
                 <div class="credential-item">
                   <span class="credential-label">{{ $t('tools.app-workshop.cards.ReadmeEditor.template.defaultCredentials.input-user') }}</span>
                   <n-input 
@@ -307,22 +312,24 @@ const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor
   align-items: center;
   margin-bottom: 16px;
 }
-.section-info {
-  min-width: 120px;
-}
 /* 拖拽相关样式 */
 .draggable-list {
   position: relative;
+  min-height: 200px;
 }
 .section-item {
   cursor: grab;
   user-select: none;
-  transition: all 0.2s ease;
   position: relative;
   border: 1px solid var(--n-border-color);
   margin-bottom: 8px;
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: var(--n-color);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease,
+              box-shadow 0.3s ease,
+              background-color 0.3s ease;
 }
 .section-item:last-child {
   margin-bottom: 0;
@@ -331,17 +338,21 @@ const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor
   cursor: grabbing;
 }
 .section-item.dragging-active {
-  opacity: 0.9;
-  transform: scale(1.02);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border: 2px solid rgba(v-bind('primaryColorRGB'));
-  z-index: 1000;
+  opacity: 0;
+  z-index: -1;
   position: relative;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+  transition: opacity 0.1s ease, border-color 0.1s ease;
 }
 /* 交换动画 */
 .section-item.swap-animation {
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   z-index: 999;
+  position: relative;
+}
+/* 为即将移动的元素添加轻微的视觉提示 */
+.section-item.swap-animation:not(.dragging-active) {
+  background-color: rgba(v-bind('primaryColorRGB'), 0.03);
 }
 /* 拖拽手柄样式 */
 .drag-handle {
@@ -352,13 +363,17 @@ const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor
   color: #c0c0c0;
   cursor: grab;
   transition: color 0.2s ease;
-  pointer-events: none;
+  pointer-events: auto;
+  user-select: none;
+}
+.drag-handle:active {
+  cursor: grabbing;
 }
 .section-item:hover .drag-handle {
   color: #666;
 }
 .section-item.dragging-active .drag-handle {
-  color: rgba(v-bind('primaryColorRGB'));
+  opacity: 1;
 }
 /* 全局拖拽状态 */
 body.drag-in-progress .section-item {
@@ -394,6 +409,8 @@ body.drag-in-progress .section-item {
   align-items: center;
   gap: 16px;
   flex-wrap: nowrap;
+  cursor: default !important;
+  pointer-events: auto;
 }
 .credentials-inputs .n-input {
   min-width: 200px;
@@ -403,6 +420,8 @@ body.drag-in-progress .section-item {
   align-items: center;
   gap: 8px;
   white-space: nowrap;
+  cursor: default !important;
+  user-select: auto;
 }
 .credential-label {
   font-size: 14px;
@@ -447,20 +466,41 @@ body.drag-in-progress .section-item {
   pointer-events: none;
 }
 .section-item.dragging-active::before {
-  background: linear-gradient(135deg, rgba(v-bind('primaryColorRGB'), 0.05) 0%, rgba(v-bind('primaryColorRGB'), 0.1) 100%);
-  border: 2px solid rgba(v-bind('primaryColorRGB'));
+  display: none;
 }
 /* 列表项悬停效果 */
 .section-item:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  border-color: #d0d0d0;
 }
 /* 拖拽过程中的特殊效果 */
+/* 拖动时隐藏自身，避免留下虚影 */
 .section-item.dragging-active:hover {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 /* 确保拖拽项目在最上层 */
 .section-item.dragging-active {
-  transform: scale(1.02) !important;
+  transform: none !important;
+}
+
+/* 克隆元素样式调整 */
+.clone-being-dragged .credentials-inputs {
+  min-width: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.clone-being-dragged .credential-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.clone-being-dragged .n-input {
+  min-width: 150px;
+  width: auto;
 }
 </style>

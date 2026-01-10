@@ -43,18 +43,22 @@ export const darkThemeOverrides: GlobalThemeOverrides = {
   },
 
   Layout: {
-    color: '#1c1c1c',
-    siderColor: '#232323',
+    color: '#242633',
+    siderColor: '#2f313d',
     siderBorderColor: 'transparent',
   },
 
   Card: {
-    color: '#232323',
-    borderColor: '#282828',
+    color: '#2f313d',
+    borderColor: '#434552',
   },
 
   Table: {
     tdColor: '#232323',
     thColor: '#353535',
+  },
+
+  List: {
+    color: '#2f313d',
   },
 };

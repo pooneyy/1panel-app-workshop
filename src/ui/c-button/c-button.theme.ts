@@ -9,6 +9,9 @@ function createState({
   hoveredTextColor = textColor,
   pressedBackground,
   pressedTextColor = textColor,
+  borderColor = 'transparent',
+  hoverBorderColor = borderColor,
+  pressedBorderColor = borderColor,
 }: {
   textColor: string
   backgroundColor: string
@@ -16,12 +19,16 @@ function createState({
   hoveredTextColor?: string
   pressedBackground: string
   pressedTextColor?: string
+  borderColor?: string
+  hoverBorderColor?: string
+  pressedBorderColor?: string
 }) {
   return {
     textColor,
     backgroundColor,
-    hover: { textColor: hoveredTextColor, backgroundColor: hoverBackground },
-    pressed: { textColor: pressedTextColor, backgroundColor: pressedBackground },
+    borderColor,
+    hover: { textColor: hoveredTextColor, backgroundColor: hoverBackground, borderColor: hoverBorderColor },
+    pressed: { textColor: pressedTextColor, backgroundColor: pressedBackground, borderColor: pressedBorderColor },
   };
 }
 
@@ -58,6 +65,9 @@ function createTheme({ style }: { style: 'light' | 'dark' }) {
         backgroundColor: theme.primary.colorFaded,
         hoverBackground: theme.primary.colorHover,
         pressedBackground: theme.primary.colorPressed,
+        borderColor: theme.primary.borderColor,
+        hoverBorderColor: theme.primary.borderColorHover,
+        pressedBorderColor: theme.primary.borderColorPressed,
       }),
       warning: createState({
         textColor: theme.warning.color,

@@ -19,6 +19,9 @@ export const { themes: appThemes, useTheme: useAppTheme } = defineThemes({
       colorHover: '#005eeb',
       colorPressed: '#005eeb',
       colorFaded: '#e5eefd',
+      borderColor: '#e5eefd',
+      borderColorHover: '#005eeb',
+      borderColorPressed: '#005eeb',
     },
     warning: {
       color: '#f59e0b',
@@ -61,6 +64,9 @@ export const { themes: appThemes, useTheme: useAppTheme } = defineThemes({
       colorHover: '#63a4ff',
       colorPressed: '#63a4ff',
       colorFaded: '#2e313d',
+      borderColor: '#434552',
+      borderColorHover: '#63a4ff',
+      borderColorPressed: '#63a4ff',
     },
     warning: {
       color: '#f59e0b',

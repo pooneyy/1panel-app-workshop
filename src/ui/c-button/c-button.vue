@@ -69,7 +69,7 @@ const size = computed(() => theme.value.size[sizeName.value]);
   line-height: 1;
   font-family: inherit;
   font-size: v-bind('size.fontSize');
-  border: none;
+  border: 1px solid v-bind('variantTheme.borderColor');
   text-align: center;
   cursor: pointer;
   text-decoration: none;
@@ -78,7 +78,7 @@ const size = computed(() => theme.value.size[sizeName.value]);
   color: v-bind('variantTheme.textColor');
   padding: 0 14px;
   border-radius: 4px;
-  transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0s, border-color cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
   background-color: v-bind('variantTheme.backgroundColor');
   display: inline-flex;
@@ -102,11 +102,13 @@ const size = computed(() => theme.value.size[sizeName.value]);
     &:hover {
       background-color: v-bind('variantTheme.hover.backgroundColor');
       color: v-bind('variantTheme.hover.textColor');
+      border-color: v-bind('variantTheme.hover.borderColor');
     }
 
     &:active {
       background-color: v-bind('variantTheme.pressed.backgroundColor');
       color: v-bind('variantTheme.pressed.textColor');
+      border-color: v-bind('variantTheme.pressed.borderColor');
     }
   }
 
