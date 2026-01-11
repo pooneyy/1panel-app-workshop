@@ -47,7 +47,7 @@ export const { themes: appThemes, useTheme: useAppTheme } = defineThemes({
     loading_background: '#f1f5f9',
   },
   dark: {
-    background: '#1e1e1e',
+    background: '#242633',
     text: {
       baseColor: '#ffffffd1',
       mutedColor: '#ffffff80',

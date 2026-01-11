@@ -4,6 +4,7 @@ import { useThemeVars } from 'naive-ui';
 import ExpandCollapseCard from '@/components/aw.ExpandCollapseCard.vue';
 import MarkdownRender from '@/components/MarkdownRender.vue';
 import { type ReadmeSection } from '@/composable/aw.defind';
+import { useAppTheme } from '@/ui/theme/themes';
 interface Props {
   title?: string;
   expanded?: boolean;
@@ -138,6 +139,7 @@ const readmeContentEN = computed({
 });
 const theme = useThemeVars();
 const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor.slice(i,i+2)}`).join(', '));
+const appTheme = useAppTheme();
 </script>
 <template>
   <ExpandCollapseCard
@@ -169,6 +171,7 @@ const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor
             'swap-animation': props.shouldShowSwapAnimation(index)
           }"
           :style="{
+            backgroundColor: appTheme.background,
             transform: props.getItemTransform(index),
             transition: isDragging ? 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : '',
             zIndex: dragStartIndex === index ? 1000 : props.shouldShowSwapAnimation(index) ? 999 : 'auto'
@@ -325,7 +328,6 @@ const primaryColorRGB=computed(()=>[1,3,5].map(i=>+`0x${theme.value.primaryColor
   margin-bottom: 8px;
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  background-color: var(--n-color);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               opacity 0.3s ease,
               box-shadow 0.3s ease,
