@@ -130,16 +130,6 @@ export function useReadmeEditor() {
    * @param index - 当前拖拽元素的索引位置
    */
   const handleDragStart = (event: DragEvent, index: number) => {
-    // 检查是否从 credential-item 区域开始拖拽
-    const eventTarget = event.target as HTMLElement;
-    
-    // 如果事件来自 credential-item 或其子元素，则阻止
-    if (eventTarget?.closest('#credential-item') || eventTarget?.id === 'credential-item') {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
-    
     dragStartIndex.value = index;
     draggedSection.value = readmeSections.value[index];
     isDragging.value = true;

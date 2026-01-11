@@ -207,10 +207,6 @@ const appTheme = useAppTheme();
                 v-if="section.type === 'credentials'"
                 id="credential-item"
                 class="credentials-inputs"
-                draggable="false"
-                @dragstart.stop.prevent
-                @dragenter.stop.prevent
-                @dragover.stop.prevent
               >
                 <div class="credential-item">
                   <span class="credential-label">{{ $t('tools.app-workshop.cards.ReadmeEditor.template.defaultCredentials.input-user') }}</span>
@@ -219,6 +215,7 @@ const appTheme = useAppTheme();
                     :placeholder="$t('tools.app-workshop.cards.ReadmeEditor.template.defaultCredentials.placeholder1')" 
                     size="small"
                     style="width: 150px;"
+                    clearable
                   />
                 </div>
                 <div class="credential-item">
@@ -228,6 +225,7 @@ const appTheme = useAppTheme();
                     :placeholder="$t('tools.app-workshop.cards.ReadmeEditor.template.defaultCredentials.placeholder2')" 
                     size="small"
                     style="width: 150px;"
+                    clearable
                   />
                 </div>
               </div>
@@ -365,7 +363,6 @@ const appTheme = useAppTheme();
   color: #c0c0c0;
   cursor: grab;
   transition: color 0.2s ease;
-  pointer-events: auto;
   user-select: none;
 }
 .drag-handle:active {
@@ -412,10 +409,10 @@ body.drag-in-progress .section-item {
   gap: 16px;
   flex-wrap: nowrap;
   cursor: default !important;
-  pointer-events: auto;
 }
 .credentials-inputs .n-input {
   min-width: 200px;
+  pointer-events: auto;
 }
 .credential-item {
   display: flex;
@@ -465,7 +462,6 @@ body.drag-in-progress .section-item {
   background: transparent;
   border-radius: 6px;
   transition: all 0.2s ease;
-  pointer-events: none;
 }
 .section-item.dragging-active::before {
   display: none;
