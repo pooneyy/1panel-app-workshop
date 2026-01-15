@@ -376,11 +376,11 @@ export function useProjectManagement() {
       const readZipFile = async (zipContent: JSZip, path: string, type: 'text' | 'blob' = 'text') => {
         return zipContent.files[path] ? await zipContent.files[path].async(type) : null;
       };
-      const blobToDataURL = (blob: Blob): Promise<string> => {
+      const blobToDataURL = (blob: Blob, mimeType: string = 'image/png'): Promise<string> => {
         return new Promise((resolve) => {
           const reader = new FileReader();
           reader.onload = (e) => resolve(e.target?.result as string);
-          reader.readAsDataURL(blob);
+          reader.readAsDataURL(blob.type ? blob : new Blob([blob], { type: mimeType }));
         });
       };
       const parseAppParams = (yamlContent: string) => {
