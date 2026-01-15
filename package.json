@@ -1,7 +1,7 @@
 {
   "name": "1panel-app-workshop",
   "type": "module",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "packageManager": "pnpm@9.11.0",
   "description": "One-stop build for 1Panel local applications",
   "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://corentin.tech)",
