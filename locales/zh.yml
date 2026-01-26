@@ -154,8 +154,9 @@ tools:
           title: 参数
           envKey:
             label: 环境变量 Key
+            placeholder: '如: PANEL_APP_PORT_HTTP'
             placeholder1: '如: PANEL_DB_TYPE'
-            placeholder2: '如: PANEL_APP_PORT_HTTP'
+            placeholder2: '如: PANEL_DB_HOST'
           type:
             label: 参数类型
           dynamic-param-config:
@@ -170,14 +171,12 @@ tools:
                 input-value2: 选项值
               sub-select:
                 card-title: 可选的服务依赖子菜单
-                label: 环境变量 Key
-                placeholder: '如: PANEL_DB_TYPE'
               key:
                 label: 依赖 Key
                 placeholder: '如: mysql, redis, 值必须填写官方应用商店中应用的Key'
           default:
             label: 默认值
-            placeholder1: 此项必须填写
+            placeholder1: 填写选项值中的一个，此项必须填写
             placeholder2: 默认值
           rule:
             label: 校验规则

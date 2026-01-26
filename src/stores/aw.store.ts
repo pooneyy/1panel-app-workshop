@@ -303,7 +303,7 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
         const child: any = {
           default: '',
           envKey: param.child?.envKey,
-          required: false,
+          required: param.required,
           type: 'service',
         };
         const label: any = {}

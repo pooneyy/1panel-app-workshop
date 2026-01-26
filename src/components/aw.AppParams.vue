@@ -126,7 +126,7 @@ const appParamsYaml = computed({
               <AutoComplete
                 v-model:value="param.envKey"
                 :options="getFilteredEnvVarsOptions(param.envKey)"
-                :placeholder="param.type === 'apps' || param.type === 'service' ? $t('tools.app-workshop.cards.AppParams.Param-card.envKey.placeholder1') : $t('tools.app-workshop.cards.AppParams.Param-card.envKey.placeholder2')"
+                :placeholder="param.type === 'apps' ? $t('tools.app-workshop.cards.AppParams.Param-card.envKey.placeholder1') : param.type === 'service' ? $t('tools.app-workshop.cards.AppParams.Param-card.envKey.placeholder2') : $t('tools.app-workshop.cards.AppParams.Param-card.envKey.placeholder')"
               />
             </n-form-item>
           </n-gi>
@@ -144,7 +144,7 @@ const appParamsYaml = computed({
               <div v-html="$t('tools.app-workshop.cards.AppParams.Param-card.dynamic-param-config.info.note')" />
             </n-alert>
           </n-gi>
-          <n-gi v-if="param.type === 'select' || param.type === 'apps'" :span="param.type === 'apps' ? '1' : '2'">
+          <n-gi v-if="param.type === 'apps' || param.type === 'select'" span="1">
             <n-form-item :label="param.type === 'apps' ? $t('tools.app-workshop.cards.AppParams.Param-card.dynamic-param-config.info.select.label1') : $t('tools.app-workshop.cards.AppParams.Param-card.dynamic-param-config.info.select.label2')" required>
               <div>
                 <div v-for="(option, optionIndex) in param.values" :key="optionIndex" class="param-form">
@@ -174,13 +174,16 @@ const appParamsYaml = computed({
               </div>
             </n-form-item>
           </n-gi>
-          <n-gi v-if="param.type === 'apps'">
-            <n-card :title="$t('tools.app-workshop.cards.AppParams.Param-card.dynamic-param-config.info.sub-select.card-title')" class="mb-4">
-              <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.dynamic-param-config.info.sub-select.label')" required>
+          <n-gi v-if="param.type === 'apps' || param.type === 'select'">
+            <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.default.label')" required>
+              <n-input v-model:value="param.default" :placeholder="param.type === 'apps' || param.type === 'select' ? $t('tools.app-workshop.cards.AppParams.Param-card.default.placeholder1') : $t('tools.app-workshop.cards.AppParams.Param-card.default.placeholder2')" />
+            </n-form-item>
+            <n-card v-if="param.type === 'apps'" :title="$t('tools.app-workshop.cards.AppParams.Param-card.dynamic-param-config.info.sub-select.card-title')" class="mb-4">
+              <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.envKey.label')" required>
                 <AutoComplete
                   v-model:value="param.child.envKey"
                   :options="getFilteredEnvVarsOptions(param.child.envKey)"
-                  :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.dynamic-param-config.info.sub-select.placeholder')"
+                  :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.envKey.placeholder2')"
                 />
               </n-form-item>
             </n-card>
@@ -193,10 +196,10 @@ const appParamsYaml = computed({
           </n-gi>
         </n-grid>
         
-        <n-grid cols="2" x-gap="12">
+        <n-grid v-if="param.type === 'password' || param.type === 'number' || param.type === 'text'" cols="2" x-gap="12">
           <n-gi>
-            <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.default.label')" :required="param.type === 'apps'">
-              <n-input v-model:value="param.default" :placeholder="param.type === 'apps' ? $t('tools.app-workshop.cards.AppParams.Param-card.default.placeholder1') : $t('tools.app-workshop.cards.AppParams.Param-card.default.placeholder2')" />
+            <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.default.label')">
+              <n-input v-model:value="param.default" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.default.placeholder2')" />
             </n-form-item>
           </n-gi>
           
