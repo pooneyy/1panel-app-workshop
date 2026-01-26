@@ -125,6 +125,19 @@ export function useDockerComposeEditor() {
           }
           break;
         case 'PANEL_DB_TYPE':
+          newParam.edit = false;
+          newParam.label = {
+            en: 'Database',
+            ja: 'データベース',
+            ko: '데이터베이스',
+            ms: 'Pangkalan Data',
+            ptBr: 'Banco de Dados',
+            ru: 'База данных',
+            tr: 'Veritabanı',
+            zh: '数据库',
+            zhHant: '資料庫',
+          };
+          newParam.required = true;
           newParam.type = 'apps';
           if (variableArray.some(v => v.name === 'PANEL_DB_HOST') || existingEnvKeys.has('PANEL_DB_HOST')) {
             newParam.child = {
