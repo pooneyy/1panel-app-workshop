@@ -46,6 +46,7 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
     memoryRequired: undefined as number | undefined,
     memoryUnit: 'GB',
     architectures: ['amd64', 'arm64'],
+    batchInstallSupport: false,
   });
   // 响应式自述文件内容
   const defaultUsername = ref('');
@@ -273,6 +274,9 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
           type: appForm.value.type,
           crossVersionUpdate: appForm.value.crossVersionUpdate,
           limit: appForm.value.limit,
+          ...(appForm.value.batchInstallSupport ? {
+            batchInstallSupport: appForm.value.batchInstallSupport
+          } : {}),
           website: appForm.value.website,
           github: appForm.value.github,
           document: appForm.value.document,

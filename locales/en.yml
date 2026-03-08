@@ -86,6 +86,7 @@ tools:
             placeholder: Selected Application Tag(s)
         type: App Type
         crossVersionUpdate: Cross-Version Upgrade
+        batchInstallSupport: Batch Install to Multiple Nodes
         limit:
           label: Maximum Installations
           placeholder: Set to 0 for no limit.

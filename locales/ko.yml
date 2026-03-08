@@ -86,6 +86,7 @@ tools:
             placeholder: 앱 태그 선택
         type: 앱 유형
         crossVersionUpdate: 크로스 버전 업데이트
+        batchInstallSupport: 여러 노드에 일괄 설치
         limit:
           label: 설치 수량 제한
           placeholder: 0은 무제한을 의미

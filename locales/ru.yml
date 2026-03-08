@@ -86,6 +86,7 @@ tools:
             placeholder: Выберите теги приложения
         type: Тип приложения
         crossVersionUpdate: Межверсионное обновление
+        batchInstallSupport: Пакетная установка на несколько узлов
         limit:
           label: Ограничение на количество установок
           placeholder: 0 означает без ограничений

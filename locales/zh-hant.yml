@@ -86,6 +86,7 @@ tools:
             placeholder: 選擇應用標籤
         type: 應用類型
         crossVersionUpdate: 跨版本升級
+        batchInstallSupport: 批量安裝到多個節點
         limit:
           label: 安裝數量限制
           placeholder: 0代表無限制

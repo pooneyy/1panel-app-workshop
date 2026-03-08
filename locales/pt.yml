@@ -86,6 +86,7 @@ tools:
             placeholder: Selecione tags do aplicativo
         type: Tipo do Aplicativo
         crossVersionUpdate: Atualização Entre Versões
+        batchInstallSupport: Instalação em Lote em Múltiplos Nós
         limit:
           label: Limite de Instalações
           placeholder: 0 significa ilimitado

@@ -86,6 +86,7 @@ tools:
             placeholder: アプリタグを選択
         type: アプリタイプ
         crossVersionUpdate: バージョン間アップグレード
+        batchInstallSupport: 複数ノードへの一括インストール
         limit:
           label: インストール数制限
           placeholder: 0は無制限を意味します

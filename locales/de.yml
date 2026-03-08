@@ -86,6 +86,7 @@ tools:
             placeholder: Anwendungs-Tags auswählen
         type: Anwendungstyp
         crossVersionUpdate: Versionsübergreifendes Update
+        batchInstallSupport: Batch-Installation auf mehreren Knoten
         limit:
           label: Installationslimit
           placeholder: 0 bedeutet unbegrenzt

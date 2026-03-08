@@ -86,6 +86,7 @@ tools:
             placeholder: Pilih tag aplikasi
         type: Jenis Aplikasi
         crossVersionUpdate: Kemaskini Rentas Versi
+        batchInstallSupport: Pemasangan Kelompok ke Berbilang Node
         limit:
           label: Had Kuantiti Pemasangan
           placeholder: 0 bermaksud tiada had

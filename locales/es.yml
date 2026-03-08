@@ -86,6 +86,7 @@ tools:
             placeholder: Seleccionar etiquetas de la aplicación
         type: Tipo de Aplicación
         crossVersionUpdate: Actualización entre Versiones
+        batchInstallSupport: Instalación por lotes en múltiples nodos
         limit:
           label: Límite de Instalaciones
           placeholder: 0 significa ilimitado

@@ -285,7 +285,12 @@ export function useProjectManagement() {
             throw new Error(t('tools.app-workshop.script.funcs.importProject.invalidJsonFormat'));
           }
           // 恢复应用数据
-          if (projectData.appForm) Object.assign(appForm.value, projectData.appForm);
+          if (projectData.appForm) {
+            Object.assign(appForm.value, projectData.appForm);
+            if (appForm.value.batchInstallSupport === undefined) {
+              appForm.value.batchInstallSupport = false;
+            }
+          }
           if (projectData.appVersion) appVersion.value = projectData.appVersion;
           // 恢复LOGO
           if (projectData.logo) {
@@ -457,6 +462,7 @@ export function useProjectManagement() {
         form.website = props.website || form.website;
         form.github = props.github || form.github;
         form.document = props.document || form.document;
+        form.batchInstallSupport = props.batchInstallSupport !== undefined ? props.batchInstallSupport : false;
         if (props.memoryRequired) {
           if (props.memoryRequired >= 1024) {
             form.memoryRequired = props.memoryRequired / 1024;

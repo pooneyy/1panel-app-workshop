@@ -86,6 +86,7 @@ tools:
             placeholder: Uygulama etiketlerini seçin
         type: Uygulama Türü
         crossVersionUpdate: Sürümler Arası Güncelleme
+        batchInstallSupport: Çoklu Düğüme Toplu Kurulum
         limit:
           label: Kurulum Sınırı
           placeholder: 0 sınırsız anlamına gelir

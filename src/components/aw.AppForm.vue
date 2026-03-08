@@ -133,6 +133,14 @@ const appForm = computed({
         </n-gi>
         
         <n-gi>
+          <n-form-item :label="$t('tools.app-workshop.cards.AppForm.batchInstallSupport')">
+            <n-switch v-model:value="appForm.batchInstallSupport" />
+          </n-form-item>
+        </n-gi>
+      </n-grid>
+
+      <n-grid cols="2" x-gap="12">
+        <n-gi>
           <n-form-item :label="$t('tools.app-workshop.cards.AppForm.limit.label')">
             <n-input-number v-model:value="appForm.limit" :min="0" :placeholder="$t('tools.app-workshop.cards.AppForm.limit.placeholder')" />
           </n-form-item>
