@@ -25,10 +25,6 @@ onUnmounted(() => {
 
 // Calculate the actual width to ensure minimum width is respected
 const siderWidth = computed(() => {
-  if (isMenuCollapsed.value) {
-    return 0;
-  }
-
   // Use 12.5% of window width, but ensure it's at least 240px
   const tenPercent = windowWidth.value * 0.125;
   return Math.max(240, tenPercent);
@@ -38,6 +34,7 @@ const siderWidth = computed(() => {
 <template>
   <n-layout has-sider>
     <n-layout-sider
+      class="menu-sider"
       bordered
       collapse-mode="width"
       :collapsed-width="0"
@@ -47,7 +44,9 @@ const siderWidth = computed(() => {
       :native-scrollbar="false"
       :position="siderPosition"
     >
-      <slot name="sider" />
+      <div class="sider-slot" :class="{ collapsed: isMenuCollapsed }">
+        <slot name="sider" />
+      </div>
     </n-layout-sider>
     <n-layout class="content">
       <slot name="content" />
@@ -71,6 +70,25 @@ const siderWidth = computed(() => {
   // background-color: #f1f5f9;
   ::v-deep(.n-layout-scroll-container) {
     padding: 26px;
+  }
+}
+
+.menu-sider {
+  overflow: hidden;
+
+  .sider-slot {
+    height: 100%;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.18s ease;
+
+    &.collapsed {
+      opacity: 0;
+    }
+
+    ::v-deep(*) {
+      white-space: nowrap;
+    }
   }
 }
 
