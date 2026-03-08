@@ -401,7 +401,8 @@ export function useProjectManagement() {
             type: field.type || 'text',
             default: field.default || '',
             required: field.required || false,
-            edit: field.edit !== undefined ? field.edit : true,
+            edit: field.edit !== undefined ? field.edit : false,
+            disable: field.disabled !== undefined ? field.disabled : false,
             random: field.random || false,
             label: {
               zh: field.label?.zh || field.labelZh || '',

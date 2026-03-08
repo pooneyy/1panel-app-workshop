@@ -141,6 +141,7 @@ const defaultAppParam = (): AppParam => ({
   default: '',
   required: false,
   edit: true,
+  disable: false,
   random: false,
   labelZh: '',
   labelEn: '',
