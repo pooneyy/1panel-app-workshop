@@ -1,0 +1,87 @@
+{
+  "tagPrefix": "",
+  "header": "# 更新日志\n\n本项目所有重要变更都会记录在此文件中。\n",
+  "issuePrefixes": ["#"],
+  "types": [
+    {
+      "type": "feat",
+      "section": "新功能",
+      "hidden": false
+    },
+    {
+      "type": "fix",
+      "section": "问题修复",
+      "hidden": false
+    },
+    {
+      "type": "perf",
+      "section": "性能优化",
+      "hidden": false
+    },
+    {
+      "type": "refactor",
+      "section": "重构",
+      "hidden": false
+    },
+    {
+      "type": "i18n",
+      "section": "国际化",
+      "hidden": false
+    },
+    {
+      "type": "docs",
+      "section": "文档",
+      "hidden": false
+    },
+    {
+      "type": "style",
+      "section": "样式",
+      "hidden": false
+    },
+    {
+      "type": "build",
+      "section": "构建",
+      "hidden": false
+    },
+    {
+      "type": "ci",
+      "section": "CI",
+      "hidden": false
+    },
+    {
+      "type": "test",
+      "section": "测试",
+      "hidden": false
+    },
+    {
+      "type": "chore",
+      "section": "杂项",
+      "hidden": true
+    },
+    {
+      "type": "revert",
+      "section": "回滚",
+      "hidden": false
+    }
+  ],
+  "noteKeywords": [
+    "BREAKING CHANGE",
+    "BREAKING CHANGES",
+    "BREAKING"
+  ],
+  "commitUrlFormat": "https://github.com/pooneyy/1panel-app-workshop/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/pooneyy/1panel-app-workshop/compare/{{previousTag}}...{{currentTag}}",
+  "issueUrlFormat": "https://github.com/pooneyy/1panel-app-workshop/issues/{{id}}",
+  "skip": {
+    "tag": true,
+    "commit": false,
+    "changelog": true
+  },
+  "bumpFiles": [
+    {
+      "filename": "package.json",
+      "type": "json"
+    }
+  ],
+  "releaseCommitMessageFormat": "chore(release): 更新项目版本至 {{currentTag}}"
+}
