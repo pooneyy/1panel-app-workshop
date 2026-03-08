@@ -71,7 +71,19 @@ const handleStatusChange = (param: AppParam, value: string) => {
     param.edit = option.edit;
   }
 };
-const editableOptions= computed(() => props.editableOptions);
+
+const isInstallLockingOption = (value: string) => {
+  return value === 'install-locked-post-editable' || value === 'install-locked-post-locked';
+};
+
+const getFilteredEditableOptions = (param: AppParam) => {
+  return props.editableOptions.map(option => ({
+    ...option,
+    disabled: isInstallLockingOption(option.value) && param.type !== 'text' && param.type !== 'number'
+  }));
+};
+
+// const editableOptions= computed(() => props.editableOptions);
 const expanded = computed({
   get: () => props.expanded,
   set: (value) => {
@@ -355,7 +367,7 @@ const appParamsYaml = computed({
               <n-select
                 :value="getEditableStatusValue(param)"
                 @update:value="handleStatusChange(param, $event)"
-                :options="editableOptions"
+                :options="getFilteredEditableOptions(param)"
                 style="min-width: 405px;"
               />
             </n-form-item>
