@@ -197,7 +197,7 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
         { label: 'PANEL_REDIS_ROOT_PASSWORD', value: 'PANEL_REDIS_ROOT_PASSWORD' },
       ]
     },
-    // { label: 'PANEL_WEBSITE_DIR', value: 'PANEL_WEBSITE_DIR' },
+    { label: 'WEBSITE_DIR', value: 'WEBSITE_DIR' },
   ]);
   // 参数类型选项
   const paramTypes = computed(() => [
