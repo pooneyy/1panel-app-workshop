@@ -133,7 +133,7 @@ tools:
         label: Editar Contenido de Docker Compose YAML
         var-info-area:
           title: Parámetros de la Aplicación Detectados
-          subtitle: Se detectaron {count} parámetros en total
+          subtitle: Se detectaron {count} parámetros<br>Haz clic en el nombre del parámetro en "Nuevos Parámetros" para ignorarlo manualmente; haz clic en el nombre del parámetro en "Ignorados" para quitar la exclusión; haz clic en el nombre del parámetro en "Ya Existen" para ir a su configuración
           newVars:
             title: Nuevos Parámetros
             text1: '{count} se pueden agregar'
@@ -147,6 +147,7 @@ tools:
             text1: '{count} parámetros ignorados'
             text2: No hay parámetros ignorados
             text3: Parámetros Reservados
+            manualIgnoredTitle: Parámetros ignorados manualmente
         note: El archivo Docker Compose ingresado cumplirá con los estándares de aplicación 1Panel después de la conversión.
       AppParams:
         title: Configuración de Parámetros de la Aplicación

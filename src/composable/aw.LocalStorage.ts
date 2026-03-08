@@ -10,7 +10,7 @@ export function useLocalStorage() {
     // 卡片展开状态相关
     expandProjectManagement, expandAppForm, expandReadmeEditor, expandReadmeEditorTemplate,
     expandAppDeclaration, expandDockerComposeEditor, expandAppParams, newVarsCollapsed,
-    existingVarsCollapsed, ignoredVarsCollapsed,
+    existingVarsCollapsed, ignoredVarsCollapsed, manualIgnoredVariables,
     // 标签页相关
     projectManagementActiveTab, readmeEditorActiveTab,
     // 自述文件编辑模板卡片表单相关
@@ -45,6 +45,7 @@ export function useLocalStorage() {
         readmeContentEN: readmeContentEN.value,
         // Docker Compose
         dockerCompose: dockerCompose.value,
+        manualIgnoredVariables: [...manualIgnoredVariables.value],
         // 应用参数
         appParams: appParams.value.map(param => ({
           ...param,
@@ -122,6 +123,9 @@ export function useLocalStorage() {
       if (parsedData.readmeContentEN !== undefined) readmeContentEN.value = parsedData.readmeContentEN;
       // 恢复Docker Compose和应用参数
       if (parsedData.dockerCompose) dockerCompose.value = parsedData.dockerCompose;
+      manualIgnoredVariables.value = Array.isArray(parsedData.manualIgnoredVariables)
+        ? parsedData.manualIgnoredVariables.filter((item: unknown) => typeof item === 'string')
+        : [];
       if (parsedData.appParams) {
         appParams.value = parsedData.appParams.map((param: any) => ({
           ...defaultAppParam(),
@@ -217,6 +221,7 @@ export function useLocalStorage() {
       () => readmeContentZH.value,
       () => readmeContentEN.value,
       () => dockerCompose.value,
+      () => manualIgnoredVariables.value,
       () => appParams.value,
       () => expandProjectManagement.value,
       () => expandAppForm.value,

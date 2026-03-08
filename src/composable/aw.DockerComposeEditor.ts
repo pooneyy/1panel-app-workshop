@@ -6,7 +6,7 @@ import { useReactiveReferenceStore } from '@/stores/aw.store';
 export function useDockerComposeEditor() {
   const { t } = useI18n();
   const notification = useNotification();
-  const { expandAppParams, appParams, dockerCompose } = storeToRefs(useReactiveReferenceStore())
+  const { expandAppParams, appParams, dockerCompose, manualIgnoredVariables } = storeToRefs(useReactiveReferenceStore())
   // 从 Docker Compose 中提取变量
   const extractVariablesFromDockerCompose = (yamlString = dockerCompose.value) => {
     try {
@@ -59,7 +59,7 @@ export function useDockerComposeEditor() {
     }
     const variableArray = [...variables.values()];
     const existingEnvKeys = new Set(appParams.value.map(param => param.envKey));
-    const ignoredVariablesSet = new Set(ignoredVariables);
+    const ignoredVariablesSet = new Set([...ignoredVariables, ...manualIgnoredVariables.value]);
     const hasPanelDbType = existingEnvKeys.has('PANEL_DB_TYPE') || variableArray.some(v => v.name === 'PANEL_DB_TYPE');
     const variablesToAdd = variableArray.filter(variable => {
       if (existingEnvKeys.has(variable.name) || ignoredVariablesSet.has(variable.name)) {
@@ -273,6 +273,17 @@ export function useDockerComposeEditor() {
       });
     }
   };
+  const addManualIgnoredVariable = (variable: string) => {
+    if (!variable || ignoredVariables.includes(variable)) {
+      return;
+    }
+    if (!manualIgnoredVariables.value.includes(variable)) {
+      manualIgnoredVariables.value.push(variable);
+    }
+  };
+  const removeManualIgnoredVariable = (variable: string) => {
+    manualIgnoredVariables.value = manualIgnoredVariables.value.filter(item => item !== variable);
+  };
   /** 在模板中显示提取的变量信息 */
   const extractedVariablesInfo = computed(() => {
     const variables = extractVariablesFromDockerCompose();
@@ -289,14 +300,22 @@ export function useDockerComposeEditor() {
         existingEnvKeys.set(param.child.envKey, param.id);
       }
     });
-    const ignoredVars = variables.filter(v => ignoredVariables.includes(v));
+    const reservedIgnoredSet = new Set(ignoredVariables);
+    const manualIgnoredSet = new Set(manualIgnoredVariables.value);
+    const ignoredVarsSet = new Set([...ignoredVariables, ...manualIgnoredVariables.value]);
+    const ignoredVars = variables
+      .filter(v => ignoredVarsSet.has(v))
+      .map(v => ({
+        envKey: v,
+        reserved: reservedIgnoredSet.has(v)
+      }));
     // 过滤出新变量（排除已存在和被忽略的）
     const newVariables = variables.filter(v => 
-      !existingEnvKeys.has(v) && !ignoredVariables.includes(v)
+      !existingEnvKeys.has(v) && !ignoredVarsSet.has(v)
     );
     // 过滤出已存在的变量（排除被忽略的）
     const existingVariables = variables
-      .filter(v => existingEnvKeys.has(v) && !ignoredVariables.includes(v))
+      .filter(v => existingEnvKeys.has(v) && !ignoredVarsSet.has(v))
       .map(v => ({
         envKey: v,
         id: existingEnvKeys.get(v)!
@@ -308,8 +327,16 @@ export function useDockerComposeEditor() {
       ignored: ignoredVars.length,
       newVariables,
       existingVariables,
-      ignoredVariables: ignoredVars
+      ignoredVariables: ignoredVars,
+      manualIgnoredVariables: ignoredVars.filter(v => !v.reserved).map(v => v.envKey),
+      reservedIgnoredVariables: ignoredVars.filter(v => v.reserved).map(v => v.envKey),
+      isManualIgnoredVariable: (envKey: string) => manualIgnoredSet.has(envKey) && !reservedIgnoredSet.has(envKey)
     };
   });
-  return { extractedVariablesInfo, addDockerComposeParameters };
+  return {
+    extractedVariablesInfo,
+    addDockerComposeParameters,
+    addManualIgnoredVariable,
+    removeManualIgnoredVariable
+  };
 }

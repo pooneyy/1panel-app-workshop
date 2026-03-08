@@ -18,6 +18,7 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
   const newVarsCollapsed = ref(true); // 控制新变量部分展开状态
   const existingVarsCollapsed = ref(true); // 控制已存在变量部分展开状态
   const ignoredVarsCollapsed = ref(true); // 控制已忽略变量部分展开状态
+  const manualIgnoredVariables = ref<string[]>([]);
   const enabledUpdateReadmeWatch = ref(true); // 自述文件内容更新监听器开关
   const projectManagementActiveTab = ref('package-project'); // 项目管理卡片激活标签页
   const readmeEditorActiveTab = ref('zh'); // 自述文件编辑卡片激活标签页
@@ -592,7 +593,7 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
     // 卡片展开状态相关
     expandProjectManagement, expandAppForm, expandReadmeEditor, expandReadmeEditorTemplate,
     expandAppDeclaration, expandDockerComposeEditor, expandAppParams, newVarsCollapsed,
-    existingVarsCollapsed, ignoredVarsCollapsed, enabledUpdateReadmeWatch,
+    existingVarsCollapsed, ignoredVarsCollapsed, manualIgnoredVariables, enabledUpdateReadmeWatch,
     // 标签页相关
     projectManagementActiveTab, readmeEditorActiveTab,
     // 自述文件编辑模板卡片表单相关

@@ -133,7 +133,7 @@ tools:
         label: Docker Compose YAML İçeriğini Düzenle
         var-info-area:
           title: Uygulama Parametreleri Tespit Edildi
-          subtitle: Toplam {count} parametre tespit edildi
+          subtitle: Toplam {count} parametre bulundu<br>"Yeni Parametreler" içindeki parametre adına tıklayarak manuel olarak yok sayabilirsiniz; "Yoksayılan" içindeki parametre adına tıklayarak yok saymayı kaldırabilirsiniz; "Mevcut" içindeki parametre adına tıklayarak ilgili yapılandırmaya atlayabilirsiniz
           newVars:
             title: Yeni Parametreler
             text1: '{count} eklenebilir'
@@ -147,6 +147,7 @@ tools:
             text1: '{count} parametre yoksayıldı'
             text2: Yoksayılan parametre yok
             text3: Ayrılmış Parametreler
+            manualIgnoredTitle: Elle Yoksayılan Parametreler
         note: Girilen Docker Compose dosyası dönüştürüldükten sonra 1Panel uygulama standartlarına uygun olacaktır.
       AppParams:
         title: Uygulama Parametre Yapılandırması

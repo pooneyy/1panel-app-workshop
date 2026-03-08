@@ -133,7 +133,7 @@ tools:
         label: Edit Kandungan Docker Compose YAML
         var-info-area:
           title: Parameter Aplikasi Dikesan
-          subtitle: Sejumlah {count} parameter ditemui
+          subtitle: Sejumlah {count} parameter ditemui<br>Klik nama parameter dalam "Parameter Baru" untuk mengabaikannya secara manual; klik nama parameter dalam "Diabaikan" untuk membatalkan abaian; klik nama parameter dalam "Sedia Ada" untuk lompat ke konfigurasi berkaitan
           newVars:
             title: Parameter Baru
             text1: '{count} tersedia untuk ditambah'
@@ -147,6 +147,7 @@ tools:
             text1: '{count} parameter diabaikan'
             text2: Tiada parameter diabaikan
             text3: Parameter Terpelihara
+            manualIgnoredTitle: Parameter Diabaikan Secara Manual
         note: Fail Docker Compose yang dimasukkan akan mematuhi piawaian aplikasi 1Panel selepas penukaran.
       AppParams:
         title: Konfigurasi Parameter Aplikasi

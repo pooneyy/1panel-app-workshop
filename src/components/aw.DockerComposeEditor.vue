@@ -11,6 +11,8 @@ interface Props {
   existingVarsCollapsed?: boolean;
   ignoredVarsCollapsed?: boolean;
   addDockerComposeParameters?: () => void;
+  addManualIgnoredVariable?: (variable: string) => void;
+  removeManualIgnoredVariable?: (variable: string) => void;
   downloadDockerCompose?: () => void;
   convertedDockerCompose?: string;
 }
@@ -22,6 +24,8 @@ const props = withDefaults(defineProps<Props>(), {
   existingVarsCollapsed: false,
   ignoredVarsCollapsed: false,
   addDockerComposeParameters: () => {},
+  addManualIgnoredVariable: () => {},
+  removeManualIgnoredVariable: () => {},
   downloadDockerCompose: () => {},
   convertedDockerCompose: ''
 });
@@ -34,6 +38,8 @@ const emit = defineEmits<{
   'update:existingVarsCollapsed': [value: boolean];
   'update:ignoredVarsCollapsed': [value: boolean];
   'addDockerComposeParameters': [];
+  'addManualIgnoredVariable': [variable: string];
+  'removeManualIgnoredVariable': [variable: string];
   'downloadDockerCompose': [];
   'update:convertedDockerCompose': [value: string];
   'jumpToParam': [paramId: number];
@@ -105,7 +111,7 @@ const convertedDockerCompose = computed({
         </n-text>
       </template>
       <div>
-        <n-text>{{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.subtitle', { count: extractedVariablesInfo.total }) }}</n-text>
+        <div v-html="$t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.subtitle', { count: extractedVariablesInfo.total })" />
         <n-grid cols="3" x-gap="12" class="mt-2">
           <!-- 新变量区域 -->
           <n-gi>
@@ -142,7 +148,14 @@ const convertedDockerCompose = computed({
                 
                 <div v-show="!newVarsCollapsed">
                   <n-space v-if="extractedVariablesInfo.newVariables.length > 0" vertical class="mt-2">
-                    <n-tag v-for="variable in extractedVariablesInfo.newVariables" :key="variable" type="info" size="small">
+                    <n-tag
+                      v-for="variable in extractedVariablesInfo.newVariables"
+                      :key="variable"
+                      type="info"
+                      size="small"
+                      style="cursor: pointer;"
+                      @click="emit('addManualIgnoredVariable', variable)"
+                    >
                       {{ variable }}
                     </n-tag>
                   </n-space>
@@ -227,14 +240,35 @@ const convertedDockerCompose = computed({
                 </n-text>
                 
                 <div v-show="!ignoredVarsCollapsed">
-                  <n-space v-if="extractedVariablesInfo.ignoredVariables.length > 0" vertical class="mt-2">
-                    <n-tag v-for="variable in extractedVariablesInfo.ignoredVariables" :key="variable" type="warning" size="small">
+                  <n-text v-if="extractedVariablesInfo.reservedIgnoredVariables.length > 0" depth="3" tag="div" class="mt-1" style="font-size: 12px;">
+                    {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.ignoredVars.text3') }}
+                  </n-text>
+                  <n-space v-if="extractedVariablesInfo.reservedIgnoredVariables.length > 0" vertical class="mt-2">
+                    <n-tag
+                      v-for="variable in extractedVariablesInfo.reservedIgnoredVariables"
+                      :key="`${variable}-reserved`"
+                      type="warning"
+                      size="small"
+                    >
                       {{ variable }}
                     </n-tag>
                   </n-space>
-                  <n-text v-if="extractedVariablesInfo.ignoredVariables.length > 0" depth="3" tag="div" class="mt-1" style="font-size: 12px;">
-                    {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.ignoredVars.text3') }}
+                  <n-text v-if="extractedVariablesInfo.manualIgnoredVariables.length > 0" depth="3" tag="div" class="mt-1" style="font-size: 12px;">
+                    {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.ignoredVars.manualIgnoredTitle') }}
                   </n-text>
+                  <n-space v-if="extractedVariablesInfo.manualIgnoredVariables.length > 0" vertical class="mt-2">
+                    <n-tag
+                      v-for="variable in extractedVariablesInfo.manualIgnoredVariables"
+                      :key="`${variable}-manual`"
+                      type="primary"
+                      size="small"
+                      :bordered="true"
+                      style="cursor: pointer;"
+                      @click="emit('removeManualIgnoredVariable', variable)"
+                    >
+                      {{ variable }}
+                    </n-tag>
+                  </n-space>
                 </div>
               </div>
             </n-card>

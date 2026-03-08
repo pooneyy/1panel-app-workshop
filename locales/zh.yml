@@ -133,7 +133,7 @@ tools:
         label: 编辑 Docker Compose YAML 内容
         var-info-area:
           title: 发现应用参数
-          subtitle: 共发现 {count} 个参数
+          subtitle: 共发现 {count} 个参数<br>点击“新参数”中的参数名可以将其手动忽略；点击“被忽略”中的参数名可以解除忽略；点击“已存在”中的参数名可以跳转配置对应的参数
           newVars:
             title: 新参数
             text1: '{count} 个可添加'
@@ -147,6 +147,7 @@ tools:
             text1: '{count} 个已忽略参数'
             text2: 无被忽略参数
             text3: 保留参数
+            manualIgnoredTitle: 手动忽略参数
         note: 输入的 Docker Compose 文件转换后将会符合 1Panel 应用标准。
       AppParams:
         title: 应用参数配置

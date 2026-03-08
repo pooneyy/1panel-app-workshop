@@ -133,7 +133,7 @@ tools:
         label: Docker Compose YAMLコンテンツを編集
         var-info-area:
           title: アプリパラメータを発見
-          subtitle: 合計 {count} 個のパラメータを発見
+          subtitle: 合計 {count} 個のパラメータを発見<br>「新規パラメータ」のパラメータ名をクリックすると手動で無視できます；「無視」のパラメータ名をクリックすると無視を解除できます；「既存」のパラメータ名をクリックすると対応する設定へ移動できます
           newVars:
             title: 新規パラメータ
             text1: '{count} 個追加可能'
@@ -147,6 +147,7 @@ tools:
             text1: '{count} 個のパラメータが無視されました'
             text2: 無視されたパラメータなし
             text3: 予約パラメータ
+            manualIgnoredTitle: 手動で無視されたパラメータ
         note: 入力されたDocker Composeファイルは変換後、1Panelアプリ標準に準拠します。
       AppParams:
         title: アプリパラメータ設定

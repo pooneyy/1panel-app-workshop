@@ -17,7 +17,7 @@ export function useProjectManagement() {
     // 卡片展开状态相关
     expandProjectManagement, expandAppForm, expandReadmeEditor, expandReadmeEditorTemplate,
     expandAppDeclaration, expandDockerComposeEditor, expandAppParams, newVarsCollapsed,
-    existingVarsCollapsed, ignoredVarsCollapsed, enabledUpdateReadmeWatch,
+    existingVarsCollapsed, ignoredVarsCollapsed, manualIgnoredVariables, enabledUpdateReadmeWatch,
     // 标签页相关
     projectManagementActiveTab, readmeEditorActiveTab,
   } = storeToRefs(useReactiveReferenceStore())
@@ -205,6 +205,7 @@ export function useProjectManagement() {
         readmeContentEN: readmeContentEN.value,
         // Docker Compose
         dockerCompose: dockerCompose.value,
+        manualIgnoredVariables: [...manualIgnoredVariables.value],
         // 应用参数
         appParams: appParams.value.map(param => ({
           ...param,
@@ -311,6 +312,9 @@ export function useProjectManagement() {
           if (projectData.readmeContentEN !== undefined) readmeContentEN.value = projectData.readmeContentEN;
           // 恢复Docker Compose和应用参数
           if (projectData.dockerCompose) dockerCompose.value = projectData.dockerCompose;
+          manualIgnoredVariables.value = Array.isArray(projectData.manualIgnoredVariables)
+            ? projectData.manualIgnoredVariables.filter((item: unknown) => typeof item === 'string')
+            : [];
           if (projectData.appParams) {
             appParams.value = projectData.appParams.map((param: any) => ({
               ...defaultAppParam(),
@@ -673,6 +677,7 @@ export function useProjectManagement() {
           memoryRequired: undefined,
           memoryUnit: 'GB',
           architectures: ['amd64', 'arm64'],
+          batchInstallSupport: false,
         };
         // 重置应用版本
         appVersion.value = '1.0.0';
@@ -703,6 +708,7 @@ export function useProjectManagement() {
         MYSQL_DATABASE: appdb
       volumes:
         - ./data/mysql:/var/lib/mysql`;
+        manualIgnoredVariables.value = [];
         // 重置应用参数
         appParams.value = [
           {

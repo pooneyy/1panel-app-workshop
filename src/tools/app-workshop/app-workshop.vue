@@ -54,7 +54,10 @@ const {
   toggleSection, initReadmeEditorWatchListeners, shouldShowSwapAnimation, getItemTransform,
   listRefreshCounter,
 } = useReadmeEditor()
-const { extractedVariablesInfo, addDockerComposeParameters } = useDockerComposeEditor()
+const {
+  extractedVariablesInfo, addDockerComposeParameters, addManualIgnoredVariable,
+  removeManualIgnoredVariable
+} = useDockerComposeEditor()
 const {
   getFilteredEnvVarsOptions, addParam, moveParamUp, moveParamDown, handleScrollToParam,
   removeParam, addOption, removeOption
@@ -113,6 +116,8 @@ onMounted(() => {
       v-model:new-vars-collapsed="newVarsCollapsed" v-model:existing-vars-collapsed="existingVarsCollapsed"
       v-model:ignored-vars-collapsed="ignoredVarsCollapsed" @add-docker-compose-parameters="addDockerComposeParameters"
       @download-docker-compose="downloadDockerCompose" v-model:converted-docker-compose="convertedDockerCompose"
+      @add-manual-ignored-variable="addManualIgnoredVariable"
+      @remove-manual-ignored-variable="removeManualIgnoredVariable"
       @jump-to-param="handleScrollToParam"
     />
     <AppParams app-params-card

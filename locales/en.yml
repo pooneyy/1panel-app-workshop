@@ -133,7 +133,7 @@ tools:
         label: Edit Docker Compose YAML
         var-info-area:
           title: Application Parameters Found
-          subtitle: Found {count} parameter in total | Found {count} parameters in total
+          subtitle: Found {count} parameters<br>Click a parameter name in "New Parameters" to manually ignore it; click a parameter name in "Ignored" to remove ignore; click a parameter name in "Existing" to jump to its configuration
           newVars:
             title: New Parameters
             text1: '{count} item available for addition | {count} items available for addition'
@@ -147,6 +147,7 @@ tools:
             text1: '{count} item ignored | {count} items ignored'
             text2: No ignored parameters
             text3: Reserved Parameters
+            manualIgnoredTitle: Manually Ignored Parameters
         note: Your Docker Compose file will be transformed to meet the 1Panel app standard.
       AppParams:
         title: Configure Application Parameters

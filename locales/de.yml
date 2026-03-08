@@ -133,7 +133,7 @@ tools:
         label: Docker Compose YAML-Inhalt bearbeiten
         var-info-area:
           title: Anwendungsparameter erkannt
-          subtitle: Insgesamt {count} Parameter erkannt
+          subtitle: Insgesamt {count} Parameter gefunden<br>Klicken Sie im Bereich "Neue Parameter" auf einen Parameternamen, um ihn manuell zu ignorieren; klicken Sie im Bereich "Ignoriert" auf einen Parameternamen, um die Ignorierung aufzuheben; klicken Sie im Bereich "Bereits vorhanden" auf einen Parameternamen, um zur entsprechenden Konfiguration zu springen
           newVars:
             title: Neue Parameter
             text1: '{count} können hinzugefügt werden'
@@ -147,6 +147,7 @@ tools:
             text1: '{count} Parameter ignoriert'
             text2: Keine ignorierten Parameter
             text3: Reservierte Parameter
+            manualIgnoredTitle: Manuell ignorierte Parameter
         note: Die eingegebene Docker Compose-Datei entspricht nach der Konvertierung den 1Panel-Anwendungsstandards.
       AppParams:
         title: Anwendungsparameterkonfiguration
