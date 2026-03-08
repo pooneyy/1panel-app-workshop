@@ -392,6 +392,12 @@ export function useProjectManagement() {
         });
       };
       const parseAppParams = (yamlContent: string) => {
+        const normalizeDescription = (value: unknown) => {
+          if (typeof value !== 'string') {
+            return '';
+          }
+          return value.replace(/\r\n/g, '\n').replace(/\n/g, '\\n');
+        };
         try {
           const data = yaml.parse(yamlContent);
           return data.additionalProperties?.formFields?.map((field: any, index: number) => ({
@@ -416,15 +422,15 @@ export function useProjectManagement() {
               tr: field.label?.tr || '',
             },
             description: {
-              zh: field.description?.zh  || '',
-              zhHant: field.description?.['zh-Hant'] || field.description?.['zh-hant'] || field.description?.zhHant || '',
-              en: field.description?.en || '',
-              ja: field.description?.ja || '',
-              ko: field.description?.ko || '',
-              ms: field.description?.ms || '',
-              ptBr: field.description?.['pt-Br'] || field.description?.['pt-br'] || field.description?.ptBr || '',
-              ru: field.description?.ru || '',
-              tr: field.description?.tr || '',
+              zh: normalizeDescription(field.description?.zh),
+              zhHant: normalizeDescription(field.description?.['zh-Hant'] || field.description?.['zh-hant'] || field.description?.zhHant),
+              en: normalizeDescription(field.description?.en),
+              ja: normalizeDescription(field.description?.ja),
+              ko: normalizeDescription(field.description?.ko),
+              ms: normalizeDescription(field.description?.ms),
+              ptBr: normalizeDescription(field.description?.['pt-Br'] || field.description?.['pt-br'] || field.description?.ptBr),
+              ru: normalizeDescription(field.description?.ru),
+              tr: normalizeDescription(field.description?.tr),
             },
             child: field.child || { default: '', envKey: '', type: 'service' },
             rule: field.rule || '',
