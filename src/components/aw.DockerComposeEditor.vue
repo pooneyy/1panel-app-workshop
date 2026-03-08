@@ -140,10 +140,10 @@ const convertedDockerCompose = computed({
               </template>
               <div>
                 <n-text v-if="extractedVariablesInfo.new > 0" tag="div">
-                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.newVars.text1', { count: extractedVariablesInfo.new }) }}
+                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.newVars.countAvailable', { count: extractedVariablesInfo.new }) }}
                 </n-text>
                 <n-text v-else tag="div" depth="3">
-                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.newVars.text2') }}
+                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.newVars.emptyNote') }}
                 </n-text>
                 
                 <div v-show="!newVarsCollapsed">
@@ -190,10 +190,10 @@ const convertedDockerCompose = computed({
               </template>
               <div>
                 <n-text v-if="extractedVariablesInfo.existing > 0" tag="div">
-                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.existingVars.text1', { count: extractedVariablesInfo.existing }) }}
+                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.existingVars.countConfigured', { count: extractedVariablesInfo.existing }) }}
                 </n-text>
                 <n-text v-else tag="div" depth="3">
-                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.existingVars.text2') }}
+                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.existingVars.emptyNote') }}
                 </n-text>
                 
                 <div v-show="!existingVarsCollapsed">
@@ -233,15 +233,15 @@ const convertedDockerCompose = computed({
               </template>
               <div>
                 <n-text v-if="extractedVariablesInfo.ignored > 0" tag="div">
-                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.ignoredVars.text1', { count: extractedVariablesInfo.ignored }) }}
+                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.ignoredVars.countIgnored', { count: extractedVariablesInfo.ignored }) }}
                 </n-text>
                 <n-text v-else tag="div" depth="3">
-                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.ignoredVars.text2') }}
+                  {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.ignoredVars.emptyNote') }}
                 </n-text>
                 
                 <div v-show="!ignoredVarsCollapsed">
                   <n-text v-if="extractedVariablesInfo.reservedIgnoredVariables.length > 0" depth="3" tag="div" class="mt-1" style="font-size: 12px;">
-                    {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.ignoredVars.text3') }}
+                    {{ $t('tools.app-workshop.cards.DockerComposeEditor.var-info-area.ignoredVars.reservedNote') }}
                   </n-text>
                   <n-space v-if="extractedVariablesInfo.reservedIgnoredVariables.length > 0" vertical class="mt-2">
                     <n-tag

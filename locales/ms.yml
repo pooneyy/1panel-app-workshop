@@ -136,17 +136,17 @@ tools:
           subtitle: Sejumlah {count} parameter ditemui<br>Klik nama parameter dalam "Parameter Baru" untuk mengabaikannya secara manual; klik nama parameter dalam "Diabaikan" untuk membatalkan abaian; klik nama parameter dalam "Sedia Ada" untuk lompat ke konfigurasi berkaitan
           newVars:
             title: Parameter Baru
-            text1: '{count} tersedia untuk ditambah'
-            text2: Tiada parameter baru
+            countAvailable: '{count} tersedia untuk ditambah'
+            emptyNote: Tiada parameter baru
           existingVars:
             title: Sedia Ada
-            text1: '{count} dikonfigurasikan'
-            text2: Tiada parameter sedia ada
+            countConfigured: '{count} dikonfigurasikan'
+            emptyNote: Tiada parameter sedia ada
           ignoredVars:
             title: Diabaikan
-            text1: '{count} parameter diabaikan'
-            text2: Tiada parameter diabaikan
-            text3: Parameter Terpelihara
+            countIgnored: '{count} parameter diabaikan'
+            emptyNote: Tiada parameter diabaikan
+            reservedNote: Parameter Terpelihara
             manualIgnoredTitle: Parameter Diabaikan Secara Manual
         note: Fail Docker Compose yang dimasukkan akan mematuhi piawaian aplikasi 1Panel selepas penukaran.
       AppParams:

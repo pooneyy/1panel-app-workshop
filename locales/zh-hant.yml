@@ -136,17 +136,17 @@ tools:
           subtitle: 共發現 {count} 個參數<br>點擊「新參數」中的參數名稱可將其手動忽略；點擊「被忽略」中的參數名稱可解除忽略；點擊「已存在」中的參數名稱可跳轉配置對應的參數
           newVars:
             title: 新參數
-            text1: '{count} 個可新增'
-            text2: 無新參數
+            countAvailable: '{count} 個可新增'
+            emptyNote: 無新參數
           existingVars:
             title: 已存在
-            text1: '{count} 個已配置'
-            text2: 無已存在參數
+            countConfigured: '{count} 個已配置'
+            emptyNote: 無已存在參數
           ignoredVars:
             title: 被忽略
-            text1: '{count} 個已忽略參數'
-            text2: 無被忽略參數
-            text3: 保留參數
+            countIgnored: '{count} 個已忽略參數'
+            emptyNote: 無被忽略參數
+            reservedNote: 保留參數
             manualIgnoredTitle: 手動忽略的參數
         note: 輸入的 Docker Compose 檔案轉換後將會符合 1Panel 應用標準。
       AppParams:

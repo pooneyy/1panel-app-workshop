@@ -136,17 +136,17 @@ tools:
           subtitle: Toplam {count} parametre bulundu<br>"Yeni Parametreler" içindeki parametre adına tıklayarak manuel olarak yok sayabilirsiniz; "Yoksayılan" içindeki parametre adına tıklayarak yok saymayı kaldırabilirsiniz; "Mevcut" içindeki parametre adına tıklayarak ilgili yapılandırmaya atlayabilirsiniz
           newVars:
             title: Yeni Parametreler
-            text1: '{count} eklenebilir'
-            text2: Yeni parametre yok
+            countAvailable: '{count} eklenebilir'
+            emptyNote: Yeni parametre yok
           existingVars:
             title: Mevcut
-            text1: '{count} yapılandırıldı'
-            text2: Mevcut parametre yok
+            countConfigured: '{count} yapılandırıldı'
+            emptyNote: Mevcut parametre yok
           ignoredVars:
             title: Yoksayılan
-            text1: '{count} parametre yoksayıldı'
-            text2: Yoksayılan parametre yok
-            text3: Ayrılmış Parametreler
+            countIgnored: '{count} parametre yoksayıldı'
+            emptyNote: Yoksayılan parametre yok
+            reservedNote: Ayrılmış Parametreler
             manualIgnoredTitle: Elle Yoksayılan Parametreler
         note: Girilen Docker Compose dosyası dönüştürüldükten sonra 1Panel uygulama standartlarına uygun olacaktır.
       AppParams:

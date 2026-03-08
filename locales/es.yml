@@ -136,17 +136,17 @@ tools:
           subtitle: Se detectaron {count} parámetros<br>Haz clic en el nombre del parámetro en "Nuevos Parámetros" para ignorarlo manualmente; haz clic en el nombre del parámetro en "Ignorados" para quitar la exclusión; haz clic en el nombre del parámetro en "Ya Existen" para ir a su configuración
           newVars:
             title: Nuevos Parámetros
-            text1: '{count} se pueden agregar'
-            text2: No hay nuevos parámetros
+            countAvailable: '{count} se pueden agregar'
+            emptyNote: No hay nuevos parámetros
           existingVars:
             title: Ya Existen
-            text1: '{count} configurados'
-            text2: No hay parámetros existentes
+            countConfigured: '{count} configurados'
+            emptyNote: No hay parámetros existentes
           ignoredVars:
             title: Ignorados
-            text1: '{count} parámetros ignorados'
-            text2: No hay parámetros ignorados
-            text3: Parámetros Reservados
+            countIgnored: '{count} parámetros ignorados'
+            emptyNote: No hay parámetros ignorados
+            reservedNote: Parámetros Reservados
             manualIgnoredTitle: Parámetros ignorados manualmente
         note: El archivo Docker Compose ingresado cumplirá con los estándares de aplicación 1Panel después de la conversión.
       AppParams:

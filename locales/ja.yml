@@ -136,17 +136,17 @@ tools:
           subtitle: 合計 {count} 個のパラメータを発見<br>「新規パラメータ」のパラメータ名をクリックすると手動で無視できます；「無視」のパラメータ名をクリックすると無視を解除できます；「既存」のパラメータ名をクリックすると対応する設定へ移動できます
           newVars:
             title: 新規パラメータ
-            text1: '{count} 個追加可能'
-            text2: 新規パラメータなし
+            countAvailable: '{count} 個追加可能'
+            emptyNote: 新規パラメータなし
           existingVars:
             title: 既存
-            text1: '{count} 個設定済み'
-            text2: 既存パラメータなし
+            countConfigured: '{count} 個設定済み'
+            emptyNote: 既存パラメータなし
           ignoredVars:
             title: 無視
-            text1: '{count} 個のパラメータが無視されました'
-            text2: 無視されたパラメータなし
-            text3: 予約パラメータ
+            countIgnored: '{count} 個のパラメータが無視されました'
+            emptyNote: 無視されたパラメータなし
+            reservedNote: 予約パラメータ
             manualIgnoredTitle: 手動で無視されたパラメータ
         note: 入力されたDocker Composeファイルは変換後、1Panelアプリ標準に準拠します。
       AppParams:
