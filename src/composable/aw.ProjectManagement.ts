@@ -405,23 +405,23 @@ export function useProjectManagement() {
             random: field.random || false,
             label: {
               zh: field.label?.zh || field.labelZh || '',
-              zhHant: field.label?.['zh-Hant'] || field.label?.zhHant || '',
+              zhHant: field.label?.['zh-Hant'] || field.label?.['zh-hant'] || field.label?.zhHant || '',
               en: field.label?.en || field.labelEn || '',
               ja: field.label?.ja || '',
               ko: field.label?.ko || '',
               ms: field.label?.ms || '',
-              ptBr: field.label?.['pt-br'] || field.label?.ptBr || '',
+              ptBr: field.label?.['pt-Br'] || field.label?.['pt-br'] || field.label?.ptBr || '',
               ru: field.label?.ru || '',
               tr: field.label?.tr || '',
             },
             description: {
               zh: field.description?.zh  || '',
-              zhHant: field.description?.['zh-Hant'] || field.description?.zhHant || '',
+              zhHant: field.description?.['zh-Hant'] || field.description?.['zh-hant'] || field.description?.zhHant || '',
               en: field.description?.en || '',
               ja: field.description?.ja || '',
               ko: field.description?.ko || '',
               ms: field.description?.ms || '',
-              ptBr: field.description?.['pt-br'] || field.description?.ptBr || '',
+              ptBr: field.description?.['pt-Br'] || field.description?.['pt-br'] || field.description?.ptBr || '',
               ru: field.description?.ru || '',
               tr: field.description?.tr || '',
             },
@@ -463,12 +463,12 @@ export function useProjectManagement() {
         const desc = props.description || {};
         form.description = {
           zh: desc.zh || props.shortDescZh || '',
-          zhHant: desc['zh-Hant'] || desc.zhHant || '',
+          zhHant: desc['zh-Hant'] || desc['zh-hant'] || desc.zhHant || '',
           en: desc.en || props.shortDescEn || '',
           ja: desc.ja || '',
           ko: desc.ko || '',
           ms: desc.ms || '',
-          ptBr: desc['pt-br'] || desc.ptBr || '',
+          ptBr: desc['pt-Br'] || desc['pt-br'] || desc.ptBr || '',
           ru: desc.ru || '',
         };
       };
