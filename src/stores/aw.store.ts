@@ -321,9 +321,6 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
         if (Object.keys(description).length > 0) {
           field.description = description;
         }
-        if (Object.keys(description).length > 0) {
-          field.description = description;
-        }
         field.required = param.required;
         field.type = param.type;
         if (param.edit !== undefined && param.edit === true) field.edit = param.edit;
@@ -342,7 +339,15 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
       };
       const transformedData = transformKeys(data);
       const processedData = processNumbersForYaml(transformedData);
-      return yaml.stringify(processedData, { indent: 2, lineWidth: -1 });
+      let yamlString = yaml.stringify(processedData, { indent: 2, lineWidth: -1 });
+      yamlString = yamlString.replace(/^(\s+)(zh|zh-Hant|en|ja|ko|ms|pt-br|ru|tr):\s*(.+)$/gm, (match, indent, key, value) => {
+        const trimmedValue = value.trim();
+        if (trimmedValue.includes('\\n') && !trimmedValue.startsWith('"')) {
+          return `${indent}${key}: "${trimmedValue}"`;
+        }
+        return match;
+      });
+      return yamlString;
     } catch (e) {
       return `# ${t('tools.app-workshop.script.errors.generation-failed')}: ${e}`;
     }
