@@ -92,14 +92,13 @@ export function useProjectManagement() {
       return false;
     }
   };
-  // 压缩图片
+  // 压缩图片并补充为1:1正方形
   const compressImage = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.onload = () => {
-        let { width, height } = img;
-        // 如果宽和高都小于等于180，直接返回原图
-        if (width <= 180 && height <= 180) {
+        const { width, height } = img;
+        if (width === height && width <= 180) {
           const reader = new FileReader();
           reader.onload = (e) => {
             resolve(e.target?.result as string);
@@ -108,23 +107,32 @@ export function useProjectManagement() {
           reader.readAsDataURL(file);
           return;
         }
-        // 如果宽或高大于180，进行重绘
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        // 保持宽高比
-        const ratio = Math.min(180 / width, 180 / height);
-        width = Math.floor(width * ratio);
-        height = Math.floor(height * ratio);
-        canvas.width = width;
-        canvas.height = height;
-        if (ctx) {
-          ctx.drawImage(img, 0, 0, width, height);
-          // 转换为base64
-          const compressedBase64 = canvas.toDataURL('image/png');
-          resolve(compressedBase64);
-        } else {
+        
+        if (!ctx) {
           reject(new Error(t('tools.app-workshop.script.errors.canvas-context-error')));
+          return;
         }
+        const needsCompression = width > 180 || height > 180;
+        
+        const targetSize = needsCompression ? 180 : Math.max(width, height);
+        canvas.width = targetSize;
+        canvas.height = targetSize;
+        
+        // 计算缩放比例，确保图片完全显示在画布内
+        const ratio = Math.min(targetSize / width, targetSize / height);
+        const scaledWidth = Math.floor(width * ratio);
+        const scaledHeight = Math.floor(height * ratio);
+        
+        const offsetX = Math.floor((targetSize - scaledWidth) / 2);
+        const offsetY = Math.floor((targetSize - scaledHeight) / 2);
+        
+        ctx.drawImage(img, offsetX, offsetY, scaledWidth, scaledHeight);
+        
+        // 转换为base64
+        const compressedBase64 = canvas.toDataURL('image/png');
+        resolve(compressedBase64);
       };
       img.onerror = () => reject(new Error(t('tools.app-workshop.script.errors.image-load-error')));
       img.src = URL.createObjectURL(file);
