@@ -1,4 +1,3 @@
-import { extension as getExtensionFromMimeType, extension as getMimeTypeFromExtension } from 'mime-types';
 import type { MaybeRef, Ref } from 'vue';
 import _ from 'lodash';
 import { get } from '@vueuse/core';
@@ -10,6 +9,64 @@ export {
   previewImageFromBase64,
 };
 
+// MIME 类型映射表
+const mimeTypeToExtension: Record<string, string> = {
+  'text/plain': 'txt',
+  'text/html': 'html',
+  'text/css': 'css',
+  'text/javascript': 'js',
+  'application/json': 'json',
+  'application/pdf': 'pdf',
+  'image/jpeg': 'jpg',
+  'image/jpg': 'jpg',
+  'image/png': 'png',
+  'image/gif': 'gif',
+  'image/svg+xml': 'svg',
+  'image/webp': 'webp',
+  'image/bmp': 'bmp',
+  'image/tiff': 'tiff',
+  'audio/mpeg': 'mp3',
+  'audio/wav': 'wav',
+  'audio/ogg': 'ogg',
+  'video/mp4': 'mp4',
+  'video/webm': 'webm',
+  'video/ogg': 'ogv',
+  'application/zip': 'zip',
+  'application/x-rar-compressed': 'rar',
+  'application/x-7z-compressed': '7z',
+  'application/x-tar': 'tar',
+  'application/gzip': 'gz',
+};
+
+const extensionToMimeType: Record<string, string> = {
+  'txt': 'text/plain',
+  'html': 'text/html',
+  'htm': 'text/html',
+  'css': 'text/css',
+  'js': 'text/javascript',
+  'json': 'application/json',
+  'pdf': 'application/pdf',
+  'jpg': 'image/jpeg',
+  'jpeg': 'image/jpeg',
+  'png': 'image/png',
+  'gif': 'image/gif',
+  'svg': 'image/svg+xml',
+  'webp': 'image/webp',
+  'bmp': 'image/bmp',
+  'tiff': 'image/tiff',
+  'mp3': 'audio/mpeg',
+  'wav': 'audio/wav',
+  'ogg': 'audio/ogg',
+  'mp4': 'video/mp4',
+  'webm': 'video/webm',
+  'ogv': 'video/ogg',
+  'zip': 'application/zip',
+  'rar': 'application/x-rar-compressed',
+  '7z': 'application/x-7z-compressed',
+  'tar': 'application/x-tar',
+  'gz': 'application/gzip',
+};
+
 const commonMimeTypesSignatures = {
   'JVBERi0': 'application/pdf',
   'R0lGODdh': 'image/gif',
@@ -17,6 +74,15 @@ const commonMimeTypesSignatures = {
   'iVBORw0KGgo': 'image/png',
   '/9j/': 'image/jpg',
 };
+
+// 替代 mime-types 的函数
+function getExtensionFromMimeType(mimeType: string): string | false {
+  return mimeTypeToExtension[mimeType.toLowerCase()] || false;
+}
+
+function getMimeTypeFromExtension(extension: string): string | false {
+  return extensionToMimeType[extension.toLowerCase()] || false;
+}
 
 function getMimeTypeFromBase64({ base64String }: { base64String: string }) {
   const [,mimeTypeFromBase64] = base64String.match(/data:(.*?);base64/i) ?? [];
