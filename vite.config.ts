@@ -92,7 +92,7 @@ export default defineConfig({
                   || id.includes('/languages/g')) {
                   return 'highlight.js-1';
                 }
-                return 'highlight.js-2';
+                return 'highlight.js';
               }
             }
           }
