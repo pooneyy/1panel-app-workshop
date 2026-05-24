@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: 收藏工具
+    docker: Docker
   app-workshop:
     title: 1Panel 應用工場
     description: 一站式建構 1Panel 本地應用
@@ -156,6 +157,7 @@ tools:
           title: 參數
           envKey:
             label: 環境變數 Key
+            placeholder: '如: PANEL_APP_PORT_HTTP'
             placeholder1: '如: PANEL_DB_TYPE'
             placeholder2: '如: PANEL_APP_PORT_HTTP'
           type:

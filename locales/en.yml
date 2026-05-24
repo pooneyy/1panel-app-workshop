@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: Favorite tools
+    docker: Docker
   app-workshop:
     title: 1Panel App Workshop
     description: One-stop build for 1Panel local applications.

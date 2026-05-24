@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: 즐겨찾기 도구
+    docker: Docker
   app-workshop:
     title: 1Panel 앱 워크숍
     description: 원스톱 1Panel 로컬 앱 구축
@@ -156,6 +157,7 @@ tools:
           title: 매개변수
           envKey:
             label: 환경 변수 키
+            placeholder: '예: PANEL_APP_PORT_HTTP'
             placeholder1: '예: PANEL_DB_TYPE'
             placeholder2: '예: PANEL_APP_PORT_HTTP'
           type:

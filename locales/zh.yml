@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: 收藏工具
+    docker: Docker
   app-workshop:
     title: 1Panel 应用工场
     description: 一站式构建 1Panel 本地应用

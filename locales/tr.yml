@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: Favori Araçlar
+    docker: Docker
   app-workshop:
     title: 1Panel Uygulama Atölyesi
     description: Tek Durakta 1Panel Yerel Uygulama Oluşturma
@@ -156,6 +157,7 @@ tools:
           title: Parametre
           envKey:
             label: Ortam Değişkeni Anahtarı
+            placeholder: 'örn: PANEL_APP_PORT_HTTP'
             placeholder1: 'örn: PANEL_DB_TYPE'
             placeholder2: 'örn: PANEL_APP_PORT_HTTP'
           type:

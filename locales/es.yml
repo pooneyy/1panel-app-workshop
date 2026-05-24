@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: Herramientas Favoritas
+    docker: Docker
   app-workshop:
     title: Taller de Aplicaciones 1Panel
     description: Solución Todo en Uno para crear Aplicaciones Locales de 1Panel
@@ -156,6 +157,7 @@ tools:
           title: Parámetro
           envKey:
             label: Clave de Variable de Entorno
+            placeholder: 'ej: PANEL_APP_PORT_HTTP'
             placeholder1: 'ej: PANEL_DB_TYPE'
             placeholder2: 'ej: PANEL_APP_PORT_HTTP'
           type:

@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: Favorisierte Tools
+    docker: Docker
   app-workshop:
     title: 1Panel App-Werkstatt
     description: All-in-One-Lösung zum Erstellen lokaler 1Panel-Anwendungen
@@ -156,6 +157,7 @@ tools:
           title: Parameter
           envKey:
             label: Umgebungsvariablenschlüssel
+            placeholder: 'z.B.: PANEL_APP_PORT_HTTP'
             placeholder1: 'z.B.: PANEL_DB_TYPE'
             placeholder2: 'z.B.: PANEL_APP_PORT_HTTP'
           type:

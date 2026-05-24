@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: Избранные инструменты
+    docker: Docker
   app-workshop:
     title: Мастерская приложений 1Panel
     description: Комплексное создание локальных приложений для 1Panel
@@ -156,6 +157,7 @@ tools:
           title: Параметр
           envKey:
             label: Ключ переменной окружения
+            placeholder: 'напр.: PANEL_APP_PORT_HTTP'
             placeholder1: 'напр.: PANEL_DB_TYPE'
             placeholder2: 'напр.: PANEL_APP_PORT_HTTP'
           type:

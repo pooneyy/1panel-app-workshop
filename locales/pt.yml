@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: Ferramentas Favoritas
+    docker: Docker
   app-workshop:
     title: Oficina de Aplicativos 1Panel
     description: Solução completa para criar aplicativos locais do 1Panel
@@ -156,6 +157,7 @@ tools:
           title: Parâmetro
           envKey:
             label: Chave da Variável de Ambiente
+            placeholder: 'ex: PANEL_APP_PORT_HTTP'
             placeholder1: 'ex: PANEL_DB_TYPE'
             placeholder2: 'ex: PANEL_APP_PORT_HTTP'
           type:

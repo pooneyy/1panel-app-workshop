@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: Alat Kegemaran
+    docker: Docker
   app-workshop:
     title: Bengkel Aplikasi 1Panel
     description: Penyelesaian Sehenti untuk membina Aplikasi Tempatan 1Panel
@@ -156,6 +157,7 @@ tools:
           title: Parameter
           envKey:
             label: Kunci Pembolehubah Persekitaran
+            placeholder: 'cth: PANEL_APP_PORT_HTTP'
             placeholder1: 'cth: PANEL_DB_TYPE'
             placeholder2: 'cth: PANEL_APP_PORT_HTTP'
           type:

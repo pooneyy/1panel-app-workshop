@@ -20,6 +20,7 @@ homepage:
 tools:
   categories:
     favorite-tools: お気に入りツール
+    docker: Docker
   app-workshop:
     title: 1Panel アプリワークショップ
     description: 1Panel ローカルアプリをワンストップで構築
@@ -156,6 +157,7 @@ tools:
           title: パラメータ
           envKey:
             label: 環境変数キー
+            placeholder: '例: PANEL_APP_PORT_HTTP'
             placeholder1: '例: PANEL_DB_TYPE'
             placeholder2: '例: PANEL_APP_PORT_HTTP'
           type:
