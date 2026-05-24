@@ -156,6 +156,7 @@ tools:
           title: Param
           envKey:
             label: Env Key
+            placeholder: e.g., PANEL_APP_PORT_HTTP
             placeholder1: 'e.g., PANEL_DB_TYPE'
             placeholder2: 'e.g., PANEL_APP_PORT_HTTP'
           type:
