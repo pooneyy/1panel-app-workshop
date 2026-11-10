@@ -43,7 +43,7 @@ hljs.registerLanguage('xml', xmlHljs);
 hljs.registerLanguage('yaml', yamlHljs);
 const renderer = new marked.Renderer();
 const { t } = useI18n();
-renderer.code = function(code, language) {
+renderer.code = function({ text: code, lang: language }) {
   const lang = language || 'plaintext';
   const validLang = hljs.getLanguage(lang) ? lang : 'plaintext';
   const highlighted = hljs.highlight(code, { language: validLang }).value;

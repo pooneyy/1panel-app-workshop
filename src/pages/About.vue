@@ -11,10 +11,6 @@ useHead({
   title,
   meta: [
     {
-      itemprop: 'name',
-      content: title,
-    },
-    {
       property: 'og:title',
       content: title,
     },
@@ -24,10 +20,6 @@ useHead({
     },
     {
       name: 'description',
-      content: desc,
-    },
-    {
-      itemprop: 'description',
       content: desc,
     },
     {

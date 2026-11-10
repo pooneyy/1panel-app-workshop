@@ -18,6 +18,7 @@ import type { ToolCategory } from '@/tools/tools.types';
 
 const themeVars = useThemeVars();
 const styleStore = useStyleStore();
+const { isMenuCollapsed, isSmallScreen } = storeToRefs(styleStore);
 const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
 
@@ -33,7 +34,7 @@ const tools = computed<ToolCategory[]>(() => [
 </script>
 
 <template>
-  <MenuLayout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
+  <MenuLayout class="menu-layout" :class="{ isSmallScreen }">
     <template #sider>
       <RouterLink to="/" class="hero-wrapper">
         <HeroGradient class="gradient" />
@@ -50,7 +51,7 @@ const tools = computed<ToolCategory[]>(() => [
 
       <div class="sider-content">
         <div class="sider-main">
-          <div v-if="styleStore.isSmallScreen" flex flex-col items-center>
+          <div v-if="isSmallScreen" flex flex-col items-center>
             <LocaleSelector w="90%" />
 
             <div flex justify-center>
@@ -84,7 +85,7 @@ const tools = computed<ToolCategory[]>(() => [
           circle
           variant="text"
           :aria-label="$t('home.toggleMenu')"
-          @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
+          @click="isMenuCollapsed = !isMenuCollapsed"
         >
           <NIcon size="25" :component="Menu2" />
         </c-button>
@@ -97,10 +98,10 @@ const tools = computed<ToolCategory[]>(() => [
 
         <CommandPalette />
 
-        <LocaleSelector v-if="!styleStore.isSmallScreen" />
+        <LocaleSelector v-if="!isSmallScreen" />
 
         <div>
-          <NavbarButtons v-if="!styleStore.isSmallScreen" />
+          <NavbarButtons v-if="!isSmallScreen" />
         </div>
       </div>
       <slot />
