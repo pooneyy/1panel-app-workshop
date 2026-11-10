@@ -1,8 +1,13 @@
 {
   "extends": "@vue/tsconfig/tsconfig.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.ts", "src/**/*.vue", "**/*.d.ts", "node_modules/vite-plugin-pwa/client.d.ts"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.ts", "src/**/*.vue", "**/*.d.ts", "**/*.json", "node_modules/vite-plugin-pwa/client.d.ts"],
   "exclude": ["src/**/__tests__/*", "src/libs/**/*"],
   "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "outDir": ".tsbuild",
+    "tsBuildInfoFile": ".tsbuild/tsconfig.app.tsbuildinfo",
     "lib": ["ES2022"],
     "target": "es2022",
     "module": "es2022",

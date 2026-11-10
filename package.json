@@ -36,7 +36,7 @@
     "release": "standard-version && pnpm release:tag",
     "release:tag": "node ./scripts/release-tag.mjs",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
-    "type-check": "vue-tsc --noEmit",
+    "type-check": "vue-tsc --build --force",
     "winrar": "winrar a -r -ep1 publish.zip ./dist/*"
   },
   "dependencies": {
