@@ -83,7 +83,7 @@
     "unplugin-auto-import": "21.0.0",
     "unplugin-icons": "23.0.1",
     "unplugin-vue-components": "32.1.0",
-    "vite": "8.0.14",
+    "vite": "8.3.7",
     "vite-plugin-node-polyfills": "0.28.0",
     "vite-svg-loader": "5.1.1",
     "vue-tsc": "3.3.1"
