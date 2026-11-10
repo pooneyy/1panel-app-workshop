@@ -10,7 +10,7 @@ import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
-import packageJson from './package.json'; // https://vitejs.dev/config/
+import packageJson from './package.json' with { type: 'json' }; // https://vitejs.dev/config/
 
 export default defineConfig({
   plugins: [
@@ -18,7 +18,7 @@ export default defineConfig({
       runtimeOnly: true,
       compositionOnly: true,
       fullInstall: true,
-      include: [resolve(__dirname, 'locales/**')],
+      include: [resolve(import.meta.dirname, 'locales/**')],
       strictMessage: false,
       escapeHtml: false,
     }),
@@ -53,7 +53,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': resolve(import.meta.dirname, 'src'),
     },
   },
   define: {

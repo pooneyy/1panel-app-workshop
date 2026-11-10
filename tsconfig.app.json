@@ -6,9 +6,7 @@
     "lib": ["ES2022"],
     "target": "es2022",
     "module": "es2022",
-    "moduleResolution": "Node",
-    "composite": true,
-    "baseUrl": ".",
+    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./src/*"]
     },

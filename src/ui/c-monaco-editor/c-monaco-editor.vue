@@ -2,12 +2,14 @@
 import * as monacoEditor from 'monaco-editor';
 import { VueMonacoEditor, loader } from '@guolao/vue-monaco-editor';
 import type { MonacoEditor } from '@guolao/vue-monaco-editor';
-import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-// import JsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
-// import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-// import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
-// import TsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+import EditorWorker from 'monaco-editor/editor/editor.worker?worker';
+// import JsonWorker from 'monaco-editor/language/json/json.worker?worker';
+// import CssWorker from 'monaco-editor/language/css/css.worker?worker';
+// import HtmlWorker from 'monaco-editor/language/html/html.worker?worker';
+// import TsWorker from 'monaco-editor/language/typescript/ts.worker?worker';
 import { useStyleStore } from '@/stores/style.store';
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<EditorProps>(), {
   theme: 'vs',
@@ -25,14 +27,6 @@ const emits = defineEmits<{
   (e: 'change', value: string | undefined, event: monacoEditor.editor.IModelContentChangedEvent): void
   (e: 'validate', markers: monacoEditor.editor.IMarker[]): void
 }>();
-
-interface MonacoEnvironment {
-  getWorker(_: any, label: string): Worker
-}
-// eslint-disable-next-line @typescript-eslint/no-namespace
-declare module globalThis {
-  let MonacoEnvironment: MonacoEnvironment;
-}
 
 const value = useVModel(props, 'value', emits);
 
@@ -57,7 +51,7 @@ globalThis.MonacoEnvironment = {
 // loaded monaco-editor from `node_modules`
 loader.config({ monaco: monacoEditor });
 
-export interface EditorProps {
+interface EditorProps {
   defaultValue?: string
   defaultPath?: string
   defaultLanguage?: string
@@ -120,12 +114,6 @@ const handleBeforeMount = (monaco: MonacoEditor) => {
 
 const attrs = useAttrs();
 const inheritedAttrs = { ...attrs, ...props };
-</script>
-
-<script lang="ts">
-export default {
-  inheritAttrs: false,
-};
 </script>
 
 <template>
