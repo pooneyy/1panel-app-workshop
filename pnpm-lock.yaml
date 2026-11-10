@@ -172,9 +172,6 @@ importers:
       '@tabler/icons-vue':
         specifier: 3.51.0
         version: 3.51.0(vue@3.5.45(typescript@6.0.3))
-      '@vicons/material':
-        specifier: 0.13.0
-        version: 0.13.0
       '@vicons/tabler':
         specifier: 0.13.0
         version: 0.13.0
@@ -278,9 +275,6 @@ importers:
       unocss:
         specifier: 66.12.0
         version: 66.12.0(@oxc-project/types@0.156.0)(cac@7.1.0)(rolldown@1.2.18)(srvx@1.0.8)(vite@8.3.7(@types/node@25.9.1)(jiti@2.7.0)(less@4.9.1(supports-color@5.5.0))(yaml@2.9.1))
-      unocss-preset-scrollbar:
-        specifier: 4.0.0
-        version: 4.0.0(unocss@66.12.0(@oxc-project/types@0.156.0)(cac@7.1.0)(rolldown@1.2.18)(srvx@1.0.8)(vite@8.3.7(@types/node@25.9.1)(jiti@2.7.0)(less@4.9.1(supports-color@5.5.0))(yaml@2.9.1)))
       unplugin-auto-import:
         specifier: 21.1.0
         version: 21.1.0(@vueuse/core@13.9.0(vue@3.5.45(typescript@6.0.3)))(oxc-parser@0.153.0)(rolldown@1.2.18)(vite@8.3.7(@types/node@25.9.1)(jiti@2.7.0)(less@4.9.1(supports-color@5.5.0))(yaml@2.9.1))
@@ -1108,9 +1102,6 @@ packages:
     resolution: {integrity: sha512-Wd3HYIxaGrXo9sm2dCLxvjSJlttQAVhsGdxNFeALQlu4QfVXid7m8hfW+X7ma+W3Vla+52RnddDhZkoB2jLvVw==}
     peerDependencies:
       vite: ^5.0.0-0 || ^6.0.0-0 || ^7.0.0-0 || ^8.0.0-0
-
-  '@vicons/material@0.13.0':
-    resolution: {integrity: sha512-lKVxFNprM+CaBkUH3gt6VjIeiMsKQl2zARQMwTCZruQl2vRHzyeZiKeCflWS99CEfv2JzX/6y697smxlzyxcVw==}
 
   '@vicons/tabler@0.13.0':
     resolution: {integrity: sha512-AykuhiqjszkIoAL/7knIFm6RDOBS1ZmQdJfQ+RNLEah0fVsxykUFCfMBSNZh8lOzC85EtdD1k5g/sv5GYk0Ohg==}
@@ -3066,11 +3057,6 @@ packages:
       rolldown:
         optional: true
 
-  unocss-preset-scrollbar@4.0.0:
-    resolution: {integrity: sha512-wPePkUCOvWsA1kOeImQtBzUnBuWhFvo2gOdWsPpmBke+z2zWbW4p9KfOPtGch+WrgnwnpmM4d4BxoVulC+1xhA==}
-    peerDependencies:
-      unocss: '>=66.0.0'
-
   unocss@66.12.0:
     resolution: {integrity: sha512-BfdiiXQKc8mg6JPqVdttVNL4gbQZy5jD8MFtl5Q4QAmPMjLHy6Ybhc9nWSvwBCo4PjMxgXonX/97wF8tmJQ1Mw==}
     peerDependencies:
@@ -4072,8 +4058,6 @@ snapshots:
       - cac
       - ocache
       - srvx
-
-  '@vicons/material@0.13.0': {}
 
   '@vicons/tabler@0.13.0': {}
 
@@ -6273,11 +6257,6 @@ snapshots:
       - unloader
       - vite
       - webpack
-
-  unocss-preset-scrollbar@4.0.0(unocss@66.12.0(@oxc-project/types@0.156.0)(cac@7.1.0)(rolldown@1.2.18)(srvx@1.0.8)(vite@8.3.7(@types/node@25.9.1)(jiti@2.7.0)(less@4.9.1(supports-color@5.5.0))(yaml@2.9.1))):
-    dependencies:
-      '@unocss/preset-mini': 66.12.0
-      unocss: 66.12.0(@oxc-project/types@0.156.0)(cac@7.1.0)(rolldown@1.2.18)(srvx@1.0.8)(vite@8.3.7(@types/node@25.9.1)(jiti@2.7.0)(less@4.9.1(supports-color@5.5.0))(yaml@2.9.1))
 
   unocss@66.12.0(@oxc-project/types@0.156.0)(cac@7.1.0)(rolldown@1.2.18)(srvx@1.0.8)(vite@8.3.7(@types/node@25.9.1)(jiti@2.7.0)(less@4.9.1(supports-color@5.5.0))(yaml@2.9.1)):
     dependencies:
