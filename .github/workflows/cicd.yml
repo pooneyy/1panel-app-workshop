@@ -19,7 +19,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -27,25 +27,31 @@ jobs:
       - uses: actions/setup-python@main
         with:
           python-version: 3.x
-          pip-install: llm-release-notes
 
       - name: Get diff file
         run: |
           tags=($(git for-each-ref --sort=-creatordate --format='%(refname:short)' refs/tags | head -2))
           git diff ${tags[1]} ${tags[0]} > diff.txt
 
+      - name: Fetch llm-release-notes-prompt
+        uses: pooneyy/gist-kit-action@v1
+        with:
+          token: ${{ secrets.GIST_TOKEN }}
+          gist-id: ${{ secrets.SCRIPT_GIST_ID }}
+
       - name: Generate change log
         run: |
-          llm-release-notes --baseurl="${{ vars.LLM_API }}" \
+          pip install llm-release-notes
+          llm-release-notes --baseurl="${{ secrets.LLM_API }}" \
             --apikey="${{ secrets.LLM_API_KEY }}" \
-            --model="${{ vars.LLM_MODEL }}" \
+            --model="${{ secrets.LLM_MODEL }}" \
             --language="zh-CN" \
-            --promptfile=".github/release-notes/prompt.txt" \
+            --promptfile="prompt.txt" \
             --diffile="diff.txt" \
             --output="changelog.md"
 
       - name: Upload change log
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: change-log
           path: |
@@ -62,7 +68,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Get version
         id: get-version
@@ -87,19 +93,19 @@ jobs:
           pnpm build:package
 
       - name: Upload normal-built
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: normal-built
           path: publish.tgz
 
       - name: Upload gh-pages-built
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: gh-built
           path: publish.gh.tgz
 
       - name: Upload docker-configs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: docker-configs
           path: |
@@ -235,7 +241,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Download artifact
         uses: actions/download-artifact@v7
