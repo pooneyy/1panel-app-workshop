@@ -183,8 +183,6 @@ tools:
                 input-value2: Значение опции
               sub-select:
                 card-title: Дополнительное подменю зависимости сервиса
-                label: Ключ переменной окружения
-                placeholder: 'напр.: PANEL_DB_TYPE'
               key:
                 label: Ключ зависимости
                 placeholder: 'напр.: mysql, redis, значение должно быть Key приложения из официального магазина'

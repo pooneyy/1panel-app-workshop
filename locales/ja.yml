@@ -183,8 +183,6 @@ tools:
                 input-value2: オプション値
               sub-select:
                 card-title: オプションのサービス依存関係サブメニュー
-                label: 環境変数キー
-                placeholder: '例: PANEL_DB_TYPE'
               key:
                 label: 依存関係キー
                 placeholder: '例: mysql, redis、値は公式アプリストア内のアプリケーションのキーを記入する必要があります'

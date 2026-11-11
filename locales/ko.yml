@@ -183,8 +183,6 @@ tools:
                 input-value2: 옵션 값
               sub-select:
                 card-title: 선택적 서비스 의존성 하위 메뉴
-                label: 환경 변수 키
-                placeholder: '예: PANEL_DB_TYPE'
               key:
                 label: 의존성 키
                 placeholder: '예: mysql, redis, 값은 공식 앱 스토어의 앱 키를 입력해야 함'

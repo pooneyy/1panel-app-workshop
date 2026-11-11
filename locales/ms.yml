@@ -183,8 +183,6 @@ tools:
                 input-value2: Nilai Pilihan
               sub-select:
                 card-title: Submenu Kebergantungan Perkhidmatan Pilihan
-                label: Kunci Pembolehubah Persekitaran
-                placeholder: 'cth: PANEL_DB_TYPE'
               key:
                 label: Kunci Kebergantungan
                 placeholder: 'cth: mysql, redis, nilai mesti sama dengan kunci aplikasi di kedai aplikasi rasmi'

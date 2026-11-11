@@ -183,8 +183,6 @@ tools:
                 input-value2: Optionswert
               sub-select:
                 card-title: Optionale Service-Abhängigkeits-Untermenüs
-                label: Umgebungsvariablenschlüssel
-                placeholder: 'z.B.: PANEL_DB_TYPE'
               key:
                 label: Abhängigkeitsschlüssel
                 placeholder: 'z.B.: mysql, redis, Wert muss dem Schlüssel der Anwendung im offiziellen App Store entsprechen'

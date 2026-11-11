@@ -1,0 +1,442 @@
+home:
+  subtitle: کارگاه برنامه ‎1Panel‎
+  home: خانه
+  toggleMenu: باز و بسته کردن منو
+  menu:
+    title: کارگاه برنامه
+    subtitle: جادوگر ساخت برنامه ‎1Panel‎
+  nav:
+    about: درباره
+    darkMode: حالت تاریک
+    lightMode: حالت روشن
+    mode: تغییر حالت تاریک/روشن
+    aboutLabel: درباره
+    github: مخزن GitHub
+    githubRepository: مخزن GitHub پروژه IT-Tools
+
+homepage:
+  text-center: در حال انتقال به کارگاه برنامه ‎1Panel‎...
+
+tools:
+  categories:
+    favorite-tools: ابزارهای مورد علاقه
+    docker: Docker
+  app-workshop:
+    title: کارگاه برنامه ‎1Panel‎
+    description: ساخت یکپارچه برنامههای محلی ‎1Panel‎.
+    cards:
+      ProjectManagement:
+        title: مدیریت پروژه
+        PackageProject:
+          title: بستهبندی و دانلود پیکربندی برنامه
+          note: لوگو را بارگذاری کنید، شماره نسخه برنامه را وارد نمایید و تمام فایلهای پیکربندی را در قالب یک فایل ZIP برای دانلود بستهبندی کنید.
+          uploadArea:
+            title: بارگذاری لوگو
+            note1: برای انتخاب تصویر کلیک کنید یا آن را به این ناحیه بکشید.
+            note2: اگر ابعاد تصویر بیش از 180x180 باشد، بهطور خودکار فشرده میشود.
+          previewArea: پیشنمایش لوگو
+          appVersionForm:
+            lable: نسخه برنامه
+            placeholder: 'مثال: 1.0.0'
+          warning:
+            title: 'ساختار فایل ZIP بستهبندی شده:'
+            paragraph1: فایل فراداده برنامه
+            paragraph2: لوگوی برنامه
+            paragraph3: فایل راهنمای چینی
+            paragraph4: فایل راهنمای انگلیسی
+            paragraph5: فایل پیکربندی پارامترها
+            paragraph6: فایل پیکربندی Docker Compose
+        ImportExport:
+          title: وارد کردن و صادر کردن پروژه
+          note: میتوانید پروژه را بهصورت فایل JSON صادر کنید یا با وارد کردن یک فایل JSON آن را بازیابی نمایید.
+      AppForm:
+        title: اطلاعات پایه برنامه
+        key:
+          label: کلید برنامه
+          placeholder: حروف کوچک لاتین، امکان استفاده از خط تیره، برای نامگذاری پوشه برنامه به کار میرود.
+        name:
+          label: نام برنامه
+          placeholder: نام برنامهای که به کاربران نمایش داده میشود
+        desc:
+          en:
+            label: توضیحات انگلیسی
+            placeholder: توضیحات انگلیسی
+          zh:
+            label: توضیحات چینی سادهشده
+            placeholder: توضیحات چینی سادهشده، حداکثر 30 کاراکتر.
+          zh-Hant:
+            label: توضیحات چینی سنتی
+            placeholder: توضیحات چینی سنتی
+          es-es:
+            label: توضیحات اسپانیایی
+            placeholder: توضیحات اسپانیایی
+          fa:
+            label: توضیحات فارسی
+            placeholder: توضیحات فارسی
+          ja:
+            label: توضیحات ژاپنی
+            placeholder: ''
+          ko:
+            label: توضیحات کرهای
+            placeholder: ''
+          ms:
+            label: توضیحات مالایی
+            placeholder: ''
+          pt-br:
+            label: توضیحات پرتغالی
+            placeholder: توضیحات پرتغالی (برزیل)
+          ru:
+            label: توضیحات روسی
+            placeholder: ''
+          tr:
+            label: توضیحات ترکی
+            placeholder: ''
+        tags:
+            label: برچسب(های) برنامه
+            placeholder: برچسب(های) برنامه انتخابشده
+        type: نوع برنامه
+        crossVersionUpdate: ارتقا میاننسخهای
+        batchInstallSupport: نصب دستهای روی چندین گره
+        limit:
+          label: حداکثر تعداد نصب
+          placeholder: برای بدون محدودیت بودن، روی 0 تنظیم کنید.
+        website: وبسایت
+        github: آدرس GitHub
+        document: آدرس مستندات
+        memoryRequired:
+          label: حافظه مورد نیاز
+          placeholder: خالی گذاشتن بهمعنای نبود محدودیت حافظه است
+        architectures: معماریهای پشتیبانی شده
+      ReadmeEditor:
+        title: ویرایش فایل README
+        note: میتوانید ترتیب پاراگرافها را با کشیدن آیتمهای لیست تغییر دهید. هرگونه ویرایش الگو یا توضیحات برنامه، محتوای README را بازنشانی خواهد کرد.
+        template:
+          title: الگو
+          defaultCredentials:
+            switch: اطلاعات ورود پیشفرض
+            input-user: نام کاربری
+            placeholder1: نام کاربری پیشفرض
+            input-pass: رمز عبور
+            placeholder2: رمز عبور پیشفرض
+          configUsage:
+            switch: دستورالعملهای پیکربندی و استفاده
+        tabs:
+          tab-cn: فایل README چینی
+          tab-en: فایل README انگلیسی
+        sections:
+          introduction:
+            title: معرفی
+            defalt: این پیکربندی برنامهای است که بهطور خودکار برای ‎1Panel‎ ایجاد شده است.
+          features:
+            title: ویژگیها
+            defalt: ویژگیهای برنامه را در اینجا بنویسید.
+          credentials:
+            title: اطلاعات ورود پیشفرض
+          configUsage:
+            title: دستورالعملهای پیکربندی و استفاده
+            defalt: دستورالعملهای پیکربندی و نحوه استفاده از برنامه را در اینجا بنویسید.
+      AppDeclaration:
+        title: فایل فراداده برنامه
+        note: در پوشه ریشه برنامه قرار دارد و برای اعلام فراداده پایه برنامه به کار میرود.
+      DockerComposeEditor:
+        title: پیکربندی Docker Compose
+        label: ویرایش محتوای YAML ی Docker Compose
+        var-info-area:
+          title: پارامترهای برنامه یافت شد
+          subtitle: '{count} پارامتر یافت شد<br>برای نادیده گرفتن دستی، روی نام پارامتر در «پارامترهای جدید» کلیک کنید؛ برای لغو نادیدهگیری، روی نام پارامتر در «نادیده گرفتهشده» کلیک کنید؛ برای رفتن به پیکربندی آن، روی نام پارامتر در «موجود» کلیک کنید'
+          newVars:
+            title: پارامترهای جدید
+            countAvailable: '{count} مورد قابل افزودن | {count} مورد قابل افزودن'
+            emptyNote: پارامتر جدیدی وجود ندارد
+          existingVars:
+            title: موجود
+            countConfigured: '{count} مورد پیکربندی شده | {count} مورد پیکربندی شده'
+            emptyNote: پارامتر موجودی وجود ندارد
+          ignoredVars:
+            title: نادیده گرفتهشده
+            countIgnored: '{count} مورد نادیده گرفته شده | {count} مورد نادیده گرفته شده'
+            emptyNote: پارامتر نادیده گرفتهشدهای وجود ندارد
+            reservedNote: پارامترهای رزروشده
+            manualIgnoredTitle: پارامترهای نادیده گرفتهشده بهصورت دستی
+        note: فایل Docker Compose واردشده به گونهای تبدیل میشود که با استاندارد برنامههای ‎1Panel‎ سازگار باشد.
+      AppParams:
+        title: پیکربندی پارامترهای برنامه
+        note: پارامترهایی که هنگام نصب باید توسط کاربر تنظیم شوند (مانند پورت، اطلاعات اتصال به پایگاه داده).
+        Param-card:
+          title: پارامتر
+          envKey:
+            label: کلید محیطی
+            placeholder: 'مثال: PANEL_APP_PORT_HTTP'
+            placeholder1: 'مثال: PANEL_DB_TYPE'
+            placeholder2: 'مثال: PANEL_APP_PORT_HTTP'
+          type:
+            label: نوع پارامتر
+          dynamic-param-config:
+            info:
+              title: وابستگیهای سرویس قابل انتخاب
+              note: 'کاربران میتوانند از طریق منوی اصلی یک سرویس وابسته (App) مانند MySQL، MariaDB یا PostgreSQL انتخاب کنند، سپس از طریق زیرمنو یک نمونه نصبشده مشخص از آن سرویس را برگزینند.<br>مقدار گزینه در منوی اصلی باید همان کلید برنامه در فروشگاه رسمی برنامهها باشد. مقدار پیشفرض باید برابر با مقدار یکی از گزینههای وابستگی سرویس از پیش پیکربندیشده باشد.'
+              select:
+                label1: گزینه وابستگی سرویس
+                label2: گزینه منوی کشویی
+                input-label: برچسب نمایشی
+                input-value1: 'کلید برنامه از فروشگاه رسمی برنامهها'
+                input-value2: مقدار
+              sub-select:
+                card-title: زیرمنوی وابستگی سرویس قابل انتخاب
+              key:
+                label: کلید وابستگی
+                placeholder: 'مثال: mysql, redis. کلید برنامه از فروشگاه رسمی.'
+          default:
+            label: مقدار پیشفرض
+            placeholder1: این فیلد باید تکمیل شود.
+            placeholder2: مقدار پیشفرض
+          rule:
+            label: قوانین اعتبارسنجی
+            placeholder: لطفاً انتخاب کنید
+          form-label:
+            title: برچسب فرم (الزامی)
+            zh:
+              label: برچسب چینی سادهشده
+              placeholder: برچسب چینی سادهشده
+            zh-Hant:
+              label: برچسب چینی سنتی
+              placeholder: برچسب چینی سنتی
+            en:
+              label: برچسب انگلیسی
+              placeholder: برچسب انگلیسی
+            es-es:
+              label: برچسب اسپانیایی
+              placeholder: برچسب اسپانیایی
+            fa:
+              label: برچسب فارسی
+              placeholder: برچسب فارسی
+            ja:
+              label: برچسب ژاپنی
+              placeholder: برچسب ژاپنی
+            ko:
+              label: برچسب کرهای
+              placeholder: برچسب کرهای
+            ms:
+              label: برچسب مالایی
+              placeholder: برچسب مالایی
+            pt-br:
+              label: برچسب پرتغالی (برزیل)
+              placeholder: برچسب پرتغالی (برزیل)
+            ru:
+              label: برچسب روسی
+              placeholder: برچسب روسی
+            tr:
+              label: برچسب ترکی
+              placeholder: برچسب ترکی
+          form-description:
+            title: توضیحات فرم (اختیاری)
+            zh:
+              label: توضیحات چینی سادهشده
+              placeholder: توضیحات چینی سادهشده
+            zh-Hant:
+              label: توضیحات چینی سنتی
+              placeholder: توضیحات چینی سنتی
+            en:
+              label: توضیحات انگلیسی
+              placeholder: توضیحات انگلیسی
+            es-es:
+              label: توضیحات اسپانیایی
+              placeholder: توضیحات اسپانیایی
+            fa:
+              label: توضیحات فارسی
+              placeholder: توضیحات فارسی
+            ja:
+              label: توضیحات ژاپنی
+              placeholder: توضیحات ژاپنی
+            ko:
+              label: توضیحات کرهای
+              placeholder: توضیحات کرهای
+            ms:
+              label: توضیحات مالایی
+              placeholder: توضیحات مالایی
+            pt-br:
+              label: توضیحات پرتغالی (برزیل)
+              placeholder: توضیحات پرتغالی (برزیل)
+            ru:
+              label: توضیحات روسی
+              placeholder: توضیحات روسی
+            tr:
+              label: توضیحات ترکی
+              placeholder: توضیحات ترکی
+          required: الزامی
+          edit: قابل ویرایش
+          random: کاراکترهای تصادفی
+          editableOptions: ویژگی قابل ویرایش بودن فرم پارامتر
+        divider: پیشنمایش پیکربندی پارامترها
+    components:
+      addDockerComposeParameters: افزودن پارامتر به پیکربندی پارامترهای برنامه | افزودن پارامترها به پیکربندی پارامترهای برنامه
+      addOption: افزودن گزینه
+      addParams: افزودن پارامترها
+      backToTop: بازگشت به<br>دانلود بسته
+      cancel: لغو
+      clearAllData: پاک کردن تمام دادهها
+      collapse: جمع کردن
+      confirm: تأیید
+      downloadAllAsZip: بستهبندی و دانلود تمام پیکربندیها
+      downloadAppDeclaration: دانلود فایل فراداده برنامه
+      downloadAppParams: دانلود پیکربندی پارامترها
+      downloadDockerCompose: دانلود فایل Docker Compose
+      downloadReadme: دانلود فایل README
+      expand: گسترش دادن
+      exportProject: صدور بهصورت JSON
+      importFromJson: وارد کردن از JSON
+      importFromZip: وارد کردن از بسته ZIP
+      moveUp: انتقال به بالا
+      moveDown: انتقال به پایین
+      remove: حذف
+      removeOption: حذف گزینه
+      resetParagraphOrder: بازنشانی ترتیب پاراگرافها و وضعیت فعالسازی
+    options:
+      availableTags:
+        ai: هوش مصنوعی
+        bi: هوش تجاری
+        crm: CRM
+        database: پایگاه داده
+        devops: DevOps
+        devtool: ابزار توسعه
+        email: سرویس ایمیل
+        game: بازیهای تفریحی
+        local: محلی
+        media: چندرسانهای
+        middleware: میانافزار
+        runtime: محیط اجرا
+        security: امنیت
+        server: سرور وب
+        storage: ذخیرهسازی ابری
+        tool: ابزار
+        website: وبسایت
+      editableOptions:
+        install-editable-post-editable: قابل ویرایش هنگام نصب، قابل ویرایش پس از نصب
+        install-locked-post-editable: قفل هنگام نصب، قابل ویرایش پس از نصب
+        install-editable-post-locked: قابل ویرایش هنگام نصب، قفل پس از نصب
+        install-locked-post-locked: قفل هنگام نصب، قفل پس از نصب
+      optionalEnvVars:
+        database: پایگاه داده
+      paramTypes:
+        apps: Apps - وابستگیهای سرویس قابل انتخاب
+        number: عدد
+        password: رمز عبور
+        select: منوی کشویی
+        service: Service - وابستگیهای سرویس الزامی
+        text: متن
+      ruleOptions:
+        paramPort: paramPort - محدوده پورت 1-65535
+        paramExtUrl: paramExtUrl - قالب URL ی HTTP(S)
+        paramCommon: paramCommon - حروف، اعداد، . - _ ؛ 2 تا 30 کاراکتر
+        paramComplexity: paramComplexity - رمز عبور قوی، 6 تا 30 کاراکتر
+      typeOptions:
+        runtime: Runtime - نوع محیط اجرا
+        tool: Tool - نوع ابزار
+        website: Website - انواع وبسایت (با استقرار یک مرحلهای)
+    script:
+      errors:
+        clearLocalStorage: پاک کردن حافظه محلی ناموفق بود
+        generation-failed: تولید ناموفق بود
+        conversion-failed: تبدیل ناموفق بود
+        extract-parameters-failed: استخراج پارامترها ناموفق بود
+        validate-error: خطا در اعتبارسنجی فایل تصویر
+        upload-error: خطا در بارگذاری فایل
+        read-error: امکان خواندن فایل وجود ندارد
+        image-load-error: بارگذاری تصویر ناموفق بود
+        canvas-context-error: ایجاد بستر Canvas ناموفق بود
+      funcs:
+        clearAllData:
+          title: پاک کردن تمام دادهها
+          content: پروژه بازنشانی خواهد شد. ادامه میدهید؟ این عمل قابل بازگشت نیست.
+          success: پروژه با موفقیت بازنشانی شد
+        saveToLocalStorage:
+          success: با موفقیت در حافظه محلی ذخیره شد
+          failed: ذخیره در حافظه محلی ناموفق بود
+        loadFromLocalStorage:
+          noData: هیچ داده ذخیرهشدهای یافت نشد
+          dataExpired: داده ذخیرهشده منقضی شده است. از داده پیشفرض استفاده میشود.
+          success: پروژه با موفقیت از حافظه محلی بارگذاری شد
+          failed: بارگذاری از حافظه محلی ناموفق بود
+        clearLocalStorage:
+          success: حافظه محلی با موفقیت پاک شد
+        convertedDockerCompose:
+          note1: محتوای خام
+        addDockerComposeParameters:
+          success: '{count} پارامتر جدید با موفقیت به پارامترهای برنامه افزوده شد'
+          warning: تعداد زیاد پارامترها باعث افزایش زمان پاسخ میشود.
+          failed: تمام پارامترها از پیش در پارامترهای برنامه تنظیم شدهاند.
+          processingTime: 'زمان پردازش: {time} ثانیه.'
+        handleLogoUpload:
+          no-imagefile: لطفاً یک فایل تصویری بارگذاری کنید. نوع فایل فعلی
+          no-image: فایل بارگذاریشده یک تصویر معتبر نیست. لطفاً محتوای فایل را بررسی کنید.
+        downloadAllAsZip:
+          image-compress-failed: فشردهسازی تصویر ناموفق بود. از لوگوی پیشفرض استفاده شد.
+          package-failed: بستهبندی و دانلود ناموفق بود
+        exportProject:
+          success: پروژه با موفقیت صادر شد
+          failed: صدور پروژه ناموفق بود
+        importProject:
+          appParamsParseError: خطا در تجزیه پیکربندی پارامترهای برنامه
+          error: وارد کردن پروژه ناموفق بود
+          invalidFile: فایل نامعتبر
+          invalidJsonFormat: قالب نامعتبر
+          invalidLogo: فایل logo.png نامعتبر است. از لوگوی پیشفرض استفاده شد.
+          invalidPackageStructure: ساختار بسته برنامه نامعتبر است
+          invalidZipFile: فایل ZIP نامعتبر
+          missingAppDeclaration: فایل فراداده برنامه یافت نشد
+          missingVersionFiles: پوشه نسخه یا فایلهای مورد نیاز (data.yml, docker-compose.yml) یافت نشد
+          parseError: خطای تجزیه فایل
+          readError: خطای خواندن فایل
+          success: پروژه با موفقیت وارد شد
+          zipError: وارد کردن پروژه از بسته ZIP ناموفق بود
+          zipParseError: خطای تجزیه فایل ZIP
+          zipReadError: خطای خواندن فایل ZIP
+          zipSuccess: بسته ZIP با موفقیت وارد شد
+        validateAppPackageStructure:
+          noRootFolder: پوشه ریشه یافت نشد
+          noFoundValidVersion: نسخه معتبری یافت نشد
+
+locale-selector:
+  select-a-language: انتخاب زبان
+
+favoriteButton:
+  remove: حذف از موارد دلخواه
+  add: افزودن به موارد دلخواه
+
+search:
+  label: جستجو
+  placeholder: جستجوی ابزارها...
+
+textareaCopyable:
+  copy: کپی در کلیپبورد
+  copied: کپی شد!
+  download: دانلود
+
+inputCopyable:
+  copy: کپی
+  copied: کپی شد!
+
+about:
+  content-fork: |
+    # درباره کارگاه برنامه ‎1Panel‎
+
+    این نسخهای تخصصی از IT-Tools است که برای فراهم کردن پشتیبانی یکپارچه ساخت برنامههای محلی ویژه فروشگاه برنامه ‎1Panel‎ طراحی شده است.
+
+    بهراحتی برنامههای محلی ‎1Panel‎ مخصوص خود را بسازید.
+
+    این پروژه از [arch3rPro/1Panel-Tools&#64;8e557be](https://github.com/arch3rPro/1Panel-Tools/tree/8e557be) منشعب شده و توسعه بیشتری یافته است.
+  alltools-title: همه ابزارها ({toolsCount} ابزار)
+  tools:
+    category: دستهبندی
+    name: نام
+    desc: توضیحات
+
+404:
+  notFound: صفحه یافت نشد
+  sorry: متأسفیم، صفحهای که به دنبال آن بودید وجود ندارد.
+  maybe: شاید بخواهید به صفحه اصلی برگردید؟
+  backHome: بازگشت به خانه
+
+components:
+  MarkdownRender:
+    default-content: هنوز محتوایی وجود ندارد.

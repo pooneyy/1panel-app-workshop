@@ -183,8 +183,6 @@ tools:
                 input-value2: Seçenek Değeri
               sub-select:
                 card-title: İsteğe Bağlı Servis Bağımlılığı Alt Menüsü
-                label: Ortam Değişkeni Anahtarı
-                placeholder: 'örn: PANEL_DB_TYPE'
               key:
                 label: Bağımlılık Anahtarı
                 placeholder: "örn: mysql, redis, değer resmi uygulama mağazasındaki uygulamanın Anahtar'ı olmalıdır"

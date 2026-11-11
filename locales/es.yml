@@ -183,8 +183,6 @@ tools:
                 input-value2: Valor de la Opción
               sub-select:
                 card-title: Submenú de Dependencia de Servicio Opcional
-                label: Clave de Variable de Entorno
-                placeholder: 'ej: PANEL_DB_TYPE'
               key:
                 label: Clave de Dependencia
                 placeholder: 'ej: mysql, redis, el valor debe coincidir con la clave de la aplicación en la tienda de aplicaciones oficial'

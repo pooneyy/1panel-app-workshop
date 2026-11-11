@@ -183,8 +183,6 @@ tools:
                 input-value2: 選項值
               sub-select:
                 card-title: 可選的服務依賴子選單
-                label: 環境變數 Key
-                placeholder: '如: PANEL_DB_TYPE'
               key:
                 label: 依賴 Key
                 placeholder: '如: mysql, redis, 值必須填寫官方應用商店中應用的Key'

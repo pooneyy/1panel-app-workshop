@@ -183,8 +183,6 @@ tools:
                 input-value2: Valeur de l'Option
               sub-select:
                 card-title: Sous-Menu de Dépendance de Service Optionnel
-                label: Clé de Variable d'Environnement
-                placeholder: 'ex : PANEL_DB_TYPE'
               key:
                 label: Clé de Dépendance
                 placeholder: "ex : mysql, redis, la valeur doit correspondre à la clé de l'application dans la boutique d'applications officielle"

@@ -183,8 +183,6 @@ tools:
                 input-value2: Value
               sub-select:
                 card-title: Optional Service Dependency Submenu
-                label: Env Key
-                placeholder: e.g., PANEL_DB_TYPE
               key:
                 label: Dependency Key
                 placeholder: e.g., mysql, redis. The Key from Official App Store.
