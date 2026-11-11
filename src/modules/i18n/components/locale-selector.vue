@@ -22,11 +22,22 @@ const localesLong: Record<string, string> = {
   'zh-hant': '繁體中文',
 };
 
+// i18n 下拉菜单置顶的语言
+const pinnedLocales = ['zh', 'zh-hant', 'en'];
+
 const localeOptions = computed(() =>
-  availableLocales.map(locale => ({
-    label: localesLong[locale] ?? locale,
-    value: locale,
-  })),
+  [...availableLocales]
+    .sort((a, b) => {
+      const rank = (loc: string) => {
+        const index = pinnedLocales.indexOf(loc);
+        return index === -1 ? pinnedLocales.length : index;
+      };
+      return rank(a) - rank(b) || a.localeCompare(b);
+    })
+    .map(locale => ({
+      label: localesLong[locale] ?? locale,
+      value: locale,
+    })),
 );
 </script>
 
