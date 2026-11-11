@@ -39,6 +39,11 @@ locale.value = get(getITToolsSetting('default_locale', locale.value));
 syncRef(
   locale,
   useStorage('locale', locale),
+  {
+    transform: {
+      rtl: right => right ?? locale.value,
+    },
+  },
 );
 </script>
 

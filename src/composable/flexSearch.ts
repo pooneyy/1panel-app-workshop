@@ -1,5 +1,5 @@
-import { type MaybeRef, get } from '@vueuse/core';
-import { computed, shallowRef } from 'vue';
+import { get } from '@vueuse/core';
+import { type MaybeRef, computed, shallowRef } from 'vue';
 import { Index } from 'flexsearch';
 
 // Define key types to match Fuse.js format

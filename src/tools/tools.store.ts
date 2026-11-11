@@ -1,6 +1,6 @@
-import { type MaybeRef, get } from '@vueuse/core';
+import { get } from '@vueuse/core';
 import { defineStore } from 'pinia';
-import type { Ref } from 'vue';
+import { type MaybeRef, type Ref } from 'vue';
 import _ from 'lodash';
 import type { Tool, ToolCategory, ToolWithCategory, ToolsFilter } from './tools.types';
 import { tools as allTools } from './index';
