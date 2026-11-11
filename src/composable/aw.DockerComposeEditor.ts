@@ -3,6 +3,18 @@ import { type AppParam, ignoredVariables } from '@/composable/aw.defind';
 import { defaultAppParam } from '@/composable/aw.defind';
 import { useReactiveReferenceStore } from '@/stores/aw.store';
 
+// 线性匹配 ${...} 整体内容，再由 parseVariable 拆解，避免嵌套 \s* 的回溯风险
+const variableRegex = /\$\{([^}]*)\}/g;
+
+function parseVariable(raw: string): { name: string; defaultValue: string } | undefined {
+  const separator = raw.indexOf(':-');
+  const name = (separator === -1 ? raw : raw.slice(0, separator)).replace(/\s+/g, '');
+  if (!/^[A-Z_][A-Z0-9_]*$/.test(name)) {
+    return undefined;
+  }
+  return { name, defaultValue: separator === -1 ? '' : raw.slice(separator + 2).trim() };
+}
+
 export function useDockerComposeEditor() {
   const { t } = useI18n();
   const notification = useNotification();
@@ -11,15 +23,12 @@ export function useDockerComposeEditor() {
   const extractVariablesFromDockerCompose = (yamlString = dockerCompose.value) => {
     try {
       // 支持默认值 ${VAR:-default}
-      const variableRegex = /\$\{\s*([A-Z_][A-Z0-9_]*)(?:\s*:-\s*([^}]*))?\s*\}/g;
       const matches = yamlString.matchAll(variableRegex);
       const extractedVariables = new Set<string>();
       for (const match of matches) {
-        if (match[1]) {
-          const variableName = match[1].replace(/\s+/g, '');
-          if (variableName && /^[A-Z_][A-Z0-9_]*$/.test(variableName)) {
-            extractedVariables.add(variableName);
-          }
+        const variable = parseVariable(match[1]);
+        if (variable) {
+          extractedVariables.add(variable.name);
         }
       }
       return Array.from(extractedVariables);
@@ -39,22 +48,12 @@ export function useDockerComposeEditor() {
    */
   const addDockerComposeParameters = async () => {
     const startTime = performance.now();
-    // 修改正则表达式来捕获变量名和默认值
-    const variableRegex = /\$\{\s*([A-Z_][A-Z0-9_]*)(?:\s*:-\s*([^}]*))?\s*\}/g;
     const variables = new Map<string, { name: string, defaultValue: string }>();
     const matches = dockerCompose.value.matchAll(variableRegex);
     for (const match of matches) {
-      if (match[1]) {
-        const variableName = match[1].replace(/\s+/g, '');
-        const defaultValue = match[2] ? match[2].trim() : ''; // 提取默认值，如果没有则为空字符串
-        if (variableName && /^[A-Z_][A-Z0-9_]*$/.test(variableName)) {
-          if (!variables.has(variableName)) {
-            variables.set(variableName, {
-              name: variableName,
-              defaultValue: defaultValue
-            });
-          }
-        }
+      const variable = parseVariable(match[1]);
+      if (variable && !variables.has(variable.name)) {
+        variables.set(variable.name, variable);
       }
     }
     const variableArray = [...variables.values()];
@@ -113,7 +112,7 @@ export function useDockerComposeEditor() {
             tr: 'Uygulama için HTTP erişim portunu ayarlayın, geçerli aralık: 1-65535',
             zh: '设置应用的 HTTP 访问端口，有效范围: 1-65535',
             zhHant: '設定應用程式的 HTTP 存取連接埠，有效範圍: 1-65535',
-          },
+          };
           newParam.label = {
             en: 'HTTP Port',
             esEs: 'Puerto HTTP',

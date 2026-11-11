@@ -22,6 +22,9 @@ import xmlHljs from 'highlight.js/lib/languages/xml';
 import yamlHljs from 'highlight.js/lib/languages/yaml';
 import 'highlight.js/styles/vs.css';
 
+const props = withDefaults(defineProps<Props>(), {
+  value: '',
+});
 hljs.registerLanguage('bash', bashHljs);
 hljs.registerLanguage('csharp', csharpHljs);
 hljs.registerLanguage('css', cssHljs);
@@ -51,11 +54,8 @@ renderer.code = function({ text: code, lang: language }) {
 };
 marked.setOptions({renderer: renderer});
 interface Props {
-  value: string;
+  value?: string;
 }
-const props = withDefaults(defineProps<Props>(), {
-  value: '',
-});
 const content = computed(() => {
   if (!props.value.trim()) {
     return `<p>${t('components.MarkdownRender.default-content')}</p>`;

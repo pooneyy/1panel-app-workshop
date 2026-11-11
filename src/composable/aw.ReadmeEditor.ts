@@ -261,9 +261,8 @@ export function useReadmeEditor() {
   /**
    * 处理拖拽放置事件的函数
    * @param event - 拖拽事件对象，包含拖拽相关信息
-   * @param dropIndex - 放置目标位置的索引
    */
-  const handleDrop = (event: DragEvent, dropIndex: number) => {
+  const handleDrop = (event: DragEvent) => {
     event.preventDefault();
     const target = event.currentTarget as HTMLElement;
     if (target) {

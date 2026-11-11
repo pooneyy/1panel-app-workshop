@@ -118,8 +118,8 @@ const processNumbersForYaml = (obj: any): any => {
     return value;
   };
   const traverse = (obj: any) => {
-    for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
+    for (const key in obj) {
+      if (Object.hasOwn(obj, key)) {
         if (typeof obj[key] === 'object' && obj[key] !== null) {
           traverse(obj[key]);
         } else {

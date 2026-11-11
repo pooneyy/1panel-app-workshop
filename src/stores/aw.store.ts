@@ -355,7 +355,7 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
       const transformedData = transformKeys(data);
       const processedData = processNumbersForYaml(transformedData);
       let yamlString = yaml.stringify(processedData, { indent: 2, lineWidth: -1 });
-      yamlString = yamlString.replace(/^(\s+)(zh|zh-Hant|en|es-es|fa|ja|ko|ms|pt-br|ru|tr):\s*(.+)$/gm, (match, indent, key, value) => {
+      yamlString = yamlString.replace(/^(\s+)(zh|zh-Hant|en|es-es|fa|ja|ko|ms|pt-br|ru|tr):[ \t]*(\S.*)$/gm, (match, indent, key, value) => {
         const trimmedValue = value.trim();
         if (trimmedValue.includes('\\n') && !trimmedValue.startsWith('"')) {
           return `${indent}${key}: "${trimmedValue}"`;
@@ -379,11 +379,11 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
       // 3. 处理容器名称和网络配置
       let firstService = true;
       if (composeObj.services) {
-        Object.keys(composeObj.services).forEach((serviceName, index) => {
+        Object.keys(composeObj.services).forEach((serviceName) => {
           const service = composeObj.services[serviceName];
           // 3.1 设置容器名称
           service.container_name = firstService 
-            ? '${CONTAINER_NAME}' 
+            ? `\${CONTAINER_NAME}`
             : `\${CONTAINER_NAME}-${serviceName}`;
           // 3.2 处理端口映射（只处理第一个服务的端口）
           if (firstService && service.ports) {

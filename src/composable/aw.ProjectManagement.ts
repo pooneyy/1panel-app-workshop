@@ -299,7 +299,7 @@ export function useProjectManagement() {
               const file = projectData.logo?.hasCustomLogo && projectData.logo?.logoPreview ? base64ToFile(projectData.logo.logoPreview, 'logo.png') : null;
               appLogo.value = file;
               logoPreview.value = file ? projectData.logo.logoPreview : `data:image/png;base64,${defaultLogoBase64}`;
-            } catch (error) {
+            } catch {
               appLogo.value = null;
               logoPreview.value = `data:image/png;base64,${defaultLogoBase64}`;
             }

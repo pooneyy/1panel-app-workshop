@@ -110,7 +110,7 @@ export function useLocalStorage() {
           const file = parsedData.logo?.hasCustomLogo && parsedData.logo?.logoPreview ? base64ToFile(parsedData.logo.logoPreview, 'logo.png') : null;
           appLogo.value = file;
           logoPreview.value = file ? parsedData.logo.logoPreview : `data:image/png;base64,${defaultLogoBase64}`;
-        } catch (error) {
+        } catch {
           appLogo.value = null;
           logoPreview.value = `data:image/png;base64,${defaultLogoBase64}`;
         }

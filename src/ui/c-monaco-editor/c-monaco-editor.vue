@@ -31,7 +31,7 @@ const emits = defineEmits<{
 const value = useVModel(props, 'value', emits);
 
 globalThis.MonacoEnvironment = {
-  getWorker(_: any, label: string) {
+  getWorker() {
     // if (label === 'json') {
     //   return new JsonWorker();
     // }
@@ -61,7 +61,7 @@ interface EditorProps {
 
   /* === */
 
-  theme: 'vs' | string
+  theme?: 'vs' | string
   line?: number
   options?: monacoEditor.editor.IStandaloneEditorConstructionOptions
   overrideServices?: monacoEditor.editor.IEditorOverrideServices

@@ -35,7 +35,8 @@
     "preview": "vite preview --port 5050",
     "release": "standard-version && pnpm release:tag",
     "release:tag": "node ./scripts/release-tag.mjs",
-    "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "type-check": "vue-tsc --build --force",
     "winrar": "winrar a -r -ep1 publish.zip ./dist/*"
   },
@@ -64,6 +65,7 @@
     "yaml": "2.9.1"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "10.0.0",
     "@iconify-json/mdi": "1.2.3",
     "@intlify/unplugin-vue-i18n": "11.2.8",
     "@types/file-saver": "2.0.7",

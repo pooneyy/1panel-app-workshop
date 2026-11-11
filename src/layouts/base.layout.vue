@@ -20,7 +20,6 @@ const themeVars = useThemeVars();
 const styleStore = useStyleStore();
 const { isMenuCollapsed, isSmallScreen } = storeToRefs(styleStore);
 const version = config.app.version;
-const commitSha = config.app.lastCommitSha.slice(0, 7);
 
 const { t } = useI18n();
 

@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
 import { useI18n } from 'vue-i18n';
-import { useThemeVars, NH1 } from 'naive-ui';
+import { NH1 } from 'naive-ui';
 import BaseLayout from './base.layout.vue';
 import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
@@ -14,7 +14,6 @@ const { t } = useI18n();
 const i18nKey = computed<string>(() => route.path.trim().replace('/', ''));
 const toolTitle = computed<string>(() => t(`tools.${i18nKey.value}.title`, String(route.meta.name)));
 const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.description`, String(route.meta.description)));
-const themeVars = useThemeVars();
 const head = computed<HeadObject>(() => ({
   title: toolTitle.value,
   meta: [

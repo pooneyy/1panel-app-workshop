@@ -66,7 +66,7 @@ export interface AppParams {
  * 4. 参数选项的管理（添加、删除选项）
  * 5. 自动滚动到指定参数卡片的辅助功能
  * 
- * @returns {Object} 应用参数管理的方法集合
+ * @returns {object} 应用参数管理的方法集合
  * @property {Function} getFilteredEnvVarsOptions - 根据关键字过滤环境变量选项，返回匹配的选项列表（支持分组结构）
  * @property {Function} addParam - 添加新的应用参数到列表，并自动展开编辑表单
  * @property {Function} moveParamUp - 将指定索引的参数向上移动一位，并滚动到新位置

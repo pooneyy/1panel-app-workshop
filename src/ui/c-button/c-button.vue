@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { RouteLocationRaw } from 'vue-router';
-import { useAppTheme } from '../theme/themes';
 import { useTheme } from './c-button.theme';
 
 const props = withDefaults(
@@ -46,7 +45,6 @@ const tag = computed(() => {
   }
   return 'button';
 });
-const appTheme = useAppTheme();
 
 const size = computed(() => theme.value.size[sizeName.value]);
 </script>

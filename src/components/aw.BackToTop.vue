@@ -1,10 +1,5 @@
 <script setup lang="ts">
 import { useAppTheme } from '@/ui/theme/themes';  
-const theme = useAppTheme();
-interface Props {
-  showBackToTop?: boolean;
-  scrollToTop?: () => void;
-}
 withDefaults(defineProps<Props>(), {
   showBackToTop: false,
 });
@@ -12,6 +7,11 @@ defineEmits<{
   'update:showBackToTop': [value: boolean];
   'scrollToTop': [];
 }>();
+const theme = useAppTheme();
+interface Props {
+  showBackToTop?: boolean;
+  scrollToTop?: () => void;
+}
 </script>
 <template>
   <transition name="fade">
