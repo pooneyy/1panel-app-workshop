@@ -103,6 +103,8 @@ export function useDockerComposeEditor() {
           newParam.default = '8080'
           newParam.description = {
             en: 'Set the HTTP access port for the application, valid range: 1-65535',
+            esEs: 'Configure el puerto de acceso HTTP de la aplicación, rango válido: 1-65535',
+            fa: 'پورت دسترسی HTTP برنامه را تنظیم کنید، محدوده معتبر: 1-65535',
             ja: 'アプリケーションのHTTPアクセスポートを設定します。有効範囲: 1-65535',
             ko: '애플리케이션의 HTTP 접근 포트를 설정합니다. 유효 범위: 1-65535',
             ms: 'Tetapkan port akses HTTP untuk aplikasi, julat sah: 1-65535',
@@ -114,6 +116,8 @@ export function useDockerComposeEditor() {
           },
           newParam.label = {
             en: 'HTTP Port',
+            esEs: 'Puerto HTTP',
+            fa: 'درگاه HTTP',
             ja: 'HTTP ポート',
             ko: 'HTTP 포트',
             ms: 'Port HTTP',

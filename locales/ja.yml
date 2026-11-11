@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: 繁体字中国語説明
             placeholder: ''
+          es-es:
+            label: スペイン語説明
+            placeholder: ''
+          fa:
+            label: ペルシア語説明
+            placeholder: ''
           ja:
             label: 日本語説明
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: ポルトガル語（ブラジル）説明
           ru:
             label: ロシア語説明
+            placeholder: ''
+          tr:
+            label: トルコ語説明
             placeholder: ''
         tags:
             label: アプリタグ
@@ -197,6 +206,12 @@ tools:
             en:
               label: 英語ラベル
               placeholder: 英語ラベル
+            es-es:
+              label: スペイン語ラベル
+              placeholder: スペイン語ラベル
+            fa:
+              label: ペルシア語ラベル
+              placeholder: ペルシア語ラベル
             ja:
               label: 日本語ラベル
               placeholder: 日本語ラベル
@@ -226,6 +241,12 @@ tools:
             en:
               label: 英語説明
               placeholder: 英語説明
+            es-es:
+              label: スペイン語説明
+              placeholder: スペイン語説明
+            fa:
+              label: ペルシア語説明
+              placeholder: ペルシア語説明
             ja:
               label: 日本語説明
               placeholder: 日本語説明

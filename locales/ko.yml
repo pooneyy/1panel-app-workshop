@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: 번체 중국어 설명
             placeholder: ''
+          es-es:
+            label: 스페인어 설명
+            placeholder: ''
+          fa:
+            label: 페르시아어 설명
+            placeholder: ''
           ja:
             label: 일본어 설명
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: 포르투갈어 (브라질) 설명
           ru:
             label: 러시아어 설명
+            placeholder: ''
+          tr:
+            label: 터키어 설명
             placeholder: ''
         tags:
             label: 앱 태그
@@ -197,6 +206,12 @@ tools:
             en:
               label: 영어 레이블
               placeholder: 영어 레이블
+            es-es:
+              label: 스페인어 레이블
+              placeholder: 스페인어 레이블
+            fa:
+              label: 페르시아어 레이블
+              placeholder: 페르시아어 레이블
             ja:
               label: 일본어 레이블
               placeholder: 일본어 레이블
@@ -226,6 +241,12 @@ tools:
             en:
               label: 영어 설명
               placeholder: 영어 설명
+            es-es:
+              label: 스페인어 설명
+              placeholder: 스페인어 설명
+            fa:
+              label: 페르시아어 설명
+              placeholder: 페르시아어 설명
             ja:
               label: 일본어 설명
               placeholder: 일본어 설명

@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: Описание на традиционном китайском
             placeholder: ''
+          es-es:
+            label: Описание на испанском
+            placeholder: ''
+          fa:
+            label: Описание на персидском
+            placeholder: ''
           ja:
             label: Описание на японском
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: Описание на португальском (Бразилия)
           ru:
             label: Описание на русском
+            placeholder: ''
+          tr:
+            label: Описание на турецком
             placeholder: ''
         tags:
             label: Теги приложения
@@ -197,6 +206,12 @@ tools:
             en:
               label: Метка на английском
               placeholder: Метка на английском
+            es-es:
+              label: Метка на испанском
+              placeholder: Метка на испанском
+            fa:
+              label: Метка на персидском
+              placeholder: Метка на персидском
             ja:
               label: Метка на японском
               placeholder: Метка на японском
@@ -226,6 +241,12 @@ tools:
             en:
               label: Описание на английском
               placeholder: Описание на английском
+            es-es:
+              label: Описание на испанском
+              placeholder: Описание на испанском
+            fa:
+              label: Описание на персидском
+              placeholder: Описание на персидском
             ja:
               label: Описание на японском
               placeholder: Описание на японском

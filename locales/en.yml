@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: Chinese Description
             placeholder: Chinese Traditional Description
+          es-es:
+            label: Spanish Description
+            placeholder: Spanish Description
+          fa:
+            label: Persian Description
+            placeholder: Persian Description
           ja:
             label: Japanese Description
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: Portuguese (Brazil) Description
           ru:
             label: Russian Description
+            placeholder: ''
+          tr:
+            label: Turkish Description
             placeholder: ''
         tags:
             label: App Tag(s)
@@ -197,6 +206,12 @@ tools:
             en:
               label: English Label
               placeholder: English Label
+            es-es:
+              label: Spanish Label
+              placeholder: Spanish Label
+            fa:
+              label: Persian Label
+              placeholder: Persian Label
             ja:
               label: Japanese Label
               placeholder: Japanese Label
@@ -226,6 +241,12 @@ tools:
             en:
               label: English Description
               placeholder: English Description
+            es-es:
+              label: Spanish Description
+              placeholder: Spanish Description
+            fa:
+              label: Persian Description
+              placeholder: Persian Description
             ja:
               label: Japanese Description
               placeholder: Japanese Description

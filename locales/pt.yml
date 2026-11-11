@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: Descrição em Chinês Tradicional
             placeholder: ''
+          es-es:
+            label: Descrição em Espanhol
+            placeholder: ''
+          fa:
+            label: Descrição em Persa
+            placeholder: ''
           ja:
             label: Descrição em Japonês
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: Descrição em Português (Brasil)
           ru:
             label: Descrição em Russo
+            placeholder: ''
+          tr:
+            label: Descrição em Turco
             placeholder: ''
         tags:
             label: Tags do Aplicativo
@@ -197,6 +206,12 @@ tools:
             en:
               label: Rótulo em Inglês
               placeholder: Rótulo em Inglês
+            es-es:
+              label: Rótulo em Espanhol
+              placeholder: Rótulo em Espanhol
+            fa:
+              label: Rótulo em Persa
+              placeholder: Rótulo em Persa
             ja:
               label: Rótulo em Japonês
               placeholder: Rótulo em Japonês
@@ -226,6 +241,12 @@ tools:
             en:
               label: Descrição em Inglês
               placeholder: Descrição em Inglês
+            es-es:
+              label: Descrição em Espanhol
+              placeholder: Descrição em Espanhol
+            fa:
+              label: Descrição em Persa
+              placeholder: Descrição em Persa
             ja:
               label: Descrição em Japonês
               placeholder: Descrição em Japonês

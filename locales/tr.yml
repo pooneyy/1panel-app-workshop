@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: Geleneksel Çince Açıklama
             placeholder: ''
+          es-es:
+            label: İspanyolca Açıklama
+            placeholder: ''
+          fa:
+            label: Farsça Açıklama
+            placeholder: ''
           ja:
             label: Japonca Açıklama
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: Portekizce (Brezilya) Açıklama
           ru:
             label: Rusça Açıklama
+            placeholder: ''
+          tr:
+            label: Türkçe Açıklama
             placeholder: ''
         tags:
             label: Uygulama Etiketleri
@@ -197,6 +206,12 @@ tools:
             en:
               label: İngilizce Etiket
               placeholder: İngilizce Etiket
+            es-es:
+              label: İspanyolca Etiket
+              placeholder: İspanyolca Etiket
+            fa:
+              label: Farsça Etiket
+              placeholder: Farsça Etiket
             ja:
               label: Japonca Etiket
               placeholder: Japonca Etiket
@@ -226,6 +241,12 @@ tools:
             en:
               label: İngilizce Açıklama
               placeholder: İngilizce Açıklama
+            es-es:
+              label: İspanyolca Açıklama
+              placeholder: İspanyolca Açıklama
+            fa:
+              label: Farsça Açıklama
+              placeholder: Farsça Açıklama
             ja:
               label: Japonca Açıklama
               placeholder: Japonca Açıklama

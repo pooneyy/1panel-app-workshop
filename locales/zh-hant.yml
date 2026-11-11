@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: 繁體中文描述
             placeholder: ''
+          es-es:
+            label: 西班牙語描述
+            placeholder: ''
+          fa:
+            label: 波斯語描述
+            placeholder: ''
           ja:
             label: 日本語描述
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: 葡萄牙語（巴西）描述
           ru:
             label: 俄羅斯語描述
+            placeholder: ''
+          tr:
+            label: 土耳其語描述
             placeholder: ''
         tags:
             label: 應用標籤
@@ -197,6 +206,12 @@ tools:
             en:
               label: 英文標籤
               placeholder: 英文標籤
+            es-es:
+              label: 西班牙文標籤
+              placeholder: 西班牙文標籤
+            fa:
+              label: 波斯文標籤
+              placeholder: 波斯文標籤
             ja:
               label: 日文標籤
               placeholder: 日文標籤
@@ -226,6 +241,12 @@ tools:
             en:
               label: 英文描述
               placeholder: 英文描述
+            es-es:
+              label: 西班牙文描述
+              placeholder: 西班牙文描述
+            fa:
+              label: 波斯文描述
+              placeholder: 波斯文描述
             ja:
               label: 日文描述
               placeholder: 日文描述

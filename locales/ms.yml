@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: Penerangan Bahasa Cina Tradisional
             placeholder: ''
+          es-es:
+            label: Penerangan Bahasa Sepanyol
+            placeholder: ''
+          fa:
+            label: Penerangan Bahasa Parsi
+            placeholder: ''
           ja:
             label: Penerangan Bahasa Jepun
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: Penerangan dalam Bahasa Portugis (Brazil)
           ru:
             label: Penerangan Bahasa Rusia
+            placeholder: ''
+          tr:
+            label: Penerangan Bahasa Turki
             placeholder: ''
         tags:
             label: Tag Aplikasi
@@ -197,6 +206,12 @@ tools:
             en:
               label: Label Bahasa Inggeris
               placeholder: Label Bahasa Inggeris
+            es-es:
+              label: Label Bahasa Sepanyol
+              placeholder: Label Bahasa Sepanyol
+            fa:
+              label: Label Bahasa Parsi
+              placeholder: Label Bahasa Parsi
             ja:
               label: Label Bahasa Jepun
               placeholder: Label Bahasa Jepun
@@ -226,6 +241,12 @@ tools:
             en:
               label: Penerangan Bahasa Inggeris
               placeholder: Penerangan Bahasa Inggeris
+            es-es:
+              label: Penerangan Bahasa Sepanyol
+              placeholder: Penerangan Bahasa Sepanyol
+            fa:
+              label: Penerangan Bahasa Parsi
+              placeholder: Penerangan Bahasa Parsi
             ja:
               label: Penerangan Bahasa Jepun
               placeholder: Penerangan Bahasa Jepun

@@ -22,6 +22,8 @@ interface AppParam {
     zh: string;
     zhHant?: string;
     en: string;
+    esEs?: string;
+    fa?: string;
     ja?: string;
     ko?: string;
     ms?: string;
@@ -33,6 +35,8 @@ interface AppParam {
     zh: string;
     zhHant: string;
     en: string;
+    esEs: string;
+    fa: string;
     ja: string;
     ko: string;
     ms: string;
@@ -149,6 +153,8 @@ const defaultAppParam = (): AppParam => ({
     zh: '',
     zhHant: '',
     en: '',
+    esEs: '',
+    fa: '',
     ja: '',
     ko: '',
     ms: '',
@@ -160,6 +166,8 @@ const defaultAppParam = (): AppParam => ({
     zh: '',
     zhHant: '',
     en: '',
+    esEs: '',
+    fa: '',
     ja: '',
     ko: '',
     ms: '',
@@ -191,6 +199,7 @@ const transformKeys = (obj: any): any => {
       const keyMappings: Record<string, string> = {
         zhHant: 'zh-Hant',
         ptBr: 'pt-br',
+        esEs: 'es-es',
       };
       const newKey = keyMappings[key] || key;
       newObj[newKey] = transformKeys(value);

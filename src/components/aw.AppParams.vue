@@ -246,10 +246,23 @@ const appParamsYaml = computed({
           
           <n-grid cols="3" x-gap="12">
             <n-gi>
+              <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.es-es.label')">
+                <n-input clearable v-model:value="param.label.esEs" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.es-es.placeholder')" />
+              </n-form-item>
+            </n-gi>
+            <n-gi>
+              <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.fa.label')">
+                <n-input clearable v-model:value="param.label.fa" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.fa.placeholder')" />
+              </n-form-item>
+            </n-gi>
+            <n-gi>
               <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.ja.label')">
                 <n-input clearable v-model:value="param.label.ja" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.ja.placeholder')" />
               </n-form-item>
             </n-gi>
+          </n-grid>
+          
+          <n-grid cols="3" x-gap="12">
             <n-gi>
               <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.ko.label')">
                 <n-input clearable v-model:value="param.label.ko" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.ko.placeholder')" />
@@ -260,14 +273,14 @@ const appParamsYaml = computed({
                 <n-input clearable v-model:value="param.label.ms" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.ms.placeholder')" />
               </n-form-item>
             </n-gi>
-          </n-grid>
-          
-          <n-grid cols="3" x-gap="12">
             <n-gi>
               <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.pt-br.label')">
                 <n-input clearable v-model:value="param.label.ptBr" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.pt-br.placeholder')" />
               </n-form-item>
             </n-gi>
+          </n-grid>
+          
+          <n-grid cols="3" x-gap="12">
             <n-gi>
               <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.ru.label')">
                 <n-input clearable v-model:value="param.label.ru" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-label.ru.placeholder')" />
@@ -304,7 +317,19 @@ const appParamsYaml = computed({
                 <n-input clearable v-model:value="param.description.en" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.en.placeholder')" />
               </n-form-item>
             </n-gi>
+            <n-gi>
+              <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.es-es.label')">
+                <n-input clearable v-model:value="param.description.esEs" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.es-es.placeholder')" />
+              </n-form-item>
+            </n-gi>
+          </n-grid>
           
+          <n-grid cols="2" x-gap="12">
+            <n-gi>
+              <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.fa.label')">
+                <n-input clearable v-model:value="param.description.fa" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.fa.placeholder')" />
+              </n-form-item>
+            </n-gi>
             <n-gi>
               <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.ja.label')">
                 <n-input clearable v-model:value="param.description.ja" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.ja.placeholder')" />
@@ -318,7 +343,6 @@ const appParamsYaml = computed({
                 <n-input clearable v-model:value="param.description.ko" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.ko.placeholder')" />
               </n-form-item>
             </n-gi>
-
             <n-gi>
               <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.ms.label')">
                 <n-input clearable v-model:value="param.description.ms" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.ms.placeholder')" />
@@ -332,7 +356,6 @@ const appParamsYaml = computed({
                 <n-input clearable v-model:value="param.description.ptBr" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.pt-br.placeholder')" />
               </n-form-item>
             </n-gi>
-          
             <n-gi>
               <n-form-item :label="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.ru.label')">
                 <n-input clearable v-model:value="param.description.ru" :placeholder="$t('tools.app-workshop.cards.AppParams.Param-card.form-description.ru.placeholder')" />

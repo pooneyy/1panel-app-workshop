@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: Descripción en Chino Tradicional
             placeholder: ''
+          es-es:
+            label: Descripción en Español
+            placeholder: ''
+          fa:
+            label: Descripción en Persa
+            placeholder: ''
           ja:
             label: Descripción en Japonés
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: Descripción en Portugués (Brasil)
           ru:
             label: Descripción en Ruso
+            placeholder: ''
+          tr:
+            label: Descripción en Turco
             placeholder: ''
         tags:
             label: Etiquetas de la Aplicación
@@ -197,6 +206,12 @@ tools:
             en:
               label: Etiqueta en Inglés
               placeholder: Etiqueta en Inglés
+            es-es:
+              label: Etiqueta en Español
+              placeholder: Etiqueta en Español
+            fa:
+              label: Etiqueta en Persa
+              placeholder: Etiqueta en Persa
             ja:
               label: Etiqueta en Japonés
               placeholder: Etiqueta en Japonés
@@ -226,6 +241,12 @@ tools:
             en:
               label: Descripción en Inglés
               placeholder: Descripción en Inglés
+            es-es:
+              label: Descripción en Español
+              placeholder: Descripción en Español
+            fa:
+              label: Descripción en Persa
+              placeholder: Descripción en Persa
             ja:
               label: Descripción en Japonés
               placeholder: Descripción en Japonés

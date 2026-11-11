@@ -67,6 +67,12 @@ tools:
           zh-Hant:
             label: Traditionelle Chinesische Beschreibung
             placeholder: ''
+          es-es:
+            label: Spanische Beschreibung
+            placeholder: ''
+          fa:
+            label: Persische Beschreibung
+            placeholder: ''
           ja:
             label: Japanische Beschreibung
             placeholder: ''
@@ -81,6 +87,9 @@ tools:
             placeholder: Portugiesische (Brasilien) Beschreibung
           ru:
             label: Russische Beschreibung
+            placeholder: ''
+          tr:
+            label: Türkische Beschreibung
             placeholder: ''
         tags:
             label: Anwendungs-Tags
@@ -197,6 +206,12 @@ tools:
             en:
               label: Englisches Label
               placeholder: Englisches Label
+            es-es:
+              label: Spanisches Label
+              placeholder: Spanisches Label
+            fa:
+              label: Persisches Label
+              placeholder: Persisches Label
             ja:
               label: Japanisches Label
               placeholder: Japanisches Label
@@ -226,6 +241,12 @@ tools:
             en:
               label: Englische Beschreibung
               placeholder: Englische Beschreibung
+            es-es:
+              label: Spanische Beschreibung
+              placeholder: Spanische Beschreibung
+            fa:
+              label: Persische Beschreibung
+              placeholder: Persische Beschreibung
             ja:
               label: Japanische Beschreibung
               placeholder: Japanische Beschreibung

@@ -65,6 +65,14 @@ const appForm = computed({
         <n-input clearable v-model:value="appForm.description.zhHant" :placeholder="$t('tools.app-workshop.cards.AppForm.desc.zh-Hant.placeholder')" />
       </n-form-item>
       
+      <n-form-item :label="$t('tools.app-workshop.cards.AppForm.desc.es-es.label')" required>
+        <n-input clearable v-model:value="appForm.description.esEs" :placeholder="$t('tools.app-workshop.cards.AppForm.desc.es-es.placeholder')" />
+      </n-form-item>
+      
+      <n-form-item :label="$t('tools.app-workshop.cards.AppForm.desc.fa.label')" required>
+        <n-input clearable v-model:value="appForm.description.fa" :placeholder="$t('tools.app-workshop.cards.AppForm.desc.fa.placeholder')" />
+      </n-form-item>
+      
       <n-form-item :label="$t('tools.app-workshop.cards.AppForm.desc.ja.label')" required>
         <n-input clearable v-model:value="appForm.description.ja" :placeholder="$t('tools.app-workshop.cards.AppForm.desc.ja.placeholder')" />
       </n-form-item>
@@ -83,6 +91,10 @@ const appForm = computed({
       
       <n-form-item :label="$t('tools.app-workshop.cards.AppForm.desc.ru.label')" required>
         <n-input clearable v-model:value="appForm.description.ru" :placeholder="$t('tools.app-workshop.cards.AppForm.desc.ru.placeholder')" />
+      </n-form-item>
+      
+      <n-form-item :label="$t('tools.app-workshop.cards.AppForm.desc.tr.label')" required>
+        <n-input clearable v-model:value="appForm.description.tr" :placeholder="$t('tools.app-workshop.cards.AppForm.desc.tr.placeholder')" />
       </n-form-item>
       
       <n-grid cols="2" x-gap="12">

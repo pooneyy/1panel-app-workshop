@@ -31,11 +31,14 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
       zh: t('tools.app-workshop.cards.ReadmeEditor.sections.introduction.defalt', {}, { locale: 'zh' }),
       zhHant: '',
       en: t('tools.app-workshop.cards.ReadmeEditor.sections.introduction.defalt', {}, { locale: 'en' }),
+      esEs: '',
+      fa: '',
       ja: '',
       ko: '',
       ms: '',
       ptBr: '',
       ru: '',
+      tr: '',
     },
     tags: ['Tool'],
     type: 'website',
@@ -109,6 +112,8 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
         zh: 'HTTP 端口',
         zhHant: 'HTTP 連接埠',
         en: 'HTTP Port',
+        esEs: 'Puerto HTTP',
+        fa: 'درگاه HTTP',
         ja: 'HTTP ポート',
         ko: 'HTTP 포트',
         ms: 'Port HTTP',
@@ -120,6 +125,8 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
         zh: '设置应用的 HTTP 访问端口，有效范围: 1-65535',
         zhHant: '設定應用程式的 HTTP 存取連接埠，有效範圍: 1-65535',
         en: 'Set the HTTP access port for the application, valid range: 1-65535',
+        esEs: 'Configure el puerto de acceso HTTP de la aplicación, rango válido: 1-65535',
+        fa: 'پورت دسترسی HTTP برنامه را تنظیم کنید، محدوده معتبر: 1-65535',
         ja: 'アプリケーションのHTTPアクセスポートを設定します。有効範囲: 1-65535',
         ko: '애플리케이션의 HTTP 접근 포트를 설정합니다. 유효 범위: 1-65535',
         ms: 'Tetapkan port akses HTTP untuk aplikasi, julat sah: 1-65535',
@@ -266,11 +273,14 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
             en: appForm.value.description.en,
             zh: appForm.value.description.zh,
             zhHant: appForm.value.description.zhHant,
+            esEs: appForm.value.description.esEs,
+            fa: appForm.value.description.fa,
             ja: appForm.value.description.ja,
             ms: appForm.value.description.ms,
             ptBr: appForm.value.description.ptBr,
             ru: appForm.value.description.ru,
             ko: appForm.value.description.ko,
+            tr: appForm.value.description.tr,
           },
           type: appForm.value.type,
           crossVersionUpdate: appForm.value.crossVersionUpdate,
@@ -345,7 +355,7 @@ export const useReactiveReferenceStore = defineStore('appWorkshop', () => {
       const transformedData = transformKeys(data);
       const processedData = processNumbersForYaml(transformedData);
       let yamlString = yaml.stringify(processedData, { indent: 2, lineWidth: -1 });
-      yamlString = yamlString.replace(/^(\s+)(zh|zh-Hant|en|ja|ko|ms|pt-br|ru|tr):\s*(.+)$/gm, (match, indent, key, value) => {
+      yamlString = yamlString.replace(/^(\s+)(zh|zh-Hant|en|es-es|fa|ja|ko|ms|pt-br|ru|tr):\s*(.+)$/gm, (match, indent, key, value) => {
         const trimmedValue = value.trim();
         if (trimmedValue.includes('\\n') && !trimmedValue.startsWith('"')) {
           return `${indent}${key}: "${trimmedValue}"`;
